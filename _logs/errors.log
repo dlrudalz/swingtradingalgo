@@ -1,0 +1,45 @@
+2025-11-21 23:15:00,318 - TickerScanner - ERROR - Sector mapping file not found at C:\Users\kyung\StockScanner\json_files\sector_mapping.json
+2025-11-21 23:15:00,319 - TickerScanner - ERROR - Failed to load sector mapping: Sector mapping file not found: C:\Users\kyung\StockScanner\json_files\sector_mapping.json
+2025-11-21 23:15:00,319 - TickerScanner - ERROR - Unexpected error: Failed to load sector mapping: Sector mapping file not found: C:\Users\kyung\StockScanner\json_files\sector_mapping.json
+2025-12-01 14:12:52,859 - TickerScanner - ERROR - Error in restart recovery check: can't compare offset-naive and offset-aware datetimes
+2025-12-01 14:12:53,339 - TickerScanner - ERROR - Error in scheduled trading: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-01 16:16:26,391 - TickerScanner - ERROR - Trading system error: 'TradeExecutor' object has no attribute '_start_position_monitoring'
+2025-12-01 16:16:26,392 - TickerScanner - ERROR - Unexpected error: 'TradeExecutor' object has no attribute 'stop'
+2025-12-03 10:04:33,211 - TickerScanner - ERROR - Error during restart execution check: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 11:16:11,656 - TickerScanner - ERROR - Error executing trade for WOK: Unexpected float format "6.550000190734863"
+2025-12-03 11:16:11,714 - TickerScanner - ERROR - Error executing trade for MAGH: Unexpected float format "6.239999771118164"
+2025-12-03 11:16:11,771 - TickerScanner - ERROR - Error executing trade for FOFO: Unexpected float format "13.8100004196167"
+2025-12-03 11:32:12,533 - TickerScanner - ERROR - Error executing trade for MAGH: asset "MAGH" cannot be sold short
+2025-12-03 11:32:12,637 - TickerScanner - ERROR - Error executing trade for FOFO: asset "FOFO" cannot be sold short
+2025-12-03 11:40:59,991 - TickerScanner - ERROR - Error executing trade for MAGH: asset "MAGH" cannot be sold short
+2025-12-03 11:41:00,039 - TickerScanner - ERROR - Error executing trade for FOFO: asset "FOFO" cannot be sold short
+2025-12-03 11:41:01,203 - TickerScanner - ERROR - Error executing trade for MAGH: asset "MAGH" cannot be sold short
+2025-12-03 16:50:44,154 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 16:50:44,158 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 17:03:25,002 - TickerScanner - ERROR - Error exiting position for WOK: insufficient qty available for order (requested: 33935, available: 0)
+2025-12-03 21:10:36,422 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:10:36,457 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:19:15,112 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:19:15,124 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:22:33,889 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:22:33,913 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:23:17,260 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:23:17,276 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:29:12,494 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:29:12,514 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:57:51,354 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 21:57:51,390 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:01:32,152 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:01:32,185 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:14:28,719 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:14:28,757 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:16:45,753 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:16:45,782 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:21:25,291 - TickerScanner - ERROR - Error exiting position for WOK: insufficient qty available for order (requested: 33935, available: 0)
+2025-12-03 22:24:10,672 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:24:10,699 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:28:24,246 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:28:24,272 - TickerScanner - ERROR - Error monitoring position WOK: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-03 22:32:46,928 - TickerScanner - ERROR - Error exiting position for WOK: insufficient qty available for order (requested: 33935, available: 0)
+2025-12-04 23:06:14,413 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'
+2025-12-04 23:20:36,151 - TickerScanner - ERROR - Error monitoring position TGHL: 'NoneType' object has no attribute 'rank_all_tickers_optimized'

@@ -1,0 +1,52 @@
+2025-12-28 19:24:58,558 - TickerScanner - INFO - Pure Ticker Scanner initialized with 1 composite indices
+2025-12-28 19:24:58,820 - TickerScanner - INFO - Database tables initialized successfully
+2025-12-28 19:24:58,822 - TickerScanner - INFO - ✅ Database has been initialized and loaded
+2025-12-28 19:24:59,330 - TickerScanner - INFO - ✅ Alpaca trading manager initialized successfully
+2025-12-28 19:24:59,330 - TickerScanner - INFO - ✅ Alpaca trading manager initialized successfully
+2025-12-28 19:24:59,330 - TickerScanner - INFO - 🔍 SCANNING CAPITAL AND EXISTING POSITIONS FIRST...
+2025-12-28 19:24:59,375 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:24:59,419 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:24:59,463 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:24:59,507 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:24:59,508 - TickerScanner - INFO - ✅ Capital and position detection completed successfully
+2025-12-28 19:24:59,508 - TickerScanner - INFO - Trade Executor initialized
+2025-12-28 19:24:59,508 - TickerScanner - INFO - Real-time data manager initialized (Alpaca)
+2025-12-28 19:24:59,550 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:24:59,551 - TickerScanner - INFO - Trade Executor started
+2025-12-28 19:24:59,590 - TickerScanner - INFO - Cache initialized with 3275 tickers
+2025-12-28 19:24:59,591 - TickerScanner - INFO - Pure Ticker Scanner started
+2025-12-28 19:24:59,591 - TickerScanner - INFO - 🔍 SCANNING CAPITAL AND EXISTING POSITIONS FIRST...
+2025-12-28 19:24:59,636 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:24:59,681 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:24:59,726 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:24:59,771 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:24:59,773 - TickerScanner - INFO - Starting immediate ticker scan on startup
+2025-12-28 19:24:59,773 - TickerScanner - INFO - 🔍 SCANNING CAPITAL AND EXISTING POSITIONS FIRST...
+2025-12-28 19:24:59,816 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:24:59,859 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:24:59,905 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:24:59,948 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:24:59,950 - TickerScanner - INFO - Refreshing ticker data
+2025-12-28 19:24:59,950 - TickerScanner - INFO - Fetching tickers for composite index ^IXAC
+2025-12-28 19:25:01,550 - TickerScanner - INFO - Completed ^IXAC: 3267 stocks across 6 pages
+2025-12-28 19:25:01,650 - TickerScanner - INFO - Ticker refresh: 3267 total, 28 new, 36 removed
+2025-12-28 19:25:01,652 - TickerScanner - INFO - Initial ticker scan completed successfully
+2025-12-28 19:25:01,652 - TickerScanner - INFO - Starting automatic pure ticker ranking (max: ALL tickers)
+2025-12-28 19:25:01,653 - TickerScanner - INFO - Pure Ranking Engine initialized with 16 parallel workers
+2025-12-28 19:25:01,653 - TickerScanner - INFO - 🚀 Starting pure ranking analysis
+2025-12-28 19:25:01,697 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:25:01,697 - TickerScanner - INFO - Available trading capital: $1787911.94
+2025-12-28 19:25:01,741 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:25:01,742 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:34:12,432 - TickerScanner - INFO - Pure ranking complete: 3128 tickers, signals: {'SHORT': 901, 'LONG': 1153, 'NEUTRAL': 1074}
+2025-12-28 19:34:12,593 - TickerScanner - INFO - Pure rankings saved to c:\Users\kyung\StockScanner\ranking_results\pure_ticker_rankings_20251228_193412.csv
+2025-12-28 19:34:12,595 - TickerScanner - INFO - Pure ranking completed: 3128 tickers ranked
+2025-12-28 19:34:12,596 - TickerScanner - INFO - Automatic pure ranking completed: 3128 tickers ranked, signals: {'SHORT': 901, 'LONG': 1153, 'NEUTRAL': 1074}
+2025-12-28 19:34:13,080 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:34:13,122 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:34:13,165 - TickerScanner - INFO - Account info: $893955.97 cash, $1787911.94 buying power
+2025-12-28 19:34:13,209 - TickerScanner - INFO - Found 0 existing positions
+2025-12-28 19:36:17,271 - TickerScanner - INFO - Trade Executor stopped
+2025-12-28 19:36:17,271 - TickerScanner - INFO - Pure Ticker Scanner shutdown complete
+2025-12-28 19:36:17,271 - TickerScanner - INFO - Trade Executor stopped
+2025-12-28 19:36:17,272 - TickerScanner - INFO - Application terminated by user

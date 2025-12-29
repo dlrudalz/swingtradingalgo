@@ -1,0 +1,127 @@
+2025-11-22 00:15:57,428 - BacktestSectorScanner - ERROR - Please provide tickers via --tickers or --ticker-file
+2025-11-22 20:58:49,654 - BacktestSectorScanner - INFO -    - 0 detailed sector mappings
+2025-11-22 20:58:49,655 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 20:58:49,656 - BacktestSectorScanner - INFO -    - 0 detailed sector mappings
+2025-11-22 20:58:49,657 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 20:58:49,660 - BacktestSectorScanner - INFO - Found 2974 historical ticker files
+2025-11-22 21:03:05,136 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:03:05,136 - BacktestSectorScanner - INFO -    - 0 detailed sector mappings
+2025-11-22 21:03:05,136 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:03:05,136 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:03:05,137 - BacktestSectorScanner - INFO -    - 0 detailed sector mappings
+2025-11-22 21:03:05,137 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:03:05,137 - BacktestSectorScanner - INFO - Starting backtest sector scanning...
+2025-11-22 21:03:05,138 - BacktestSectorScanner - INFO - Found 2974 historical ticker files
+2025-11-22 21:03:05,138 - BacktestSectorScanner - INFO - Processing 2974 historical tickers
+2025-11-22 21:03:25,938 - BacktestSectorScanner - INFO - Sector data retrieval: 2946 successful, 28 failed
+2025-11-22 21:03:25,953 - BacktestSectorScanner - INFO - Saved 516 tickers to other_sector.csv
+2025-11-22 21:03:25,954 - BacktestSectorScanner - INFO - Saved 451 tickers to financials_sector.csv
+2025-11-22 21:03:25,956 - BacktestSectorScanner - INFO - Saved 438 tickers to technology_sector.csv
+2025-11-22 21:03:25,957 - BacktestSectorScanner - INFO - Saved 93 tickers to materials_sector.csv
+2025-11-22 21:03:25,959 - BacktestSectorScanner - INFO - Saved 763 tickers to health_care_sector.csv
+2025-11-22 21:03:25,961 - BacktestSectorScanner - INFO - Saved 230 tickers to consumer_discretionary_sector.csv
+2025-11-22 21:03:25,962 - BacktestSectorScanner - INFO - Saved 29 tickers to real_estate_sector.csv
+2025-11-22 21:03:25,962 - BacktestSectorScanner - INFO - Saved 61 tickers to energy_sector.csv
+2025-11-22 21:03:25,964 - BacktestSectorScanner - INFO - Saved 187 tickers to industrials_sector.csv
+2025-11-22 21:03:25,965 - BacktestSectorScanner - INFO - Saved 111 tickers to communication_services_sector.csv
+2025-11-22 21:03:25,966 - BacktestSectorScanner - INFO - Saved 42 tickers to utilities_sector.csv
+2025-11-22 21:03:25,967 - BacktestSectorScanner - INFO - Saved 25 tickers to consumer_staples_sector.csv
+2025-11-22 21:03:25,968 - BacktestSectorScanner - INFO - Saved sector summary with 12 sectors
+2025-11-22 21:03:25,969 - BacktestSectorScanner - INFO - Backtest sector scanning completed successfully
+2025-11-22 21:03:47,999 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:03:47,999 - BacktestSectorScanner - INFO -    - 0 detailed sector mappings
+2025-11-22 21:03:47,999 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:03:48,000 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:03:48,000 - BacktestSectorScanner - INFO -    - 0 detailed sector mappings
+2025-11-22 21:03:48,000 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:03:48,000 - BacktestSectorScanner - INFO - Starting backtest sector scanning...
+2025-11-22 21:03:48,002 - BacktestSectorScanner - INFO - Found 2974 historical ticker files
+2025-11-22 21:03:48,002 - BacktestSectorScanner - INFO - Processing 2974 historical tickers
+2025-11-22 21:03:58,380 - BacktestSectorScanner - INFO - Sector data retrieval: 2946 successful, 28 failed
+2025-11-22 21:03:58,399 - BacktestSectorScanner - INFO - Saved 516 tickers to other_sector.csv
+2025-11-22 21:03:58,401 - BacktestSectorScanner - INFO - Saved 451 tickers to financials_sector.csv
+2025-11-22 21:03:58,403 - BacktestSectorScanner - INFO - Saved 438 tickers to technology_sector.csv
+2025-11-22 21:03:58,404 - BacktestSectorScanner - INFO - Saved 93 tickers to materials_sector.csv
+2025-11-22 21:03:58,407 - BacktestSectorScanner - INFO - Saved 763 tickers to health_care_sector.csv
+2025-11-22 21:03:58,408 - BacktestSectorScanner - INFO - Saved 230 tickers to consumer_discretionary_sector.csv
+2025-11-22 21:03:58,409 - BacktestSectorScanner - INFO - Saved 29 tickers to real_estate_sector.csv
+2025-11-22 21:03:58,410 - BacktestSectorScanner - INFO - Saved 61 tickers to energy_sector.csv
+2025-11-22 21:03:58,411 - BacktestSectorScanner - INFO - Saved 187 tickers to industrials_sector.csv
+2025-11-22 21:03:58,413 - BacktestSectorScanner - INFO - Saved 111 tickers to communication_services_sector.csv
+2025-11-22 21:03:58,414 - BacktestSectorScanner - INFO - Saved 42 tickers to utilities_sector.csv
+2025-11-22 21:03:58,415 - BacktestSectorScanner - INFO - Saved 25 tickers to consumer_staples_sector.csv
+2025-11-22 21:03:58,416 - BacktestSectorScanner - INFO - Saved sector summary with 12 sectors
+2025-11-22 21:03:58,418 - BacktestSectorScanner - INFO - Backtest sector scanning completed successfully
+2025-11-22 21:04:22,287 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:04:22,287 - BacktestSectorScanner - INFO -    - 0 detailed sector mappings
+2025-11-22 21:04:22,287 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:04:22,288 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:04:22,288 - BacktestSectorScanner - INFO -    - 0 detailed sector mappings
+2025-11-22 21:04:22,288 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:04:22,288 - BacktestSectorScanner - INFO - Starting backtest sector scanning...
+2025-11-22 21:04:22,290 - BacktestSectorScanner - INFO - Found 2974 historical ticker files
+2025-11-22 21:04:22,290 - BacktestSectorScanner - INFO - Processing 2974 historical tickers
+2025-11-22 21:04:32,511 - BacktestSectorScanner - INFO - Sector data retrieval: 2946 successful, 28 failed
+2025-11-22 21:04:32,526 - BacktestSectorScanner - INFO - Saved 516 tickers to other_sector.csv
+2025-11-22 21:04:32,528 - BacktestSectorScanner - INFO - Saved 451 tickers to financials_sector.csv
+2025-11-22 21:04:32,530 - BacktestSectorScanner - INFO - Saved 438 tickers to technology_sector.csv
+2025-11-22 21:04:32,531 - BacktestSectorScanner - INFO - Saved 93 tickers to materials_sector.csv
+2025-11-22 21:04:32,533 - BacktestSectorScanner - INFO - Saved 763 tickers to health_care_sector.csv
+2025-11-22 21:04:32,535 - BacktestSectorScanner - INFO - Saved 230 tickers to consumer_discretionary_sector.csv
+2025-11-22 21:04:32,536 - BacktestSectorScanner - INFO - Saved 29 tickers to real_estate_sector.csv
+2025-11-22 21:04:32,537 - BacktestSectorScanner - INFO - Saved 61 tickers to energy_sector.csv
+2025-11-22 21:04:32,538 - BacktestSectorScanner - INFO - Saved 187 tickers to industrials_sector.csv
+2025-11-22 21:04:32,539 - BacktestSectorScanner - INFO - Saved 111 tickers to communication_services_sector.csv
+2025-11-22 21:04:32,540 - BacktestSectorScanner - INFO - Saved 42 tickers to utilities_sector.csv
+2025-11-22 21:04:32,541 - BacktestSectorScanner - INFO - Saved 25 tickers to consumer_staples_sector.csv
+2025-11-22 21:04:32,542 - BacktestSectorScanner - INFO - Saved sector summary with 12 sectors
+2025-11-22 21:04:32,543 - BacktestSectorScanner - INFO - Backtest sector scanning completed successfully
+2025-11-22 21:05:36,120 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:05:36,120 - BacktestSectorScanner - INFO -    - 202 detailed sector mappings
+2025-11-22 21:05:36,120 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:05:36,120 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:05:36,121 - BacktestSectorScanner - INFO -    - 202 detailed sector mappings
+2025-11-22 21:05:36,121 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:05:36,121 - BacktestSectorScanner - INFO - Starting backtest sector scanning...
+2025-11-22 21:05:36,122 - BacktestSectorScanner - INFO - Found 2974 historical ticker files
+2025-11-22 21:05:36,122 - BacktestSectorScanner - INFO - Processing 2974 historical tickers
+2025-11-22 21:05:46,536 - BacktestSectorScanner - INFO - Sector data retrieval: 2946 successful, 28 failed
+2025-11-22 21:05:46,582 - BacktestSectorScanner - INFO - Saved 351 tickers to industrials_sector.csv
+2025-11-22 21:05:46,584 - BacktestSectorScanner - INFO - Saved 538 tickers to financials_sector.csv
+2025-11-22 21:05:46,585 - BacktestSectorScanner - INFO - Saved 367 tickers to technology_sector.csv
+2025-11-22 21:05:46,586 - BacktestSectorScanner - INFO - Saved 114 tickers to materials_sector.csv
+2025-11-22 21:05:46,589 - BacktestSectorScanner - INFO - Saved 895 tickers to health_care_sector.csv
+2025-11-22 21:05:46,590 - BacktestSectorScanner - INFO - Saved 316 tickers to consumer_discretionary_sector.csv
+2025-11-22 21:05:46,591 - BacktestSectorScanner - INFO - Saved 63 tickers to real_estate_sector.csv
+2025-11-22 21:05:46,592 - BacktestSectorScanner - INFO - Saved 54 tickers to energy_sector.csv
+2025-11-22 21:05:46,593 - BacktestSectorScanner - INFO - Saved 11 tickers to other_sector.csv
+2025-11-22 21:05:46,595 - BacktestSectorScanner - INFO - Saved 136 tickers to communication_services_sector.csv
+2025-11-22 21:05:46,596 - BacktestSectorScanner - INFO - Saved 41 tickers to utilities_sector.csv
+2025-11-22 21:05:46,597 - BacktestSectorScanner - INFO - Saved 60 tickers to consumer_staples_sector.csv
+2025-11-22 21:05:46,598 - BacktestSectorScanner - INFO - Saved sector summary with 12 sectors
+2025-11-22 21:05:46,599 - BacktestSectorScanner - INFO - Backtest sector scanning completed successfully
+2025-11-22 21:11:57,194 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:11:57,195 - BacktestSectorScanner - INFO -    - 206 detailed sector mappings
+2025-11-22 21:11:57,195 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:11:57,195 - BacktestSectorScanner - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 21:11:57,195 - BacktestSectorScanner - INFO -    - 206 detailed sector mappings
+2025-11-22 21:11:57,195 - BacktestSectorScanner - INFO -    - 12 major sectors
+2025-11-22 21:11:57,195 - BacktestSectorScanner - INFO - Starting backtest sector scanning...
+2025-11-22 21:11:57,197 - BacktestSectorScanner - INFO - Found 2974 historical ticker files
+2025-11-22 21:11:57,197 - BacktestSectorScanner - INFO - Processing 2974 historical tickers
+2025-11-22 21:12:07,701 - BacktestSectorScanner - INFO - Sector data retrieval: 2946 successful, 28 failed
+2025-11-22 21:12:07,743 - BacktestSectorScanner - INFO - Saved 351 tickers to industrials_sector.csv
+2025-11-22 21:12:07,745 - BacktestSectorScanner - INFO - Saved 538 tickers to financials_sector.csv
+2025-11-22 21:12:07,746 - BacktestSectorScanner - INFO - Saved 367 tickers to technology_sector.csv
+2025-11-22 21:12:07,748 - BacktestSectorScanner - INFO - Saved 115 tickers to materials_sector.csv
+2025-11-22 21:12:07,750 - BacktestSectorScanner - INFO - Saved 896 tickers to health_care_sector.csv
+2025-11-22 21:12:07,751 - BacktestSectorScanner - INFO - Saved 317 tickers to consumer_discretionary_sector.csv
+2025-11-22 21:12:07,753 - BacktestSectorScanner - INFO - Saved 63 tickers to real_estate_sector.csv
+2025-11-22 21:12:07,754 - BacktestSectorScanner - INFO - Saved 54 tickers to energy_sector.csv
+2025-11-22 21:12:07,755 - BacktestSectorScanner - INFO - Saved 136 tickers to communication_services_sector.csv
+2025-11-22 21:12:07,756 - BacktestSectorScanner - INFO - Saved 41 tickers to utilities_sector.csv
+2025-11-22 21:12:07,757 - BacktestSectorScanner - INFO - Saved 60 tickers to consumer_staples_sector.csv
+2025-11-22 21:12:07,758 - BacktestSectorScanner - INFO - Saved 6 tickers to utilities_sector.csv
+2025-11-22 21:12:07,759 - BacktestSectorScanner - INFO - Saved 2 tickers to other_sector.csv
+2025-11-22 21:12:07,760 - BacktestSectorScanner - INFO - Saved sector summary with 13 sectors
+2025-11-22 21:12:07,762 - BacktestSectorScanner - INFO - Backtest sector scanning completed successfully

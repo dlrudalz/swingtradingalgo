@@ -1,0 +1,1009 @@
+2025-11-22 00:22:34,719 - BacktestSectorFetcher - ERROR - Failed to load sector mapping: Expecting value: line 1 column 1 (char 0)
+2025-11-22 00:22:34,720 - BacktestSectorFetcher - INFO - Saved sector mapping to C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 00:22:34,720 - BacktestSectorFetcher - INFO - Backtest Sector Data Fetcher initialized
+2025-11-22 00:22:34,777 - BacktestSectorFetcher - WARNING - No CSV files found in C:\Users\kyung\StockScanner\historical_data\historical\tickers
+2025-11-22 00:22:34,777 - BacktestSectorFetcher - ERROR - No tickers found to process
+2025-11-22 00:23:09,363 - BacktestSectorFetcher - INFO -    - 0 detailed sector mappings
+2025-11-22 00:23:09,363 - BacktestSectorFetcher - INFO -    - 12 major sectors
+2025-11-22 00:23:09,364 - BacktestSectorFetcher - INFO - Backtest Sector Data Fetcher initialized
+2025-11-22 00:23:09,365 - BacktestSectorFetcher - WARNING - No CSV files found in C:\Users\kyung\StockScanner\historical_data\historical\tickers
+2025-11-22 00:23:09,366 - BacktestSectorFetcher - ERROR - No tickers found to process
+2025-11-22 00:26:50,784 - BacktestSectorFetcher - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 00:26:50,784 - BacktestSectorFetcher - INFO -    - 0 detailed sector mappings
+2025-11-22 00:26:50,785 - BacktestSectorFetcher - INFO -    - 12 major sectors
+2025-11-22 00:26:50,785 - BacktestSectorFetcher - INFO - Backtest Sector Data Fetcher initialized
+2025-11-22 00:26:50,785 - BacktestSectorFetcher - INFO - Starting complete backtest sector scan
+2025-11-22 00:26:50,785 - BacktestSectorFetcher - INFO - Found 0 total files in directory: []
+2025-11-22 00:26:50,785 - BacktestSectorFetcher - INFO - Found 0 CSV files: []
+2025-11-22 00:26:50,785 - BacktestSectorFetcher - WARNING - No CSV files found in C:\Users\kyung\StockScanner\historical_data\historical\tickers
+2025-11-22 00:26:50,786 - BacktestSectorFetcher - ERROR - No tickers found to process
+2025-11-22 00:26:50,789 - BacktestSectorFetcher - INFO - Created sample ticker file: C:\Users\kyung\StockScanner\historical_data\historical\tickers\sample_tickers.csv
+2025-11-22 00:26:50,789 - BacktestSectorFetcher - INFO - Found 1 total files in directory: ['sample_tickers.csv']
+2025-11-22 00:26:50,789 - BacktestSectorFetcher - INFO - Found 1 CSV files: ['sample_tickers.csv']
+2025-11-22 00:26:50,798 - BacktestSectorFetcher - INFO - Successfully read sample_tickers.csv with utf-8 encoding
+2025-11-22 00:26:50,799 - BacktestSectorFetcher - INFO - Found 10 tickers in sample_tickers.csv
+2025-11-22 00:26:50,799 - BacktestSectorFetcher - INFO - Sample tickers from sample_tickers.csv: ['AAPL', 'MSFT', 'V', 'GOOGL', 'AMZN']
+2025-11-22 00:26:50,799 - BacktestSectorFetcher - INFO - Total unique tickers found: 10
+2025-11-22 00:26:50,799 - BacktestSectorFetcher - INFO - Sample of all tickers: ['AAPL', 'MSFT', 'V', 'GOOGL', 'AMZN', 'META', 'JPM', 'TSLA', 'NVDA', 'JNJ']
+2025-11-22 00:26:50,799 - BacktestSectorFetcher - INFO - Fetching sectors for 10 tickers...
+2025-11-22 00:26:51,012 - BacktestSectorFetcher - INFO - Created sector file: technology_tickers.csv with 5 tickers
+2025-11-22 00:26:51,013 - BacktestSectorFetcher - INFO - Created sector file: other_tickers.csv with 2 tickers
+2025-11-22 00:26:51,014 - BacktestSectorFetcher - INFO - Created sector file: consumer_discretionary_tickers.csv with 1 tickers
+2025-11-22 00:26:51,016 - BacktestSectorFetcher - INFO - Created sector file: financials_tickers.csv with 1 tickers
+2025-11-22 00:26:51,017 - BacktestSectorFetcher - INFO - Created sector file: health_care_tickers.csv with 1 tickers
+2025-11-22 00:26:51,018 - BacktestSectorFetcher - INFO - Created 5 sector files and summary
+2025-11-22 00:26:51,019 - BacktestSectorFetcher - INFO - Saved complete sector mapping to C:\Users\kyung\StockScanner\historical_data\backtest_sectors\complete_sector_mapping.csv
+2025-11-22 00:26:51,019 - BacktestSectorFetcher - INFO - Sector scan completed:
+2025-11-22 00:26:51,019 - BacktestSectorFetcher - INFO -    - Processed: 10 total tickers
+2025-11-22 00:26:51,019 - BacktestSectorFetcher - INFO -    - Successful: 10 tickers
+2025-11-22 00:26:51,019 - BacktestSectorFetcher - INFO -    - Failed/Unknown: 0 tickers
+2025-11-22 00:26:51,019 - BacktestSectorFetcher - INFO -    - Sector files created: 5
+2025-11-22 00:26:51,020 - BacktestSectorFetcher - INFO -    - Complete mapping saved: C:\Users\kyung\StockScanner\historical_data\backtest_sectors\complete_sector_mapping.csv
+2025-11-22 00:32:27,055 - BacktestSectorFetcher - INFO -    - 0 detailed sector mappings
+2025-11-22 00:32:27,056 - BacktestSectorFetcher - INFO -    - 12 major sectors
+2025-11-22 00:32:27,056 - BacktestSectorFetcher - INFO - Fetching sector data for all tickers
+2025-11-22 00:32:27,056 - BacktestSectorFetcher - ERROR - Historical tickers directory not found: C:\Users\kyung\StockScanner\historical_data\historical\tickers
+2025-11-22 00:32:27,056 - BacktestSectorFetcher - ERROR - No tickers found to process
+2025-11-22 00:36:48,608 - BacktestSectorFetcher - INFO - Starting Backtest Sector Data Fetcher
+2025-11-22 00:36:48,609 - BacktestSectorFetcher - INFO - Checking directory structure...
+2025-11-22 00:36:48,609 - BacktestSectorFetcher - INFO -   Historical Tickers: C:\Users\kyung\StockScanner\historical_data\tickers [MISSING]
+2025-11-22 00:36:48,609 - BacktestSectorFetcher - INFO -   Backtest Sectors: C:\Users\kyung\StockScanner\backtest_sectors [MISSING]
+2025-11-22 00:36:48,609 - BacktestSectorFetcher - INFO -   Sector Mapping: C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json [EXISTS]
+2025-11-22 00:36:48,609 - BacktestSectorFetcher - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 00:36:48,609 - BacktestSectorFetcher - INFO -    - 0 detailed sector mappings
+2025-11-22 00:36:48,610 - BacktestSectorFetcher - INFO -    - 12 major sectors
+2025-11-22 00:36:48,610 - BacktestSectorFetcher - WARNING - Historical tickers directory not found: C:\Users\kyung\StockScanner\historical_data\tickers
+2025-11-22 00:36:48,610 - BacktestSectorFetcher - INFO - Creating directory structure...
+2025-11-22 00:36:48,610 - BacktestSectorFetcher - INFO - Please place your historical ticker CSV files in: C:\Users\kyung\StockScanner\historical_data\tickers
+2025-11-22 00:36:48,610 - BacktestSectorFetcher - INFO - Fetching sector data for all tickers
+2025-11-22 00:36:48,611 - BacktestSectorFetcher - WARNING - No CSV files found in C:\Users\kyung\StockScanner\historical_data\tickers
+2025-11-22 00:36:48,611 - BacktestSectorFetcher - INFO - Please ensure your historical ticker CSV files are in this directory.
+2025-11-22 00:36:48,611 - BacktestSectorFetcher - ERROR - No tickers found to process
+2025-11-22 00:36:48,611 - BacktestSectorFetcher - INFO - Sector Data Summary:
+2025-11-22 00:36:48,611 - BacktestSectorFetcher - INFO - Sector data fetch completed! Total: 0 tickers
+2025-11-22 00:37:22,664 - BacktestSectorFetcher - INFO - Starting Backtest Sector Data Fetcher
+2025-11-22 00:37:22,664 - BacktestSectorFetcher - INFO - Checking directory structure...
+2025-11-22 00:37:22,664 - BacktestSectorFetcher - INFO -   Historical Tickers: C:\Users\kyung\StockScanner\historical_data\historical_tickers [EXISTS]
+2025-11-22 00:37:22,666 - BacktestSectorFetcher - INFO -     Found 2974 CSV files
+2025-11-22 00:37:22,666 - BacktestSectorFetcher - INFO -     Sample files: ['AAL.csv', 'AAME.csv', 'AAOI.csv', 'AAON.csv', 'AAPL.csv']
+2025-11-22 00:37:22,666 - BacktestSectorFetcher - INFO -   Backtest Sectors: C:\Users\kyung\StockScanner\backtest_sectors [EXISTS]
+2025-11-22 00:37:22,667 - BacktestSectorFetcher - INFO -   Sector Mapping: C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json [EXISTS]
+2025-11-22 00:37:22,667 - BacktestSectorFetcher - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 00:37:22,667 - BacktestSectorFetcher - INFO -    - 0 detailed sector mappings
+2025-11-22 00:37:22,667 - BacktestSectorFetcher - INFO -    - 12 major sectors
+2025-11-22 00:37:22,668 - BacktestSectorFetcher - INFO - Fetching sector data for all tickers
+2025-11-22 00:37:22,669 - BacktestSectorFetcher - INFO - Found 2974 historical tickers: ['AAL', 'AAME', 'AAOI', 'AAON', 'AAPL', 'ABAT', 'ABCL', 'ABEO', 'ABL', 'ABLLL']...
+2025-11-22 00:37:22,669 - BacktestSectorFetcher - INFO - Starting sector fetch for 2974 tickers
+2025-11-22 00:37:22,669 - BacktestSectorFetcher - INFO - Processing batch 1/60 (50 tickers)
+2025-11-22 00:37:28,398 - BacktestSectorFetcher - INFO - Sector data retrieval: 45 successful, 5 failed
+2025-11-22 00:37:28,401 - BacktestSectorFetcher - INFO - Saved 5 tickers to other_sectors.csv
+2025-11-22 00:37:28,403 - BacktestSectorFetcher - INFO - Saved 13 tickers to financials_sectors.csv
+2025-11-22 00:37:28,404 - BacktestSectorFetcher - INFO - Saved 4 tickers to technology_sectors.csv
+2025-11-22 00:37:28,405 - BacktestSectorFetcher - INFO - Saved 2 tickers to materials_sectors.csv
+2025-11-22 00:37:28,406 - BacktestSectorFetcher - INFO - Saved 16 tickers to health_care_sectors.csv
+2025-11-22 00:37:28,406 - BacktestSectorFetcher - INFO - Saved 1 tickers to real_estate_sectors.csv
+2025-11-22 00:37:28,407 - BacktestSectorFetcher - INFO - Saved 1 tickers to energy_sectors.csv
+2025-11-22 00:37:28,408 - BacktestSectorFetcher - INFO - Saved 3 tickers to industrials_sectors.csv
+2025-11-22 00:37:28,409 - BacktestSectorFetcher - INFO - Saved 8 sector files and master mapping with 45 tickers
+2025-11-22 00:37:29,410 - BacktestSectorFetcher - INFO - Processing batch 2/60 (50 tickers)
+2025-11-22 00:37:35,125 - BacktestSectorFetcher - INFO - Sector data retrieval: 41 successful, 9 failed
+2025-11-22 00:37:35,126 - BacktestSectorFetcher - INFO - Saved 14 tickers to other_sectors.csv
+2025-11-22 00:37:35,127 - BacktestSectorFetcher - INFO - Saved 17 tickers to financials_sectors.csv
+2025-11-22 00:37:35,128 - BacktestSectorFetcher - INFO - Saved 12 tickers to technology_sectors.csv
+2025-11-22 00:37:35,129 - BacktestSectorFetcher - INFO - Saved 2 tickers to materials_sectors.csv
+2025-11-22 00:37:35,130 - BacktestSectorFetcher - INFO - Saved 28 tickers to health_care_sectors.csv
+2025-11-22 00:37:35,130 - BacktestSectorFetcher - INFO - Saved 4 tickers to real_estate_sectors.csv
+2025-11-22 00:37:35,131 - BacktestSectorFetcher - INFO - Saved 1 tickers to energy_sectors.csv
+2025-11-22 00:37:35,132 - BacktestSectorFetcher - INFO - Saved 3 tickers to industrials_sectors.csv
+2025-11-22 00:37:35,133 - BacktestSectorFetcher - INFO - Saved 2 tickers to utilities_sectors.csv
+2025-11-22 00:37:35,134 - BacktestSectorFetcher - INFO - Saved 1 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:37:35,135 - BacktestSectorFetcher - INFO - Saved 2 tickers to communication_services_sectors.csv
+2025-11-22 00:37:35,136 - BacktestSectorFetcher - INFO - Saved 11 sector files and master mapping with 86 tickers
+2025-11-22 00:37:36,143 - BacktestSectorFetcher - INFO - Processing batch 3/60 (50 tickers)
+2025-11-22 00:37:41,856 - BacktestSectorFetcher - INFO - Sector data retrieval: 45 successful, 5 failed
+2025-11-22 00:37:41,857 - BacktestSectorFetcher - INFO - Saved 23 tickers to other_sectors.csv
+2025-11-22 00:37:41,858 - BacktestSectorFetcher - INFO - Saved 20 tickers to financials_sectors.csv
+2025-11-22 00:37:41,859 - BacktestSectorFetcher - INFO - Saved 24 tickers to technology_sectors.csv
+2025-11-22 00:37:41,860 - BacktestSectorFetcher - INFO - Saved 2 tickers to materials_sectors.csv
+2025-11-22 00:37:41,861 - BacktestSectorFetcher - INFO - Saved 46 tickers to health_care_sectors.csv
+2025-11-22 00:37:41,862 - BacktestSectorFetcher - INFO - Saved 4 tickers to real_estate_sectors.csv
+2025-11-22 00:37:41,862 - BacktestSectorFetcher - INFO - Saved 1 tickers to energy_sectors.csv
+2025-11-22 00:37:41,863 - BacktestSectorFetcher - INFO - Saved 4 tickers to industrials_sectors.csv
+2025-11-22 00:37:41,864 - BacktestSectorFetcher - INFO - Saved 3 tickers to utilities_sectors.csv
+2025-11-22 00:37:41,865 - BacktestSectorFetcher - INFO - Saved 2 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:37:41,866 - BacktestSectorFetcher - INFO - Saved 2 tickers to communication_services_sectors.csv
+2025-11-22 00:37:41,867 - BacktestSectorFetcher - INFO - Saved 11 sector files and master mapping with 131 tickers
+2025-11-22 00:37:42,869 - BacktestSectorFetcher - INFO - Processing batch 4/60 (50 tickers)
+2025-11-22 00:37:48,567 - BacktestSectorFetcher - INFO - Sector data retrieval: 44 successful, 6 failed
+2025-11-22 00:37:48,569 - BacktestSectorFetcher - INFO - Saved 32 tickers to other_sectors.csv
+2025-11-22 00:37:48,570 - BacktestSectorFetcher - INFO - Saved 22 tickers to financials_sectors.csv
+2025-11-22 00:37:48,571 - BacktestSectorFetcher - INFO - Saved 31 tickers to technology_sectors.csv
+2025-11-22 00:37:48,572 - BacktestSectorFetcher - INFO - Saved 5 tickers to materials_sectors.csv
+2025-11-22 00:37:48,573 - BacktestSectorFetcher - INFO - Saved 64 tickers to health_care_sectors.csv
+2025-11-22 00:37:48,573 - BacktestSectorFetcher - INFO - Saved 4 tickers to real_estate_sectors.csv
+2025-11-22 00:37:48,574 - BacktestSectorFetcher - INFO - Saved 3 tickers to energy_sectors.csv
+2025-11-22 00:37:48,575 - BacktestSectorFetcher - INFO - Saved 5 tickers to industrials_sectors.csv
+2025-11-22 00:37:48,576 - BacktestSectorFetcher - INFO - Saved 3 tickers to utilities_sectors.csv
+2025-11-22 00:37:48,577 - BacktestSectorFetcher - INFO - Saved 3 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:37:48,578 - BacktestSectorFetcher - INFO - Saved 3 tickers to communication_services_sectors.csv
+2025-11-22 00:37:48,579 - BacktestSectorFetcher - INFO - Saved 11 sector files and master mapping with 175 tickers
+2025-11-22 00:37:49,593 - BacktestSectorFetcher - INFO - Processing batch 5/60 (50 tickers)
+2025-11-22 00:37:55,292 - BacktestSectorFetcher - INFO - Sector data retrieval: 44 successful, 6 failed
+2025-11-22 00:37:55,294 - BacktestSectorFetcher - INFO - Saved 36 tickers to other_sectors.csv
+2025-11-22 00:37:55,295 - BacktestSectorFetcher - INFO - Saved 28 tickers to financials_sectors.csv
+2025-11-22 00:37:55,296 - BacktestSectorFetcher - INFO - Saved 33 tickers to technology_sectors.csv
+2025-11-22 00:37:55,296 - BacktestSectorFetcher - INFO - Saved 10 tickers to materials_sectors.csv
+2025-11-22 00:37:55,297 - BacktestSectorFetcher - INFO - Saved 77 tickers to health_care_sectors.csv
+2025-11-22 00:37:55,298 - BacktestSectorFetcher - INFO - Saved 4 tickers to real_estate_sectors.csv
+2025-11-22 00:37:55,299 - BacktestSectorFetcher - INFO - Saved 3 tickers to energy_sectors.csv
+2025-11-22 00:37:55,299 - BacktestSectorFetcher - INFO - Saved 10 tickers to industrials_sectors.csv
+2025-11-22 00:37:55,300 - BacktestSectorFetcher - INFO - Saved 5 tickers to utilities_sectors.csv
+2025-11-22 00:37:55,301 - BacktestSectorFetcher - INFO - Saved 7 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:37:55,302 - BacktestSectorFetcher - INFO - Saved 6 tickers to communication_services_sectors.csv
+2025-11-22 00:37:55,304 - BacktestSectorFetcher - INFO - Saved 11 sector files and master mapping with 219 tickers
+2025-11-22 00:37:56,309 - BacktestSectorFetcher - INFO - Processing batch 6/60 (50 tickers)
+2025-11-22 00:38:02,018 - BacktestSectorFetcher - INFO - Sector data retrieval: 43 successful, 7 failed
+2025-11-22 00:38:02,020 - BacktestSectorFetcher - INFO - Saved 43 tickers to other_sectors.csv
+2025-11-22 00:38:02,021 - BacktestSectorFetcher - INFO - Saved 32 tickers to financials_sectors.csv
+2025-11-22 00:38:02,022 - BacktestSectorFetcher - INFO - Saved 42 tickers to technology_sectors.csv
+2025-11-22 00:38:02,022 - BacktestSectorFetcher - INFO - Saved 11 tickers to materials_sectors.csv
+2025-11-22 00:38:02,023 - BacktestSectorFetcher - INFO - Saved 94 tickers to health_care_sectors.csv
+2025-11-22 00:38:02,024 - BacktestSectorFetcher - INFO - Saved 4 tickers to real_estate_sectors.csv
+2025-11-22 00:38:02,025 - BacktestSectorFetcher - INFO - Saved 3 tickers to energy_sectors.csv
+2025-11-22 00:38:02,026 - BacktestSectorFetcher - INFO - Saved 11 tickers to industrials_sectors.csv
+2025-11-22 00:38:02,027 - BacktestSectorFetcher - INFO - Saved 5 tickers to utilities_sectors.csv
+2025-11-22 00:38:02,028 - BacktestSectorFetcher - INFO - Saved 9 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:02,029 - BacktestSectorFetcher - INFO - Saved 8 tickers to communication_services_sectors.csv
+2025-11-22 00:38:02,031 - BacktestSectorFetcher - INFO - Saved 11 sector files and master mapping with 262 tickers
+2025-11-22 00:38:03,047 - BacktestSectorFetcher - INFO - Processing batch 7/60 (50 tickers)
+2025-11-22 00:38:08,760 - BacktestSectorFetcher - INFO - Sector data retrieval: 43 successful, 7 failed
+2025-11-22 00:38:08,762 - BacktestSectorFetcher - INFO - Saved 53 tickers to other_sectors.csv
+2025-11-22 00:38:08,763 - BacktestSectorFetcher - INFO - Saved 41 tickers to financials_sectors.csv
+2025-11-22 00:38:08,764 - BacktestSectorFetcher - INFO - Saved 46 tickers to technology_sectors.csv
+2025-11-22 00:38:08,765 - BacktestSectorFetcher - INFO - Saved 12 tickers to materials_sectors.csv
+2025-11-22 00:38:08,765 - BacktestSectorFetcher - INFO - Saved 109 tickers to health_care_sectors.csv
+2025-11-22 00:38:08,766 - BacktestSectorFetcher - INFO - Saved 5 tickers to real_estate_sectors.csv
+2025-11-22 00:38:08,767 - BacktestSectorFetcher - INFO - Saved 3 tickers to energy_sectors.csv
+2025-11-22 00:38:08,768 - BacktestSectorFetcher - INFO - Saved 12 tickers to industrials_sectors.csv
+2025-11-22 00:38:08,769 - BacktestSectorFetcher - INFO - Saved 5 tickers to utilities_sectors.csv
+2025-11-22 00:38:08,770 - BacktestSectorFetcher - INFO - Saved 10 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:08,770 - BacktestSectorFetcher - INFO - Saved 9 tickers to communication_services_sectors.csv
+2025-11-22 00:38:08,773 - BacktestSectorFetcher - INFO - Saved 11 sector files and master mapping with 305 tickers
+2025-11-22 00:38:09,777 - BacktestSectorFetcher - INFO - Processing batch 8/60 (50 tickers)
+2025-11-22 00:38:15,491 - BacktestSectorFetcher - INFO - Sector data retrieval: 42 successful, 8 failed
+2025-11-22 00:38:15,493 - BacktestSectorFetcher - INFO - Saved 61 tickers to other_sectors.csv
+2025-11-22 00:38:15,494 - BacktestSectorFetcher - INFO - Saved 50 tickers to financials_sectors.csv
+2025-11-22 00:38:15,495 - BacktestSectorFetcher - INFO - Saved 54 tickers to technology_sectors.csv
+2025-11-22 00:38:15,496 - BacktestSectorFetcher - INFO - Saved 13 tickers to materials_sectors.csv
+2025-11-22 00:38:15,497 - BacktestSectorFetcher - INFO - Saved 119 tickers to health_care_sectors.csv
+2025-11-22 00:38:15,497 - BacktestSectorFetcher - INFO - Saved 5 tickers to real_estate_sectors.csv
+2025-11-22 00:38:15,498 - BacktestSectorFetcher - INFO - Saved 4 tickers to energy_sectors.csv
+2025-11-22 00:38:15,499 - BacktestSectorFetcher - INFO - Saved 13 tickers to industrials_sectors.csv
+2025-11-22 00:38:15,499 - BacktestSectorFetcher - INFO - Saved 5 tickers to utilities_sectors.csv
+2025-11-22 00:38:15,500 - BacktestSectorFetcher - INFO - Saved 13 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:15,501 - BacktestSectorFetcher - INFO - Saved 9 tickers to communication_services_sectors.csv
+2025-11-22 00:38:15,502 - BacktestSectorFetcher - INFO - Saved 1 tickers to consumer_staples_sectors.csv
+2025-11-22 00:38:15,505 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 347 tickers
+2025-11-22 00:38:16,507 - BacktestSectorFetcher - INFO - Processing batch 9/60 (50 tickers)
+2025-11-22 00:38:22,216 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:38:22,219 - BacktestSectorFetcher - INFO - Saved 72 tickers to other_sectors.csv
+2025-11-22 00:38:22,220 - BacktestSectorFetcher - INFO - Saved 64 tickers to financials_sectors.csv
+2025-11-22 00:38:22,221 - BacktestSectorFetcher - INFO - Saved 56 tickers to technology_sectors.csv
+2025-11-22 00:38:22,222 - BacktestSectorFetcher - INFO - Saved 15 tickers to materials_sectors.csv
+2025-11-22 00:38:22,223 - BacktestSectorFetcher - INFO - Saved 125 tickers to health_care_sectors.csv
+2025-11-22 00:38:22,224 - BacktestSectorFetcher - INFO - Saved 5 tickers to real_estate_sectors.csv
+2025-11-22 00:38:22,224 - BacktestSectorFetcher - INFO - Saved 5 tickers to energy_sectors.csv
+2025-11-22 00:38:22,225 - BacktestSectorFetcher - INFO - Saved 14 tickers to industrials_sectors.csv
+2025-11-22 00:38:22,226 - BacktestSectorFetcher - INFO - Saved 5 tickers to utilities_sectors.csv
+2025-11-22 00:38:22,226 - BacktestSectorFetcher - INFO - Saved 14 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:22,228 - BacktestSectorFetcher - INFO - Saved 9 tickers to communication_services_sectors.csv
+2025-11-22 00:38:22,228 - BacktestSectorFetcher - INFO - Saved 3 tickers to consumer_staples_sectors.csv
+2025-11-22 00:38:22,231 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 387 tickers
+2025-11-22 00:38:23,245 - BacktestSectorFetcher - INFO - Processing batch 10/60 (50 tickers)
+2025-11-22 00:38:28,942 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:38:28,945 - BacktestSectorFetcher - INFO - Saved 76 tickers to other_sectors.csv
+2025-11-22 00:38:28,946 - BacktestSectorFetcher - INFO - Saved 75 tickers to financials_sectors.csv
+2025-11-22 00:38:28,947 - BacktestSectorFetcher - INFO - Saved 61 tickers to technology_sectors.csv
+2025-11-22 00:38:28,948 - BacktestSectorFetcher - INFO - Saved 16 tickers to materials_sectors.csv
+2025-11-22 00:38:28,948 - BacktestSectorFetcher - INFO - Saved 134 tickers to health_care_sectors.csv
+2025-11-22 00:38:28,950 - BacktestSectorFetcher - INFO - Saved 5 tickers to real_estate_sectors.csv
+2025-11-22 00:38:28,951 - BacktestSectorFetcher - INFO - Saved 5 tickers to energy_sectors.csv
+2025-11-22 00:38:28,953 - BacktestSectorFetcher - INFO - Saved 17 tickers to industrials_sectors.csv
+2025-11-22 00:38:28,954 - BacktestSectorFetcher - INFO - Saved 5 tickers to utilities_sectors.csv
+2025-11-22 00:38:28,955 - BacktestSectorFetcher - INFO - Saved 18 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:28,956 - BacktestSectorFetcher - INFO - Saved 11 tickers to communication_services_sectors.csv
+2025-11-22 00:38:28,957 - BacktestSectorFetcher - INFO - Saved 4 tickers to consumer_staples_sectors.csv
+2025-11-22 00:38:28,961 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 427 tickers
+2025-11-22 00:38:29,963 - BacktestSectorFetcher - INFO - Processing batch 11/60 (50 tickers)
+2025-11-22 00:38:35,670 - BacktestSectorFetcher - INFO - Sector data retrieval: 38 successful, 12 failed
+2025-11-22 00:38:35,673 - BacktestSectorFetcher - INFO - Saved 85 tickers to other_sectors.csv
+2025-11-22 00:38:35,674 - BacktestSectorFetcher - INFO - Saved 78 tickers to financials_sectors.csv
+2025-11-22 00:38:35,675 - BacktestSectorFetcher - INFO - Saved 68 tickers to technology_sectors.csv
+2025-11-22 00:38:35,676 - BacktestSectorFetcher - INFO - Saved 17 tickers to materials_sectors.csv
+2025-11-22 00:38:35,677 - BacktestSectorFetcher - INFO - Saved 144 tickers to health_care_sectors.csv
+2025-11-22 00:38:35,677 - BacktestSectorFetcher - INFO - Saved 5 tickers to real_estate_sectors.csv
+2025-11-22 00:38:35,678 - BacktestSectorFetcher - INFO - Saved 6 tickers to energy_sectors.csv
+2025-11-22 00:38:35,679 - BacktestSectorFetcher - INFO - Saved 20 tickers to industrials_sectors.csv
+2025-11-22 00:38:35,680 - BacktestSectorFetcher - INFO - Saved 8 tickers to utilities_sectors.csv
+2025-11-22 00:38:35,681 - BacktestSectorFetcher - INFO - Saved 19 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:35,682 - BacktestSectorFetcher - INFO - Saved 11 tickers to communication_services_sectors.csv
+2025-11-22 00:38:35,683 - BacktestSectorFetcher - INFO - Saved 4 tickers to consumer_staples_sectors.csv
+2025-11-22 00:38:35,685 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 465 tickers
+2025-11-22 00:38:36,687 - BacktestSectorFetcher - INFO - Processing batch 12/60 (50 tickers)
+2025-11-22 00:38:42,395 - BacktestSectorFetcher - INFO - Sector data retrieval: 37 successful, 13 failed
+2025-11-22 00:38:42,399 - BacktestSectorFetcher - INFO - Saved 97 tickers to other_sectors.csv
+2025-11-22 00:38:42,400 - BacktestSectorFetcher - INFO - Saved 84 tickers to financials_sectors.csv
+2025-11-22 00:38:42,400 - BacktestSectorFetcher - INFO - Saved 71 tickers to technology_sectors.csv
+2025-11-22 00:38:42,401 - BacktestSectorFetcher - INFO - Saved 17 tickers to materials_sectors.csv
+2025-11-22 00:38:42,402 - BacktestSectorFetcher - INFO - Saved 152 tickers to health_care_sectors.csv
+2025-11-22 00:38:42,403 - BacktestSectorFetcher - INFO - Saved 7 tickers to real_estate_sectors.csv
+2025-11-22 00:38:42,404 - BacktestSectorFetcher - INFO - Saved 9 tickers to energy_sectors.csv
+2025-11-22 00:38:42,404 - BacktestSectorFetcher - INFO - Saved 22 tickers to industrials_sectors.csv
+2025-11-22 00:38:42,405 - BacktestSectorFetcher - INFO - Saved 8 tickers to utilities_sectors.csv
+2025-11-22 00:38:42,406 - BacktestSectorFetcher - INFO - Saved 19 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:42,407 - BacktestSectorFetcher - INFO - Saved 12 tickers to communication_services_sectors.csv
+2025-11-22 00:38:42,408 - BacktestSectorFetcher - INFO - Saved 4 tickers to consumer_staples_sectors.csv
+2025-11-22 00:38:42,411 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 502 tickers
+2025-11-22 00:38:43,423 - BacktestSectorFetcher - INFO - Processing batch 13/60 (50 tickers)
+2025-11-22 00:38:49,121 - BacktestSectorFetcher - INFO - Sector data retrieval: 46 successful, 4 failed
+2025-11-22 00:38:49,124 - BacktestSectorFetcher - INFO - Saved 108 tickers to other_sectors.csv
+2025-11-22 00:38:49,125 - BacktestSectorFetcher - INFO - Saved 92 tickers to financials_sectors.csv
+2025-11-22 00:38:49,126 - BacktestSectorFetcher - INFO - Saved 73 tickers to technology_sectors.csv
+2025-11-22 00:38:49,127 - BacktestSectorFetcher - INFO - Saved 17 tickers to materials_sectors.csv
+2025-11-22 00:38:49,128 - BacktestSectorFetcher - INFO - Saved 165 tickers to health_care_sectors.csv
+2025-11-22 00:38:49,129 - BacktestSectorFetcher - INFO - Saved 7 tickers to real_estate_sectors.csv
+2025-11-22 00:38:49,130 - BacktestSectorFetcher - INFO - Saved 10 tickers to energy_sectors.csv
+2025-11-22 00:38:49,131 - BacktestSectorFetcher - INFO - Saved 22 tickers to industrials_sectors.csv
+2025-11-22 00:38:49,131 - BacktestSectorFetcher - INFO - Saved 10 tickers to utilities_sectors.csv
+2025-11-22 00:38:49,132 - BacktestSectorFetcher - INFO - Saved 24 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:49,133 - BacktestSectorFetcher - INFO - Saved 14 tickers to communication_services_sectors.csv
+2025-11-22 00:38:49,134 - BacktestSectorFetcher - INFO - Saved 6 tickers to consumer_staples_sectors.csv
+2025-11-22 00:38:49,137 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 548 tickers
+2025-11-22 00:38:50,139 - BacktestSectorFetcher - INFO - Processing batch 14/60 (50 tickers)
+2025-11-22 00:38:55,833 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:38:55,836 - BacktestSectorFetcher - INFO - Saved 117 tickers to other_sectors.csv
+2025-11-22 00:38:55,838 - BacktestSectorFetcher - INFO - Saved 95 tickers to financials_sectors.csv
+2025-11-22 00:38:55,838 - BacktestSectorFetcher - INFO - Saved 83 tickers to technology_sectors.csv
+2025-11-22 00:38:55,839 - BacktestSectorFetcher - INFO - Saved 19 tickers to materials_sectors.csv
+2025-11-22 00:38:55,840 - BacktestSectorFetcher - INFO - Saved 179 tickers to health_care_sectors.csv
+2025-11-22 00:38:55,841 - BacktestSectorFetcher - INFO - Saved 7 tickers to real_estate_sectors.csv
+2025-11-22 00:38:55,842 - BacktestSectorFetcher - INFO - Saved 10 tickers to energy_sectors.csv
+2025-11-22 00:38:55,842 - BacktestSectorFetcher - INFO - Saved 23 tickers to industrials_sectors.csv
+2025-11-22 00:38:55,843 - BacktestSectorFetcher - INFO - Saved 10 tickers to utilities_sectors.csv
+2025-11-22 00:38:55,844 - BacktestSectorFetcher - INFO - Saved 25 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:38:55,845 - BacktestSectorFetcher - INFO - Saved 14 tickers to communication_services_sectors.csv
+2025-11-22 00:38:55,846 - BacktestSectorFetcher - INFO - Saved 6 tickers to consumer_staples_sectors.csv
+2025-11-22 00:38:55,850 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 588 tickers
+2025-11-22 00:38:56,863 - BacktestSectorFetcher - INFO - Processing batch 15/60 (50 tickers)
+2025-11-22 00:39:02,558 - BacktestSectorFetcher - INFO - Sector data retrieval: 44 successful, 6 failed
+2025-11-22 00:39:02,562 - BacktestSectorFetcher - INFO - Saved 125 tickers to other_sectors.csv
+2025-11-22 00:39:02,563 - BacktestSectorFetcher - INFO - Saved 102 tickers to financials_sectors.csv
+2025-11-22 00:39:02,564 - BacktestSectorFetcher - INFO - Saved 89 tickers to technology_sectors.csv
+2025-11-22 00:39:02,565 - BacktestSectorFetcher - INFO - Saved 19 tickers to materials_sectors.csv
+2025-11-22 00:39:02,565 - BacktestSectorFetcher - INFO - Saved 193 tickers to health_care_sectors.csv
+2025-11-22 00:39:02,566 - BacktestSectorFetcher - INFO - Saved 8 tickers to real_estate_sectors.csv
+2025-11-22 00:39:02,567 - BacktestSectorFetcher - INFO - Saved 10 tickers to energy_sectors.csv
+2025-11-22 00:39:02,568 - BacktestSectorFetcher - INFO - Saved 25 tickers to industrials_sectors.csv
+2025-11-22 00:39:02,569 - BacktestSectorFetcher - INFO - Saved 12 tickers to utilities_sectors.csv
+2025-11-22 00:39:02,569 - BacktestSectorFetcher - INFO - Saved 28 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:02,570 - BacktestSectorFetcher - INFO - Saved 15 tickers to communication_services_sectors.csv
+2025-11-22 00:39:02,572 - BacktestSectorFetcher - INFO - Saved 6 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:02,576 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 632 tickers
+2025-11-22 00:39:03,583 - BacktestSectorFetcher - INFO - Processing batch 16/60 (50 tickers)
+2025-11-22 00:39:09,267 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:39:09,271 - BacktestSectorFetcher - INFO - Saved 133 tickers to other_sectors.csv
+2025-11-22 00:39:09,272 - BacktestSectorFetcher - INFO - Saved 108 tickers to financials_sectors.csv
+2025-11-22 00:39:09,273 - BacktestSectorFetcher - INFO - Saved 97 tickers to technology_sectors.csv
+2025-11-22 00:39:09,273 - BacktestSectorFetcher - INFO - Saved 19 tickers to materials_sectors.csv
+2025-11-22 00:39:09,274 - BacktestSectorFetcher - INFO - Saved 200 tickers to health_care_sectors.csv
+2025-11-22 00:39:09,275 - BacktestSectorFetcher - INFO - Saved 8 tickers to real_estate_sectors.csv
+2025-11-22 00:39:09,276 - BacktestSectorFetcher - INFO - Saved 11 tickers to energy_sectors.csv
+2025-11-22 00:39:09,277 - BacktestSectorFetcher - INFO - Saved 27 tickers to industrials_sectors.csv
+2025-11-22 00:39:09,278 - BacktestSectorFetcher - INFO - Saved 12 tickers to utilities_sectors.csv
+2025-11-22 00:39:09,279 - BacktestSectorFetcher - INFO - Saved 34 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:09,279 - BacktestSectorFetcher - INFO - Saved 17 tickers to communication_services_sectors.csv
+2025-11-22 00:39:09,280 - BacktestSectorFetcher - INFO - Saved 6 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:09,284 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 672 tickers
+2025-11-22 00:39:10,298 - BacktestSectorFetcher - INFO - Processing batch 17/60 (50 tickers)
+2025-11-22 00:39:16,015 - BacktestSectorFetcher - INFO - Sector data retrieval: 38 successful, 12 failed
+2025-11-22 00:39:16,019 - BacktestSectorFetcher - INFO - Saved 141 tickers to other_sectors.csv
+2025-11-22 00:39:16,020 - BacktestSectorFetcher - INFO - Saved 115 tickers to financials_sectors.csv
+2025-11-22 00:39:16,021 - BacktestSectorFetcher - INFO - Saved 104 tickers to technology_sectors.csv
+2025-11-22 00:39:16,022 - BacktestSectorFetcher - INFO - Saved 19 tickers to materials_sectors.csv
+2025-11-22 00:39:16,023 - BacktestSectorFetcher - INFO - Saved 210 tickers to health_care_sectors.csv
+2025-11-22 00:39:16,024 - BacktestSectorFetcher - INFO - Saved 8 tickers to real_estate_sectors.csv
+2025-11-22 00:39:16,025 - BacktestSectorFetcher - INFO - Saved 12 tickers to energy_sectors.csv
+2025-11-22 00:39:16,026 - BacktestSectorFetcher - INFO - Saved 30 tickers to industrials_sectors.csv
+2025-11-22 00:39:16,026 - BacktestSectorFetcher - INFO - Saved 13 tickers to utilities_sectors.csv
+2025-11-22 00:39:16,028 - BacktestSectorFetcher - INFO - Saved 35 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:16,028 - BacktestSectorFetcher - INFO - Saved 17 tickers to communication_services_sectors.csv
+2025-11-22 00:39:16,029 - BacktestSectorFetcher - INFO - Saved 6 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:16,034 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 710 tickers
+2025-11-22 00:39:17,034 - BacktestSectorFetcher - INFO - Processing batch 18/60 (50 tickers)
+2025-11-22 00:39:22,754 - BacktestSectorFetcher - INFO - Sector data retrieval: 39 successful, 11 failed
+2025-11-22 00:39:22,759 - BacktestSectorFetcher - INFO - Saved 146 tickers to other_sectors.csv
+2025-11-22 00:39:22,760 - BacktestSectorFetcher - INFO - Saved 119 tickers to financials_sectors.csv
+2025-11-22 00:39:22,761 - BacktestSectorFetcher - INFO - Saved 105 tickers to technology_sectors.csv
+2025-11-22 00:39:22,762 - BacktestSectorFetcher - INFO - Saved 21 tickers to materials_sectors.csv
+2025-11-22 00:39:22,763 - BacktestSectorFetcher - INFO - Saved 230 tickers to health_care_sectors.csv
+2025-11-22 00:39:22,763 - BacktestSectorFetcher - INFO - Saved 8 tickers to real_estate_sectors.csv
+2025-11-22 00:39:22,764 - BacktestSectorFetcher - INFO - Saved 13 tickers to energy_sectors.csv
+2025-11-22 00:39:22,765 - BacktestSectorFetcher - INFO - Saved 35 tickers to industrials_sectors.csv
+2025-11-22 00:39:22,766 - BacktestSectorFetcher - INFO - Saved 13 tickers to utilities_sectors.csv
+2025-11-22 00:39:22,767 - BacktestSectorFetcher - INFO - Saved 36 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:22,768 - BacktestSectorFetcher - INFO - Saved 17 tickers to communication_services_sectors.csv
+2025-11-22 00:39:22,769 - BacktestSectorFetcher - INFO - Saved 6 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:22,773 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 749 tickers
+2025-11-22 00:39:23,784 - BacktestSectorFetcher - INFO - Processing batch 19/60 (50 tickers)
+2025-11-22 00:39:29,497 - BacktestSectorFetcher - INFO - Sector data retrieval: 47 successful, 3 failed
+2025-11-22 00:39:29,502 - BacktestSectorFetcher - INFO - Saved 158 tickers to other_sectors.csv
+2025-11-22 00:39:29,503 - BacktestSectorFetcher - INFO - Saved 125 tickers to financials_sectors.csv
+2025-11-22 00:39:29,504 - BacktestSectorFetcher - INFO - Saved 111 tickers to technology_sectors.csv
+2025-11-22 00:39:29,505 - BacktestSectorFetcher - INFO - Saved 21 tickers to materials_sectors.csv
+2025-11-22 00:39:29,506 - BacktestSectorFetcher - INFO - Saved 240 tickers to health_care_sectors.csv
+2025-11-22 00:39:29,507 - BacktestSectorFetcher - INFO - Saved 9 tickers to real_estate_sectors.csv
+2025-11-22 00:39:29,508 - BacktestSectorFetcher - INFO - Saved 15 tickers to energy_sectors.csv
+2025-11-22 00:39:29,509 - BacktestSectorFetcher - INFO - Saved 36 tickers to industrials_sectors.csv
+2025-11-22 00:39:29,510 - BacktestSectorFetcher - INFO - Saved 15 tickers to utilities_sectors.csv
+2025-11-22 00:39:29,511 - BacktestSectorFetcher - INFO - Saved 42 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:29,512 - BacktestSectorFetcher - INFO - Saved 17 tickers to communication_services_sectors.csv
+2025-11-22 00:39:29,513 - BacktestSectorFetcher - INFO - Saved 7 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:29,517 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 796 tickers
+2025-11-22 00:39:30,529 - BacktestSectorFetcher - INFO - Processing batch 20/60 (50 tickers)
+2025-11-22 00:39:36,242 - BacktestSectorFetcher - INFO - Sector data retrieval: 46 successful, 4 failed
+2025-11-22 00:39:36,247 - BacktestSectorFetcher - INFO - Saved 173 tickers to other_sectors.csv
+2025-11-22 00:39:36,248 - BacktestSectorFetcher - INFO - Saved 139 tickers to financials_sectors.csv
+2025-11-22 00:39:36,249 - BacktestSectorFetcher - INFO - Saved 113 tickers to technology_sectors.csv
+2025-11-22 00:39:36,250 - BacktestSectorFetcher - INFO - Saved 22 tickers to materials_sectors.csv
+2025-11-22 00:39:36,251 - BacktestSectorFetcher - INFO - Saved 247 tickers to health_care_sectors.csv
+2025-11-22 00:39:36,251 - BacktestSectorFetcher - INFO - Saved 9 tickers to real_estate_sectors.csv
+2025-11-22 00:39:36,252 - BacktestSectorFetcher - INFO - Saved 15 tickers to energy_sectors.csv
+2025-11-22 00:39:36,253 - BacktestSectorFetcher - INFO - Saved 38 tickers to industrials_sectors.csv
+2025-11-22 00:39:36,254 - BacktestSectorFetcher - INFO - Saved 17 tickers to utilities_sectors.csv
+2025-11-22 00:39:36,255 - BacktestSectorFetcher - INFO - Saved 45 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:36,255 - BacktestSectorFetcher - INFO - Saved 17 tickers to communication_services_sectors.csv
+2025-11-22 00:39:36,256 - BacktestSectorFetcher - INFO - Saved 7 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:36,261 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 842 tickers
+2025-11-22 00:39:37,267 - BacktestSectorFetcher - INFO - Processing batch 21/60 (50 tickers)
+2025-11-22 00:39:42,965 - BacktestSectorFetcher - INFO - Sector data retrieval: 45 successful, 5 failed
+2025-11-22 00:39:42,970 - BacktestSectorFetcher - INFO - Saved 187 tickers to other_sectors.csv
+2025-11-22 00:39:42,971 - BacktestSectorFetcher - INFO - Saved 147 tickers to financials_sectors.csv
+2025-11-22 00:39:42,972 - BacktestSectorFetcher - INFO - Saved 122 tickers to technology_sectors.csv
+2025-11-22 00:39:42,973 - BacktestSectorFetcher - INFO - Saved 25 tickers to materials_sectors.csv
+2025-11-22 00:39:42,974 - BacktestSectorFetcher - INFO - Saved 251 tickers to health_care_sectors.csv
+2025-11-22 00:39:42,975 - BacktestSectorFetcher - INFO - Saved 12 tickers to real_estate_sectors.csv
+2025-11-22 00:39:42,975 - BacktestSectorFetcher - INFO - Saved 15 tickers to energy_sectors.csv
+2025-11-22 00:39:42,976 - BacktestSectorFetcher - INFO - Saved 40 tickers to industrials_sectors.csv
+2025-11-22 00:39:42,977 - BacktestSectorFetcher - INFO - Saved 17 tickers to utilities_sectors.csv
+2025-11-22 00:39:42,978 - BacktestSectorFetcher - INFO - Saved 45 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:42,979 - BacktestSectorFetcher - INFO - Saved 19 tickers to communication_services_sectors.csv
+2025-11-22 00:39:42,980 - BacktestSectorFetcher - INFO - Saved 7 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:42,985 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 887 tickers
+2025-11-22 00:39:43,995 - BacktestSectorFetcher - INFO - Processing batch 22/60 (50 tickers)
+2025-11-22 00:39:49,699 - BacktestSectorFetcher - INFO - Sector data retrieval: 30 successful, 20 failed
+2025-11-22 00:39:49,704 - BacktestSectorFetcher - INFO - Saved 193 tickers to other_sectors.csv
+2025-11-22 00:39:49,705 - BacktestSectorFetcher - INFO - Saved 156 tickers to financials_sectors.csv
+2025-11-22 00:39:49,706 - BacktestSectorFetcher - INFO - Saved 127 tickers to technology_sectors.csv
+2025-11-22 00:39:49,707 - BacktestSectorFetcher - INFO - Saved 26 tickers to materials_sectors.csv
+2025-11-22 00:39:49,708 - BacktestSectorFetcher - INFO - Saved 255 tickers to health_care_sectors.csv
+2025-11-22 00:39:49,709 - BacktestSectorFetcher - INFO - Saved 12 tickers to real_estate_sectors.csv
+2025-11-22 00:39:49,709 - BacktestSectorFetcher - INFO - Saved 16 tickers to energy_sectors.csv
+2025-11-22 00:39:49,710 - BacktestSectorFetcher - INFO - Saved 40 tickers to industrials_sectors.csv
+2025-11-22 00:39:49,711 - BacktestSectorFetcher - INFO - Saved 17 tickers to utilities_sectors.csv
+2025-11-22 00:39:49,712 - BacktestSectorFetcher - INFO - Saved 47 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:49,713 - BacktestSectorFetcher - INFO - Saved 21 tickers to communication_services_sectors.csv
+2025-11-22 00:39:49,714 - BacktestSectorFetcher - INFO - Saved 7 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:49,719 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 917 tickers
+2025-11-22 00:39:50,728 - BacktestSectorFetcher - INFO - Processing batch 23/60 (50 tickers)
+2025-11-22 00:39:56,453 - BacktestSectorFetcher - INFO - Sector data retrieval: 33 successful, 17 failed
+2025-11-22 00:39:56,458 - BacktestSectorFetcher - INFO - Saved 199 tickers to other_sectors.csv
+2025-11-22 00:39:56,459 - BacktestSectorFetcher - INFO - Saved 161 tickers to financials_sectors.csv
+2025-11-22 00:39:56,460 - BacktestSectorFetcher - INFO - Saved 132 tickers to technology_sectors.csv
+2025-11-22 00:39:56,461 - BacktestSectorFetcher - INFO - Saved 27 tickers to materials_sectors.csv
+2025-11-22 00:39:56,462 - BacktestSectorFetcher - INFO - Saved 263 tickers to health_care_sectors.csv
+2025-11-22 00:39:56,463 - BacktestSectorFetcher - INFO - Saved 13 tickers to real_estate_sectors.csv
+2025-11-22 00:39:56,464 - BacktestSectorFetcher - INFO - Saved 16 tickers to energy_sectors.csv
+2025-11-22 00:39:56,464 - BacktestSectorFetcher - INFO - Saved 42 tickers to industrials_sectors.csv
+2025-11-22 00:39:56,465 - BacktestSectorFetcher - INFO - Saved 17 tickers to utilities_sectors.csv
+2025-11-22 00:39:56,466 - BacktestSectorFetcher - INFO - Saved 51 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:39:56,467 - BacktestSectorFetcher - INFO - Saved 22 tickers to communication_services_sectors.csv
+2025-11-22 00:39:56,467 - BacktestSectorFetcher - INFO - Saved 7 tickers to consumer_staples_sectors.csv
+2025-11-22 00:39:56,473 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 950 tickers
+2025-11-22 00:39:57,484 - BacktestSectorFetcher - INFO - Processing batch 24/60 (50 tickers)
+2025-11-22 00:40:03,200 - BacktestSectorFetcher - INFO - Sector data retrieval: 41 successful, 9 failed
+2025-11-22 00:40:03,205 - BacktestSectorFetcher - INFO - Saved 208 tickers to other_sectors.csv
+2025-11-22 00:40:03,207 - BacktestSectorFetcher - INFO - Saved 171 tickers to financials_sectors.csv
+2025-11-22 00:40:03,208 - BacktestSectorFetcher - INFO - Saved 136 tickers to technology_sectors.csv
+2025-11-22 00:40:03,208 - BacktestSectorFetcher - INFO - Saved 28 tickers to materials_sectors.csv
+2025-11-22 00:40:03,210 - BacktestSectorFetcher - INFO - Saved 272 tickers to health_care_sectors.csv
+2025-11-22 00:40:03,211 - BacktestSectorFetcher - INFO - Saved 14 tickers to real_estate_sectors.csv
+2025-11-22 00:40:03,211 - BacktestSectorFetcher - INFO - Saved 16 tickers to energy_sectors.csv
+2025-11-22 00:40:03,212 - BacktestSectorFetcher - INFO - Saved 44 tickers to industrials_sectors.csv
+2025-11-22 00:40:03,213 - BacktestSectorFetcher - INFO - Saved 18 tickers to utilities_sectors.csv
+2025-11-22 00:40:03,214 - BacktestSectorFetcher - INFO - Saved 53 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:03,214 - BacktestSectorFetcher - INFO - Saved 23 tickers to communication_services_sectors.csv
+2025-11-22 00:40:03,215 - BacktestSectorFetcher - INFO - Saved 8 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:03,223 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 991 tickers
+2025-11-22 00:40:04,232 - BacktestSectorFetcher - INFO - Processing batch 25/60 (50 tickers)
+2025-11-22 00:40:09,931 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:40:09,936 - BacktestSectorFetcher - INFO - Saved 221 tickers to other_sectors.csv
+2025-11-22 00:40:09,937 - BacktestSectorFetcher - INFO - Saved 178 tickers to financials_sectors.csv
+2025-11-22 00:40:09,938 - BacktestSectorFetcher - INFO - Saved 139 tickers to technology_sectors.csv
+2025-11-22 00:40:09,939 - BacktestSectorFetcher - INFO - Saved 28 tickers to materials_sectors.csv
+2025-11-22 00:40:09,940 - BacktestSectorFetcher - INFO - Saved 280 tickers to health_care_sectors.csv
+2025-11-22 00:40:09,941 - BacktestSectorFetcher - INFO - Saved 14 tickers to real_estate_sectors.csv
+2025-11-22 00:40:09,942 - BacktestSectorFetcher - INFO - Saved 17 tickers to energy_sectors.csv
+2025-11-22 00:40:09,943 - BacktestSectorFetcher - INFO - Saved 46 tickers to industrials_sectors.csv
+2025-11-22 00:40:09,943 - BacktestSectorFetcher - INFO - Saved 20 tickers to utilities_sectors.csv
+2025-11-22 00:40:09,944 - BacktestSectorFetcher - INFO - Saved 56 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:09,945 - BacktestSectorFetcher - INFO - Saved 24 tickers to communication_services_sectors.csv
+2025-11-22 00:40:09,946 - BacktestSectorFetcher - INFO - Saved 8 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:09,952 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1031 tickers
+2025-11-22 00:40:10,961 - BacktestSectorFetcher - INFO - Processing batch 26/60 (50 tickers)
+2025-11-22 00:40:16,661 - BacktestSectorFetcher - INFO - Sector data retrieval: 39 successful, 11 failed
+2025-11-22 00:40:16,666 - BacktestSectorFetcher - INFO - Saved 232 tickers to other_sectors.csv
+2025-11-22 00:40:16,667 - BacktestSectorFetcher - INFO - Saved 186 tickers to financials_sectors.csv
+2025-11-22 00:40:16,668 - BacktestSectorFetcher - INFO - Saved 145 tickers to technology_sectors.csv
+2025-11-22 00:40:16,669 - BacktestSectorFetcher - INFO - Saved 29 tickers to materials_sectors.csv
+2025-11-22 00:40:16,670 - BacktestSectorFetcher - INFO - Saved 290 tickers to health_care_sectors.csv
+2025-11-22 00:40:16,671 - BacktestSectorFetcher - INFO - Saved 14 tickers to real_estate_sectors.csv
+2025-11-22 00:40:16,672 - BacktestSectorFetcher - INFO - Saved 17 tickers to energy_sectors.csv
+2025-11-22 00:40:16,673 - BacktestSectorFetcher - INFO - Saved 47 tickers to industrials_sectors.csv
+2025-11-22 00:40:16,674 - BacktestSectorFetcher - INFO - Saved 21 tickers to utilities_sectors.csv
+2025-11-22 00:40:16,675 - BacktestSectorFetcher - INFO - Saved 57 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:16,676 - BacktestSectorFetcher - INFO - Saved 24 tickers to communication_services_sectors.csv
+2025-11-22 00:40:16,676 - BacktestSectorFetcher - INFO - Saved 8 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:16,682 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1070 tickers
+2025-11-22 00:40:17,691 - BacktestSectorFetcher - INFO - Processing batch 27/60 (50 tickers)
+2025-11-22 00:40:23,412 - BacktestSectorFetcher - INFO - Sector data retrieval: 38 successful, 12 failed
+2025-11-22 00:40:23,418 - BacktestSectorFetcher - INFO - Saved 239 tickers to other_sectors.csv
+2025-11-22 00:40:23,419 - BacktestSectorFetcher - INFO - Saved 190 tickers to financials_sectors.csv
+2025-11-22 00:40:23,419 - BacktestSectorFetcher - INFO - Saved 149 tickers to technology_sectors.csv
+2025-11-22 00:40:23,420 - BacktestSectorFetcher - INFO - Saved 29 tickers to materials_sectors.csv
+2025-11-22 00:40:23,422 - BacktestSectorFetcher - INFO - Saved 307 tickers to health_care_sectors.csv
+2025-11-22 00:40:23,422 - BacktestSectorFetcher - INFO - Saved 14 tickers to real_estate_sectors.csv
+2025-11-22 00:40:23,423 - BacktestSectorFetcher - INFO - Saved 19 tickers to energy_sectors.csv
+2025-11-22 00:40:23,424 - BacktestSectorFetcher - INFO - Saved 47 tickers to industrials_sectors.csv
+2025-11-22 00:40:23,425 - BacktestSectorFetcher - INFO - Saved 22 tickers to utilities_sectors.csv
+2025-11-22 00:40:23,426 - BacktestSectorFetcher - INFO - Saved 59 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:23,426 - BacktestSectorFetcher - INFO - Saved 25 tickers to communication_services_sectors.csv
+2025-11-22 00:40:23,427 - BacktestSectorFetcher - INFO - Saved 8 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:23,433 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1108 tickers
+2025-11-22 00:40:24,448 - BacktestSectorFetcher - INFO - Processing batch 28/60 (50 tickers)
+2025-11-22 00:40:30,157 - BacktestSectorFetcher - INFO - Sector data retrieval: 46 successful, 4 failed
+2025-11-22 00:40:30,163 - BacktestSectorFetcher - INFO - Saved 242 tickers to other_sectors.csv
+2025-11-22 00:40:30,164 - BacktestSectorFetcher - INFO - Saved 192 tickers to financials_sectors.csv
+2025-11-22 00:40:30,165 - BacktestSectorFetcher - INFO - Saved 160 tickers to technology_sectors.csv
+2025-11-22 00:40:30,166 - BacktestSectorFetcher - INFO - Saved 31 tickers to materials_sectors.csv
+2025-11-22 00:40:30,167 - BacktestSectorFetcher - INFO - Saved 326 tickers to health_care_sectors.csv
+2025-11-22 00:40:30,168 - BacktestSectorFetcher - INFO - Saved 15 tickers to real_estate_sectors.csv
+2025-11-22 00:40:30,169 - BacktestSectorFetcher - INFO - Saved 20 tickers to energy_sectors.csv
+2025-11-22 00:40:30,170 - BacktestSectorFetcher - INFO - Saved 47 tickers to industrials_sectors.csv
+2025-11-22 00:40:30,171 - BacktestSectorFetcher - INFO - Saved 22 tickers to utilities_sectors.csv
+2025-11-22 00:40:30,171 - BacktestSectorFetcher - INFO - Saved 62 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:30,173 - BacktestSectorFetcher - INFO - Saved 28 tickers to communication_services_sectors.csv
+2025-11-22 00:40:30,173 - BacktestSectorFetcher - INFO - Saved 9 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:30,180 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1154 tickers
+2025-11-22 00:40:31,189 - BacktestSectorFetcher - INFO - Processing batch 29/60 (50 tickers)
+2025-11-22 00:40:36,896 - BacktestSectorFetcher - INFO - Sector data retrieval: 38 successful, 12 failed
+2025-11-22 00:40:36,902 - BacktestSectorFetcher - INFO - Saved 255 tickers to other_sectors.csv
+2025-11-22 00:40:36,903 - BacktestSectorFetcher - INFO - Saved 196 tickers to financials_sectors.csv
+2025-11-22 00:40:36,904 - BacktestSectorFetcher - INFO - Saved 164 tickers to technology_sectors.csv
+2025-11-22 00:40:36,905 - BacktestSectorFetcher - INFO - Saved 32 tickers to materials_sectors.csv
+2025-11-22 00:40:36,906 - BacktestSectorFetcher - INFO - Saved 337 tickers to health_care_sectors.csv
+2025-11-22 00:40:36,907 - BacktestSectorFetcher - INFO - Saved 15 tickers to real_estate_sectors.csv
+2025-11-22 00:40:36,908 - BacktestSectorFetcher - INFO - Saved 20 tickers to energy_sectors.csv
+2025-11-22 00:40:36,908 - BacktestSectorFetcher - INFO - Saved 47 tickers to industrials_sectors.csv
+2025-11-22 00:40:36,909 - BacktestSectorFetcher - INFO - Saved 23 tickers to utilities_sectors.csv
+2025-11-22 00:40:36,910 - BacktestSectorFetcher - INFO - Saved 65 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:36,911 - BacktestSectorFetcher - INFO - Saved 28 tickers to communication_services_sectors.csv
+2025-11-22 00:40:36,912 - BacktestSectorFetcher - INFO - Saved 10 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:36,918 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1192 tickers
+2025-11-22 00:40:37,930 - BacktestSectorFetcher - INFO - Processing batch 30/60 (50 tickers)
+2025-11-22 00:40:43,627 - BacktestSectorFetcher - INFO - Sector data retrieval: 43 successful, 7 failed
+2025-11-22 00:40:43,633 - BacktestSectorFetcher - INFO - Saved 268 tickers to other_sectors.csv
+2025-11-22 00:40:43,634 - BacktestSectorFetcher - INFO - Saved 198 tickers to financials_sectors.csv
+2025-11-22 00:40:43,635 - BacktestSectorFetcher - INFO - Saved 167 tickers to technology_sectors.csv
+2025-11-22 00:40:43,636 - BacktestSectorFetcher - INFO - Saved 33 tickers to materials_sectors.csv
+2025-11-22 00:40:43,637 - BacktestSectorFetcher - INFO - Saved 352 tickers to health_care_sectors.csv
+2025-11-22 00:40:43,638 - BacktestSectorFetcher - INFO - Saved 15 tickers to real_estate_sectors.csv
+2025-11-22 00:40:43,639 - BacktestSectorFetcher - INFO - Saved 21 tickers to energy_sectors.csv
+2025-11-22 00:40:43,640 - BacktestSectorFetcher - INFO - Saved 48 tickers to industrials_sectors.csv
+2025-11-22 00:40:43,641 - BacktestSectorFetcher - INFO - Saved 23 tickers to utilities_sectors.csv
+2025-11-22 00:40:43,642 - BacktestSectorFetcher - INFO - Saved 68 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:43,643 - BacktestSectorFetcher - INFO - Saved 30 tickers to communication_services_sectors.csv
+2025-11-22 00:40:43,644 - BacktestSectorFetcher - INFO - Saved 12 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:43,651 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1235 tickers
+2025-11-22 00:40:44,660 - BacktestSectorFetcher - INFO - Processing batch 31/60 (50 tickers)
+2025-11-22 00:40:50,351 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:40:50,357 - BacktestSectorFetcher - INFO - Saved 285 tickers to other_sectors.csv
+2025-11-22 00:40:50,358 - BacktestSectorFetcher - INFO - Saved 203 tickers to financials_sectors.csv
+2025-11-22 00:40:50,359 - BacktestSectorFetcher - INFO - Saved 170 tickers to technology_sectors.csv
+2025-11-22 00:40:50,360 - BacktestSectorFetcher - INFO - Saved 33 tickers to materials_sectors.csv
+2025-11-22 00:40:50,361 - BacktestSectorFetcher - INFO - Saved 360 tickers to health_care_sectors.csv
+2025-11-22 00:40:50,362 - BacktestSectorFetcher - INFO - Saved 15 tickers to real_estate_sectors.csv
+2025-11-22 00:40:50,363 - BacktestSectorFetcher - INFO - Saved 21 tickers to energy_sectors.csv
+2025-11-22 00:40:50,364 - BacktestSectorFetcher - INFO - Saved 50 tickers to industrials_sectors.csv
+2025-11-22 00:40:50,365 - BacktestSectorFetcher - INFO - Saved 23 tickers to utilities_sectors.csv
+2025-11-22 00:40:50,366 - BacktestSectorFetcher - INFO - Saved 72 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:50,366 - BacktestSectorFetcher - INFO - Saved 31 tickers to communication_services_sectors.csv
+2025-11-22 00:40:50,367 - BacktestSectorFetcher - INFO - Saved 12 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:50,374 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1275 tickers
+2025-11-22 00:40:51,381 - BacktestSectorFetcher - INFO - Processing batch 32/60 (50 tickers)
+2025-11-22 00:40:57,078 - BacktestSectorFetcher - INFO - Sector data retrieval: 43 successful, 7 failed
+2025-11-22 00:40:57,084 - BacktestSectorFetcher - INFO - Saved 295 tickers to other_sectors.csv
+2025-11-22 00:40:57,086 - BacktestSectorFetcher - INFO - Saved 210 tickers to financials_sectors.csv
+2025-11-22 00:40:57,087 - BacktestSectorFetcher - INFO - Saved 175 tickers to technology_sectors.csv
+2025-11-22 00:40:57,087 - BacktestSectorFetcher - INFO - Saved 34 tickers to materials_sectors.csv
+2025-11-22 00:40:57,089 - BacktestSectorFetcher - INFO - Saved 369 tickers to health_care_sectors.csv
+2025-11-22 00:40:57,090 - BacktestSectorFetcher - INFO - Saved 16 tickers to real_estate_sectors.csv
+2025-11-22 00:40:57,090 - BacktestSectorFetcher - INFO - Saved 21 tickers to energy_sectors.csv
+2025-11-22 00:40:57,091 - BacktestSectorFetcher - INFO - Saved 55 tickers to industrials_sectors.csv
+2025-11-22 00:40:57,092 - BacktestSectorFetcher - INFO - Saved 24 tickers to utilities_sectors.csv
+2025-11-22 00:40:57,093 - BacktestSectorFetcher - INFO - Saved 75 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:40:57,094 - BacktestSectorFetcher - INFO - Saved 32 tickers to communication_services_sectors.csv
+2025-11-22 00:40:57,095 - BacktestSectorFetcher - INFO - Saved 12 tickers to consumer_staples_sectors.csv
+2025-11-22 00:40:57,102 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1318 tickers
+2025-11-22 00:40:58,108 - BacktestSectorFetcher - INFO - Processing batch 33/60 (50 tickers)
+2025-11-22 00:41:03,792 - BacktestSectorFetcher - INFO - Sector data retrieval: 46 successful, 4 failed
+2025-11-22 00:41:03,799 - BacktestSectorFetcher - INFO - Saved 309 tickers to other_sectors.csv
+2025-11-22 00:41:03,800 - BacktestSectorFetcher - INFO - Saved 216 tickers to financials_sectors.csv
+2025-11-22 00:41:03,801 - BacktestSectorFetcher - INFO - Saved 180 tickers to technology_sectors.csv
+2025-11-22 00:41:03,802 - BacktestSectorFetcher - INFO - Saved 35 tickers to materials_sectors.csv
+2025-11-22 00:41:03,803 - BacktestSectorFetcher - INFO - Saved 381 tickers to health_care_sectors.csv
+2025-11-22 00:41:03,804 - BacktestSectorFetcher - INFO - Saved 17 tickers to real_estate_sectors.csv
+2025-11-22 00:41:03,804 - BacktestSectorFetcher - INFO - Saved 22 tickers to energy_sectors.csv
+2025-11-22 00:41:03,806 - BacktestSectorFetcher - INFO - Saved 56 tickers to industrials_sectors.csv
+2025-11-22 00:41:03,806 - BacktestSectorFetcher - INFO - Saved 25 tickers to utilities_sectors.csv
+2025-11-22 00:41:03,807 - BacktestSectorFetcher - INFO - Saved 78 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:03,808 - BacktestSectorFetcher - INFO - Saved 32 tickers to communication_services_sectors.csv
+2025-11-22 00:41:03,809 - BacktestSectorFetcher - INFO - Saved 13 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:03,816 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1364 tickers
+2025-11-22 00:41:04,820 - BacktestSectorFetcher - INFO - Processing batch 34/60 (50 tickers)
+2025-11-22 00:41:10,530 - BacktestSectorFetcher - INFO - Sector data retrieval: 41 successful, 9 failed
+2025-11-22 00:41:10,537 - BacktestSectorFetcher - INFO - Saved 315 tickers to other_sectors.csv
+2025-11-22 00:41:10,538 - BacktestSectorFetcher - INFO - Saved 223 tickers to financials_sectors.csv
+2025-11-22 00:41:10,539 - BacktestSectorFetcher - INFO - Saved 184 tickers to technology_sectors.csv
+2025-11-22 00:41:10,539 - BacktestSectorFetcher - INFO - Saved 38 tickers to materials_sectors.csv
+2025-11-22 00:41:10,541 - BacktestSectorFetcher - INFO - Saved 393 tickers to health_care_sectors.csv
+2025-11-22 00:41:10,542 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:41:10,542 - BacktestSectorFetcher - INFO - Saved 23 tickers to energy_sectors.csv
+2025-11-22 00:41:10,543 - BacktestSectorFetcher - INFO - Saved 57 tickers to industrials_sectors.csv
+2025-11-22 00:41:10,544 - BacktestSectorFetcher - INFO - Saved 25 tickers to utilities_sectors.csv
+2025-11-22 00:41:10,545 - BacktestSectorFetcher - INFO - Saved 80 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:10,546 - BacktestSectorFetcher - INFO - Saved 33 tickers to communication_services_sectors.csv
+2025-11-22 00:41:10,546 - BacktestSectorFetcher - INFO - Saved 15 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:10,554 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1405 tickers
+2025-11-22 00:41:11,563 - BacktestSectorFetcher - INFO - Processing batch 35/60 (50 tickers)
+2025-11-22 00:41:17,269 - BacktestSectorFetcher - INFO - Sector data retrieval: 41 successful, 9 failed
+2025-11-22 00:41:17,276 - BacktestSectorFetcher - INFO - Saved 320 tickers to other_sectors.csv
+2025-11-22 00:41:17,278 - BacktestSectorFetcher - INFO - Saved 231 tickers to financials_sectors.csv
+2025-11-22 00:41:17,279 - BacktestSectorFetcher - INFO - Saved 192 tickers to technology_sectors.csv
+2025-11-22 00:41:17,280 - BacktestSectorFetcher - INFO - Saved 39 tickers to materials_sectors.csv
+2025-11-22 00:41:17,281 - BacktestSectorFetcher - INFO - Saved 406 tickers to health_care_sectors.csv
+2025-11-22 00:41:17,282 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:41:17,282 - BacktestSectorFetcher - INFO - Saved 25 tickers to energy_sectors.csv
+2025-11-22 00:41:17,283 - BacktestSectorFetcher - INFO - Saved 59 tickers to industrials_sectors.csv
+2025-11-22 00:41:17,284 - BacktestSectorFetcher - INFO - Saved 26 tickers to utilities_sectors.csv
+2025-11-22 00:41:17,285 - BacktestSectorFetcher - INFO - Saved 81 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:17,286 - BacktestSectorFetcher - INFO - Saved 33 tickers to communication_services_sectors.csv
+2025-11-22 00:41:17,286 - BacktestSectorFetcher - INFO - Saved 15 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:17,294 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1446 tickers
+2025-11-22 00:41:18,298 - BacktestSectorFetcher - INFO - Processing batch 36/60 (50 tickers)
+2025-11-22 00:41:23,989 - BacktestSectorFetcher - INFO - Sector data retrieval: 42 successful, 8 failed
+2025-11-22 00:41:23,996 - BacktestSectorFetcher - INFO - Saved 325 tickers to other_sectors.csv
+2025-11-22 00:41:23,997 - BacktestSectorFetcher - INFO - Saved 236 tickers to financials_sectors.csv
+2025-11-22 00:41:23,998 - BacktestSectorFetcher - INFO - Saved 203 tickers to technology_sectors.csv
+2025-11-22 00:41:23,999 - BacktestSectorFetcher - INFO - Saved 43 tickers to materials_sectors.csv
+2025-11-22 00:41:24,001 - BacktestSectorFetcher - INFO - Saved 414 tickers to health_care_sectors.csv
+2025-11-22 00:41:24,001 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:41:24,002 - BacktestSectorFetcher - INFO - Saved 25 tickers to energy_sectors.csv
+2025-11-22 00:41:24,003 - BacktestSectorFetcher - INFO - Saved 62 tickers to industrials_sectors.csv
+2025-11-22 00:41:24,004 - BacktestSectorFetcher - INFO - Saved 27 tickers to utilities_sectors.csv
+2025-11-22 00:41:24,005 - BacktestSectorFetcher - INFO - Saved 84 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:24,006 - BacktestSectorFetcher - INFO - Saved 34 tickers to communication_services_sectors.csv
+2025-11-22 00:41:24,007 - BacktestSectorFetcher - INFO - Saved 16 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:24,015 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1488 tickers
+2025-11-22 00:41:25,015 - BacktestSectorFetcher - INFO - Processing batch 37/60 (50 tickers)
+2025-11-22 00:41:30,730 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:41:30,737 - BacktestSectorFetcher - INFO - Saved 336 tickers to other_sectors.csv
+2025-11-22 00:41:30,738 - BacktestSectorFetcher - INFO - Saved 245 tickers to financials_sectors.csv
+2025-11-22 00:41:30,739 - BacktestSectorFetcher - INFO - Saved 206 tickers to technology_sectors.csv
+2025-11-22 00:41:30,740 - BacktestSectorFetcher - INFO - Saved 45 tickers to materials_sectors.csv
+2025-11-22 00:41:30,741 - BacktestSectorFetcher - INFO - Saved 422 tickers to health_care_sectors.csv
+2025-11-22 00:41:30,742 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:41:30,743 - BacktestSectorFetcher - INFO - Saved 29 tickers to energy_sectors.csv
+2025-11-22 00:41:30,743 - BacktestSectorFetcher - INFO - Saved 64 tickers to industrials_sectors.csv
+2025-11-22 00:41:30,744 - BacktestSectorFetcher - INFO - Saved 27 tickers to utilities_sectors.csv
+2025-11-22 00:41:30,745 - BacktestSectorFetcher - INFO - Saved 85 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:30,746 - BacktestSectorFetcher - INFO - Saved 34 tickers to communication_services_sectors.csv
+2025-11-22 00:41:30,747 - BacktestSectorFetcher - INFO - Saved 16 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:30,755 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1528 tickers
+2025-11-22 00:41:31,764 - BacktestSectorFetcher - INFO - Processing batch 38/60 (50 tickers)
+2025-11-22 00:41:37,445 - BacktestSectorFetcher - INFO - Sector data retrieval: 45 successful, 5 failed
+2025-11-22 00:41:37,452 - BacktestSectorFetcher - INFO - Saved 347 tickers to other_sectors.csv
+2025-11-22 00:41:37,454 - BacktestSectorFetcher - INFO - Saved 247 tickers to financials_sectors.csv
+2025-11-22 00:41:37,455 - BacktestSectorFetcher - INFO - Saved 215 tickers to technology_sectors.csv
+2025-11-22 00:41:37,456 - BacktestSectorFetcher - INFO - Saved 45 tickers to materials_sectors.csv
+2025-11-22 00:41:37,458 - BacktestSectorFetcher - INFO - Saved 437 tickers to health_care_sectors.csv
+2025-11-22 00:41:37,459 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:41:37,461 - BacktestSectorFetcher - INFO - Saved 30 tickers to energy_sectors.csv
+2025-11-22 00:41:37,462 - BacktestSectorFetcher - INFO - Saved 66 tickers to industrials_sectors.csv
+2025-11-22 00:41:37,462 - BacktestSectorFetcher - INFO - Saved 29 tickers to utilities_sectors.csv
+2025-11-22 00:41:37,463 - BacktestSectorFetcher - INFO - Saved 87 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:37,464 - BacktestSectorFetcher - INFO - Saved 35 tickers to communication_services_sectors.csv
+2025-11-22 00:41:37,465 - BacktestSectorFetcher - INFO - Saved 16 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:37,475 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1573 tickers
+2025-11-22 00:41:38,488 - BacktestSectorFetcher - INFO - Processing batch 39/60 (50 tickers)
+2025-11-22 00:41:44,169 - BacktestSectorFetcher - INFO - Sector data retrieval: 38 successful, 12 failed
+2025-11-22 00:41:44,177 - BacktestSectorFetcher - INFO - Saved 354 tickers to other_sectors.csv
+2025-11-22 00:41:44,178 - BacktestSectorFetcher - INFO - Saved 251 tickers to financials_sectors.csv
+2025-11-22 00:41:44,180 - BacktestSectorFetcher - INFO - Saved 221 tickers to technology_sectors.csv
+2025-11-22 00:41:44,181 - BacktestSectorFetcher - INFO - Saved 47 tickers to materials_sectors.csv
+2025-11-22 00:41:44,183 - BacktestSectorFetcher - INFO - Saved 447 tickers to health_care_sectors.csv
+2025-11-22 00:41:44,184 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:41:44,185 - BacktestSectorFetcher - INFO - Saved 30 tickers to energy_sectors.csv
+2025-11-22 00:41:44,186 - BacktestSectorFetcher - INFO - Saved 66 tickers to industrials_sectors.csv
+2025-11-22 00:41:44,187 - BacktestSectorFetcher - INFO - Saved 31 tickers to utilities_sectors.csv
+2025-11-22 00:41:44,188 - BacktestSectorFetcher - INFO - Saved 90 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:44,189 - BacktestSectorFetcher - INFO - Saved 39 tickers to communication_services_sectors.csv
+2025-11-22 00:41:44,190 - BacktestSectorFetcher - INFO - Saved 16 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:44,199 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1611 tickers
+2025-11-22 00:41:45,208 - BacktestSectorFetcher - INFO - Processing batch 40/60 (50 tickers)
+2025-11-22 00:41:50,920 - BacktestSectorFetcher - INFO - Sector data retrieval: 44 successful, 6 failed
+2025-11-22 00:41:50,927 - BacktestSectorFetcher - INFO - Saved 358 tickers to other_sectors.csv
+2025-11-22 00:41:50,929 - BacktestSectorFetcher - INFO - Saved 259 tickers to financials_sectors.csv
+2025-11-22 00:41:50,930 - BacktestSectorFetcher - INFO - Saved 229 tickers to technology_sectors.csv
+2025-11-22 00:41:50,931 - BacktestSectorFetcher - INFO - Saved 47 tickers to materials_sectors.csv
+2025-11-22 00:41:50,933 - BacktestSectorFetcher - INFO - Saved 462 tickers to health_care_sectors.csv
+2025-11-22 00:41:50,934 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:41:50,935 - BacktestSectorFetcher - INFO - Saved 32 tickers to energy_sectors.csv
+2025-11-22 00:41:50,936 - BacktestSectorFetcher - INFO - Saved 68 tickers to industrials_sectors.csv
+2025-11-22 00:41:50,937 - BacktestSectorFetcher - INFO - Saved 33 tickers to utilities_sectors.csv
+2025-11-22 00:41:50,938 - BacktestSectorFetcher - INFO - Saved 92 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:50,939 - BacktestSectorFetcher - INFO - Saved 40 tickers to communication_services_sectors.csv
+2025-11-22 00:41:50,939 - BacktestSectorFetcher - INFO - Saved 16 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:50,949 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1655 tickers
+2025-11-22 00:41:51,951 - BacktestSectorFetcher - INFO - Processing batch 41/60 (50 tickers)
+2025-11-22 00:41:57,662 - BacktestSectorFetcher - INFO - Sector data retrieval: 38 successful, 12 failed
+2025-11-22 00:41:57,671 - BacktestSectorFetcher - INFO - Saved 370 tickers to other_sectors.csv
+2025-11-22 00:41:57,672 - BacktestSectorFetcher - INFO - Saved 266 tickers to financials_sectors.csv
+2025-11-22 00:41:57,673 - BacktestSectorFetcher - INFO - Saved 233 tickers to technology_sectors.csv
+2025-11-22 00:41:57,674 - BacktestSectorFetcher - INFO - Saved 48 tickers to materials_sectors.csv
+2025-11-22 00:41:57,675 - BacktestSectorFetcher - INFO - Saved 472 tickers to health_care_sectors.csv
+2025-11-22 00:41:57,676 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:41:57,678 - BacktestSectorFetcher - INFO - Saved 34 tickers to energy_sectors.csv
+2025-11-22 00:41:57,679 - BacktestSectorFetcher - INFO - Saved 69 tickers to industrials_sectors.csv
+2025-11-22 00:41:57,680 - BacktestSectorFetcher - INFO - Saved 34 tickers to utilities_sectors.csv
+2025-11-22 00:41:57,681 - BacktestSectorFetcher - INFO - Saved 92 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:41:57,682 - BacktestSectorFetcher - INFO - Saved 40 tickers to communication_services_sectors.csv
+2025-11-22 00:41:57,682 - BacktestSectorFetcher - INFO - Saved 16 tickers to consumer_staples_sectors.csv
+2025-11-22 00:41:57,692 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1693 tickers
+2025-11-22 00:41:58,694 - BacktestSectorFetcher - INFO - Processing batch 42/60 (50 tickers)
+2025-11-22 00:42:04,401 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:42:04,409 - BacktestSectorFetcher - INFO - Saved 374 tickers to other_sectors.csv
+2025-11-22 00:42:04,410 - BacktestSectorFetcher - INFO - Saved 273 tickers to financials_sectors.csv
+2025-11-22 00:42:04,412 - BacktestSectorFetcher - INFO - Saved 241 tickers to technology_sectors.csv
+2025-11-22 00:42:04,412 - BacktestSectorFetcher - INFO - Saved 49 tickers to materials_sectors.csv
+2025-11-22 00:42:04,414 - BacktestSectorFetcher - INFO - Saved 485 tickers to health_care_sectors.csv
+2025-11-22 00:42:04,415 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:04,416 - BacktestSectorFetcher - INFO - Saved 34 tickers to energy_sectors.csv
+2025-11-22 00:42:04,417 - BacktestSectorFetcher - INFO - Saved 71 tickers to industrials_sectors.csv
+2025-11-22 00:42:04,418 - BacktestSectorFetcher - INFO - Saved 34 tickers to utilities_sectors.csv
+2025-11-22 00:42:04,419 - BacktestSectorFetcher - INFO - Saved 96 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:04,420 - BacktestSectorFetcher - INFO - Saved 40 tickers to communication_services_sectors.csv
+2025-11-22 00:42:04,420 - BacktestSectorFetcher - INFO - Saved 17 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:04,430 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1733 tickers
+2025-11-22 00:42:05,437 - BacktestSectorFetcher - INFO - Processing batch 43/60 (50 tickers)
+2025-11-22 00:42:11,139 - BacktestSectorFetcher - INFO - Sector data retrieval: 42 successful, 8 failed
+2025-11-22 00:42:11,152 - BacktestSectorFetcher - INFO - Saved 385 tickers to other_sectors.csv
+2025-11-22 00:42:11,154 - BacktestSectorFetcher - INFO - Saved 278 tickers to financials_sectors.csv
+2025-11-22 00:42:11,156 - BacktestSectorFetcher - INFO - Saved 246 tickers to technology_sectors.csv
+2025-11-22 00:42:11,157 - BacktestSectorFetcher - INFO - Saved 49 tickers to materials_sectors.csv
+2025-11-22 00:42:11,159 - BacktestSectorFetcher - INFO - Saved 499 tickers to health_care_sectors.csv
+2025-11-22 00:42:11,160 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:11,161 - BacktestSectorFetcher - INFO - Saved 36 tickers to energy_sectors.csv
+2025-11-22 00:42:11,162 - BacktestSectorFetcher - INFO - Saved 73 tickers to industrials_sectors.csv
+2025-11-22 00:42:11,163 - BacktestSectorFetcher - INFO - Saved 35 tickers to utilities_sectors.csv
+2025-11-22 00:42:11,164 - BacktestSectorFetcher - INFO - Saved 98 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:11,165 - BacktestSectorFetcher - INFO - Saved 40 tickers to communication_services_sectors.csv
+2025-11-22 00:42:11,166 - BacktestSectorFetcher - INFO - Saved 17 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:11,177 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1775 tickers
+2025-11-22 00:42:12,187 - BacktestSectorFetcher - INFO - Processing batch 44/60 (50 tickers)
+2025-11-22 00:42:17,904 - BacktestSectorFetcher - INFO - Sector data retrieval: 41 successful, 9 failed
+2025-11-22 00:42:17,913 - BacktestSectorFetcher - INFO - Saved 395 tickers to other_sectors.csv
+2025-11-22 00:42:17,914 - BacktestSectorFetcher - INFO - Saved 280 tickers to financials_sectors.csv
+2025-11-22 00:42:17,916 - BacktestSectorFetcher - INFO - Saved 254 tickers to technology_sectors.csv
+2025-11-22 00:42:17,917 - BacktestSectorFetcher - INFO - Saved 49 tickers to materials_sectors.csv
+2025-11-22 00:42:17,918 - BacktestSectorFetcher - INFO - Saved 512 tickers to health_care_sectors.csv
+2025-11-22 00:42:17,919 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:17,920 - BacktestSectorFetcher - INFO - Saved 37 tickers to energy_sectors.csv
+2025-11-22 00:42:17,922 - BacktestSectorFetcher - INFO - Saved 74 tickers to industrials_sectors.csv
+2025-11-22 00:42:17,923 - BacktestSectorFetcher - INFO - Saved 35 tickers to utilities_sectors.csv
+2025-11-22 00:42:17,924 - BacktestSectorFetcher - INFO - Saved 102 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:17,924 - BacktestSectorFetcher - INFO - Saved 42 tickers to communication_services_sectors.csv
+2025-11-22 00:42:17,925 - BacktestSectorFetcher - INFO - Saved 17 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:17,936 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1816 tickers
+2025-11-22 00:42:18,939 - BacktestSectorFetcher - INFO - Processing batch 45/60 (50 tickers)
+2025-11-22 00:42:24,650 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:42:24,659 - BacktestSectorFetcher - INFO - Saved 405 tickers to other_sectors.csv
+2025-11-22 00:42:24,660 - BacktestSectorFetcher - INFO - Saved 286 tickers to financials_sectors.csv
+2025-11-22 00:42:24,661 - BacktestSectorFetcher - INFO - Saved 260 tickers to technology_sectors.csv
+2025-11-22 00:42:24,662 - BacktestSectorFetcher - INFO - Saved 50 tickers to materials_sectors.csv
+2025-11-22 00:42:24,663 - BacktestSectorFetcher - INFO - Saved 522 tickers to health_care_sectors.csv
+2025-11-22 00:42:24,664 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:24,665 - BacktestSectorFetcher - INFO - Saved 40 tickers to energy_sectors.csv
+2025-11-22 00:42:24,666 - BacktestSectorFetcher - INFO - Saved 74 tickers to industrials_sectors.csv
+2025-11-22 00:42:24,667 - BacktestSectorFetcher - INFO - Saved 35 tickers to utilities_sectors.csv
+2025-11-22 00:42:24,668 - BacktestSectorFetcher - INFO - Saved 105 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:24,669 - BacktestSectorFetcher - INFO - Saved 43 tickers to communication_services_sectors.csv
+2025-11-22 00:42:24,670 - BacktestSectorFetcher - INFO - Saved 17 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:24,681 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1856 tickers
+2025-11-22 00:42:25,695 - BacktestSectorFetcher - INFO - Processing batch 46/60 (50 tickers)
+2025-11-22 00:42:31,420 - BacktestSectorFetcher - INFO - Sector data retrieval: 46 successful, 4 failed
+2025-11-22 00:42:31,429 - BacktestSectorFetcher - INFO - Saved 417 tickers to other_sectors.csv
+2025-11-22 00:42:31,430 - BacktestSectorFetcher - INFO - Saved 297 tickers to financials_sectors.csv
+2025-11-22 00:42:31,431 - BacktestSectorFetcher - INFO - Saved 263 tickers to technology_sectors.csv
+2025-11-22 00:42:31,432 - BacktestSectorFetcher - INFO - Saved 51 tickers to materials_sectors.csv
+2025-11-22 00:42:31,434 - BacktestSectorFetcher - INFO - Saved 535 tickers to health_care_sectors.csv
+2025-11-22 00:42:31,435 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:31,436 - BacktestSectorFetcher - INFO - Saved 41 tickers to energy_sectors.csv
+2025-11-22 00:42:31,437 - BacktestSectorFetcher - INFO - Saved 77 tickers to industrials_sectors.csv
+2025-11-22 00:42:31,438 - BacktestSectorFetcher - INFO - Saved 35 tickers to utilities_sectors.csv
+2025-11-22 00:42:31,439 - BacktestSectorFetcher - INFO - Saved 107 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:31,440 - BacktestSectorFetcher - INFO - Saved 43 tickers to communication_services_sectors.csv
+2025-11-22 00:42:31,441 - BacktestSectorFetcher - INFO - Saved 17 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:31,451 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1902 tickers
+2025-11-22 00:42:32,466 - BacktestSectorFetcher - INFO - Processing batch 47/60 (50 tickers)
+2025-11-22 00:42:38,181 - BacktestSectorFetcher - INFO - Sector data retrieval: 42 successful, 8 failed
+2025-11-22 00:42:38,190 - BacktestSectorFetcher - INFO - Saved 425 tickers to other_sectors.csv
+2025-11-22 00:42:38,191 - BacktestSectorFetcher - INFO - Saved 303 tickers to financials_sectors.csv
+2025-11-22 00:42:38,193 - BacktestSectorFetcher - INFO - Saved 270 tickers to technology_sectors.csv
+2025-11-22 00:42:38,194 - BacktestSectorFetcher - INFO - Saved 51 tickers to materials_sectors.csv
+2025-11-22 00:42:38,195 - BacktestSectorFetcher - INFO - Saved 545 tickers to health_care_sectors.csv
+2025-11-22 00:42:38,196 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:38,197 - BacktestSectorFetcher - INFO - Saved 41 tickers to energy_sectors.csv
+2025-11-22 00:42:38,199 - BacktestSectorFetcher - INFO - Saved 78 tickers to industrials_sectors.csv
+2025-11-22 00:42:38,199 - BacktestSectorFetcher - INFO - Saved 35 tickers to utilities_sectors.csv
+2025-11-22 00:42:38,200 - BacktestSectorFetcher - INFO - Saved 112 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:38,201 - BacktestSectorFetcher - INFO - Saved 48 tickers to communication_services_sectors.csv
+2025-11-22 00:42:38,202 - BacktestSectorFetcher - INFO - Saved 17 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:38,213 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1944 tickers
+2025-11-22 00:42:39,217 - BacktestSectorFetcher - INFO - Processing batch 48/60 (50 tickers)
+2025-11-22 00:42:44,929 - BacktestSectorFetcher - INFO - Sector data retrieval: 43 successful, 7 failed
+2025-11-22 00:42:44,938 - BacktestSectorFetcher - INFO - Saved 438 tickers to other_sectors.csv
+2025-11-22 00:42:44,939 - BacktestSectorFetcher - INFO - Saved 309 tickers to financials_sectors.csv
+2025-11-22 00:42:44,941 - BacktestSectorFetcher - INFO - Saved 273 tickers to technology_sectors.csv
+2025-11-22 00:42:44,942 - BacktestSectorFetcher - INFO - Saved 52 tickers to materials_sectors.csv
+2025-11-22 00:42:44,944 - BacktestSectorFetcher - INFO - Saved 555 tickers to health_care_sectors.csv
+2025-11-22 00:42:44,945 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:44,946 - BacktestSectorFetcher - INFO - Saved 41 tickers to energy_sectors.csv
+2025-11-22 00:42:44,946 - BacktestSectorFetcher - INFO - Saved 82 tickers to industrials_sectors.csv
+2025-11-22 00:42:44,947 - BacktestSectorFetcher - INFO - Saved 35 tickers to utilities_sectors.csv
+2025-11-22 00:42:44,949 - BacktestSectorFetcher - INFO - Saved 116 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:44,949 - BacktestSectorFetcher - INFO - Saved 50 tickers to communication_services_sectors.csv
+2025-11-22 00:42:44,950 - BacktestSectorFetcher - INFO - Saved 17 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:44,962 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 1987 tickers
+2025-11-22 00:42:45,972 - BacktestSectorFetcher - INFO - Processing batch 49/60 (50 tickers)
+2025-11-22 00:42:51,670 - BacktestSectorFetcher - INFO - Sector data retrieval: 44 successful, 6 failed
+2025-11-22 00:42:51,680 - BacktestSectorFetcher - INFO - Saved 444 tickers to other_sectors.csv
+2025-11-22 00:42:51,681 - BacktestSectorFetcher - INFO - Saved 313 tickers to financials_sectors.csv
+2025-11-22 00:42:51,682 - BacktestSectorFetcher - INFO - Saved 284 tickers to technology_sectors.csv
+2025-11-22 00:42:51,684 - BacktestSectorFetcher - INFO - Saved 53 tickers to materials_sectors.csv
+2025-11-22 00:42:51,685 - BacktestSectorFetcher - INFO - Saved 569 tickers to health_care_sectors.csv
+2025-11-22 00:42:51,686 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:51,687 - BacktestSectorFetcher - INFO - Saved 43 tickers to energy_sectors.csv
+2025-11-22 00:42:51,688 - BacktestSectorFetcher - INFO - Saved 83 tickers to industrials_sectors.csv
+2025-11-22 00:42:51,689 - BacktestSectorFetcher - INFO - Saved 36 tickers to utilities_sectors.csv
+2025-11-22 00:42:51,690 - BacktestSectorFetcher - INFO - Saved 117 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:51,691 - BacktestSectorFetcher - INFO - Saved 52 tickers to communication_services_sectors.csv
+2025-11-22 00:42:51,692 - BacktestSectorFetcher - INFO - Saved 18 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:51,704 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2031 tickers
+2025-11-22 00:42:52,715 - BacktestSectorFetcher - INFO - Processing batch 50/60 (50 tickers)
+2025-11-22 00:42:58,415 - BacktestSectorFetcher - INFO - Sector data retrieval: 39 successful, 11 failed
+2025-11-22 00:42:58,425 - BacktestSectorFetcher - INFO - Saved 451 tickers to other_sectors.csv
+2025-11-22 00:42:58,426 - BacktestSectorFetcher - INFO - Saved 317 tickers to financials_sectors.csv
+2025-11-22 00:42:58,428 - BacktestSectorFetcher - INFO - Saved 291 tickers to technology_sectors.csv
+2025-11-22 00:42:58,429 - BacktestSectorFetcher - INFO - Saved 56 tickers to materials_sectors.csv
+2025-11-22 00:42:58,431 - BacktestSectorFetcher - INFO - Saved 579 tickers to health_care_sectors.csv
+2025-11-22 00:42:58,431 - BacktestSectorFetcher - INFO - Saved 19 tickers to real_estate_sectors.csv
+2025-11-22 00:42:58,432 - BacktestSectorFetcher - INFO - Saved 43 tickers to energy_sectors.csv
+2025-11-22 00:42:58,433 - BacktestSectorFetcher - INFO - Saved 85 tickers to industrials_sectors.csv
+2025-11-22 00:42:58,434 - BacktestSectorFetcher - INFO - Saved 36 tickers to utilities_sectors.csv
+2025-11-22 00:42:58,435 - BacktestSectorFetcher - INFO - Saved 120 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:42:58,436 - BacktestSectorFetcher - INFO - Saved 54 tickers to communication_services_sectors.csv
+2025-11-22 00:42:58,437 - BacktestSectorFetcher - INFO - Saved 19 tickers to consumer_staples_sectors.csv
+2025-11-22 00:42:58,449 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2070 tickers
+2025-11-22 00:42:59,458 - BacktestSectorFetcher - INFO - Processing batch 51/60 (50 tickers)
+2025-11-22 00:43:05,155 - BacktestSectorFetcher - INFO - Sector data retrieval: 40 successful, 10 failed
+2025-11-22 00:43:05,165 - BacktestSectorFetcher - INFO - Saved 459 tickers to other_sectors.csv
+2025-11-22 00:43:05,166 - BacktestSectorFetcher - INFO - Saved 322 tickers to financials_sectors.csv
+2025-11-22 00:43:05,167 - BacktestSectorFetcher - INFO - Saved 296 tickers to technology_sectors.csv
+2025-11-22 00:43:05,168 - BacktestSectorFetcher - INFO - Saved 57 tickers to materials_sectors.csv
+2025-11-22 00:43:05,170 - BacktestSectorFetcher - INFO - Saved 592 tickers to health_care_sectors.csv
+2025-11-22 00:43:05,171 - BacktestSectorFetcher - INFO - Saved 20 tickers to real_estate_sectors.csv
+2025-11-22 00:43:05,172 - BacktestSectorFetcher - INFO - Saved 43 tickers to energy_sectors.csv
+2025-11-22 00:43:05,173 - BacktestSectorFetcher - INFO - Saved 88 tickers to industrials_sectors.csv
+2025-11-22 00:43:05,174 - BacktestSectorFetcher - INFO - Saved 37 tickers to utilities_sectors.csv
+2025-11-22 00:43:05,175 - BacktestSectorFetcher - INFO - Saved 121 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:05,176 - BacktestSectorFetcher - INFO - Saved 55 tickers to communication_services_sectors.csv
+2025-11-22 00:43:05,177 - BacktestSectorFetcher - INFO - Saved 20 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:05,191 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2110 tickers
+2025-11-22 00:43:06,201 - BacktestSectorFetcher - INFO - Processing batch 52/60 (50 tickers)
+2025-11-22 00:43:11,923 - BacktestSectorFetcher - INFO - Sector data retrieval: 39 successful, 11 failed
+2025-11-22 00:43:11,932 - BacktestSectorFetcher - INFO - Saved 464 tickers to other_sectors.csv
+2025-11-22 00:43:11,934 - BacktestSectorFetcher - INFO - Saved 331 tickers to financials_sectors.csv
+2025-11-22 00:43:11,936 - BacktestSectorFetcher - INFO - Saved 304 tickers to technology_sectors.csv
+2025-11-22 00:43:11,936 - BacktestSectorFetcher - INFO - Saved 58 tickers to materials_sectors.csv
+2025-11-22 00:43:11,938 - BacktestSectorFetcher - INFO - Saved 602 tickers to health_care_sectors.csv
+2025-11-22 00:43:11,939 - BacktestSectorFetcher - INFO - Saved 20 tickers to real_estate_sectors.csv
+2025-11-22 00:43:11,940 - BacktestSectorFetcher - INFO - Saved 43 tickers to energy_sectors.csv
+2025-11-22 00:43:11,941 - BacktestSectorFetcher - INFO - Saved 91 tickers to industrials_sectors.csv
+2025-11-22 00:43:11,942 - BacktestSectorFetcher - INFO - Saved 37 tickers to utilities_sectors.csv
+2025-11-22 00:43:11,943 - BacktestSectorFetcher - INFO - Saved 122 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:11,944 - BacktestSectorFetcher - INFO - Saved 57 tickers to communication_services_sectors.csv
+2025-11-22 00:43:11,945 - BacktestSectorFetcher - INFO - Saved 20 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:11,958 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2149 tickers
+2025-11-22 00:43:12,970 - BacktestSectorFetcher - INFO - Processing batch 53/60 (50 tickers)
+2025-11-22 00:43:18,664 - BacktestSectorFetcher - INFO - Sector data retrieval: 44 successful, 6 failed
+2025-11-22 00:43:18,680 - BacktestSectorFetcher - INFO - Saved 471 tickers to other_sectors.csv
+2025-11-22 00:43:18,681 - BacktestSectorFetcher - INFO - Saved 333 tickers to financials_sectors.csv
+2025-11-22 00:43:18,683 - BacktestSectorFetcher - INFO - Saved 310 tickers to technology_sectors.csv
+2025-11-22 00:43:18,684 - BacktestSectorFetcher - INFO - Saved 60 tickers to materials_sectors.csv
+2025-11-22 00:43:18,685 - BacktestSectorFetcher - INFO - Saved 623 tickers to health_care_sectors.csv
+2025-11-22 00:43:18,686 - BacktestSectorFetcher - INFO - Saved 20 tickers to real_estate_sectors.csv
+2025-11-22 00:43:18,687 - BacktestSectorFetcher - INFO - Saved 43 tickers to energy_sectors.csv
+2025-11-22 00:43:18,688 - BacktestSectorFetcher - INFO - Saved 91 tickers to industrials_sectors.csv
+2025-11-22 00:43:18,689 - BacktestSectorFetcher - INFO - Saved 39 tickers to utilities_sectors.csv
+2025-11-22 00:43:18,690 - BacktestSectorFetcher - INFO - Saved 125 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:18,691 - BacktestSectorFetcher - INFO - Saved 58 tickers to communication_services_sectors.csv
+2025-11-22 00:43:18,692 - BacktestSectorFetcher - INFO - Saved 20 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:18,704 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2193 tickers
+2025-11-22 00:43:19,709 - BacktestSectorFetcher - INFO - Processing batch 54/60 (50 tickers)
+2025-11-22 00:43:25,405 - BacktestSectorFetcher - INFO - Sector data retrieval: 37 successful, 13 failed
+2025-11-22 00:43:25,422 - BacktestSectorFetcher - INFO - Saved 482 tickers to other_sectors.csv
+2025-11-22 00:43:25,423 - BacktestSectorFetcher - INFO - Saved 338 tickers to financials_sectors.csv
+2025-11-22 00:43:25,425 - BacktestSectorFetcher - INFO - Saved 316 tickers to technology_sectors.csv
+2025-11-22 00:43:25,426 - BacktestSectorFetcher - INFO - Saved 62 tickers to materials_sectors.csv
+2025-11-22 00:43:25,428 - BacktestSectorFetcher - INFO - Saved 629 tickers to health_care_sectors.csv
+2025-11-22 00:43:25,429 - BacktestSectorFetcher - INFO - Saved 20 tickers to real_estate_sectors.csv
+2025-11-22 00:43:25,431 - BacktestSectorFetcher - INFO - Saved 44 tickers to energy_sectors.csv
+2025-11-22 00:43:25,432 - BacktestSectorFetcher - INFO - Saved 93 tickers to industrials_sectors.csv
+2025-11-22 00:43:25,433 - BacktestSectorFetcher - INFO - Saved 40 tickers to utilities_sectors.csv
+2025-11-22 00:43:25,435 - BacktestSectorFetcher - INFO - Saved 127 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:25,436 - BacktestSectorFetcher - INFO - Saved 59 tickers to communication_services_sectors.csv
+2025-11-22 00:43:25,437 - BacktestSectorFetcher - INFO - Saved 20 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:25,450 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2230 tickers
+2025-11-22 00:43:26,463 - BacktestSectorFetcher - INFO - Processing batch 55/60 (50 tickers)
+2025-11-22 00:43:32,170 - BacktestSectorFetcher - INFO - Sector data retrieval: 44 successful, 6 failed
+2025-11-22 00:43:32,187 - BacktestSectorFetcher - INFO - Saved 493 tickers to other_sectors.csv
+2025-11-22 00:43:32,189 - BacktestSectorFetcher - INFO - Saved 346 tickers to financials_sectors.csv
+2025-11-22 00:43:32,190 - BacktestSectorFetcher - INFO - Saved 322 tickers to technology_sectors.csv
+2025-11-22 00:43:32,191 - BacktestSectorFetcher - INFO - Saved 62 tickers to materials_sectors.csv
+2025-11-22 00:43:32,194 - BacktestSectorFetcher - INFO - Saved 638 tickers to health_care_sectors.csv
+2025-11-22 00:43:32,195 - BacktestSectorFetcher - INFO - Saved 20 tickers to real_estate_sectors.csv
+2025-11-22 00:43:32,196 - BacktestSectorFetcher - INFO - Saved 45 tickers to energy_sectors.csv
+2025-11-22 00:43:32,197 - BacktestSectorFetcher - INFO - Saved 96 tickers to industrials_sectors.csv
+2025-11-22 00:43:32,198 - BacktestSectorFetcher - INFO - Saved 40 tickers to utilities_sectors.csv
+2025-11-22 00:43:32,200 - BacktestSectorFetcher - INFO - Saved 129 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:32,201 - BacktestSectorFetcher - INFO - Saved 62 tickers to communication_services_sectors.csv
+2025-11-22 00:43:32,202 - BacktestSectorFetcher - INFO - Saved 21 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:32,220 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2274 tickers
+2025-11-22 00:43:33,231 - BacktestSectorFetcher - INFO - Processing batch 56/60 (50 tickers)
+2025-11-22 00:43:38,925 - BacktestSectorFetcher - INFO - Sector data retrieval: 43 successful, 7 failed
+2025-11-22 00:43:38,935 - BacktestSectorFetcher - INFO - Saved 499 tickers to other_sectors.csv
+2025-11-22 00:43:38,936 - BacktestSectorFetcher - INFO - Saved 354 tickers to financials_sectors.csv
+2025-11-22 00:43:38,938 - BacktestSectorFetcher - INFO - Saved 329 tickers to technology_sectors.csv
+2025-11-22 00:43:38,938 - BacktestSectorFetcher - INFO - Saved 65 tickers to materials_sectors.csv
+2025-11-22 00:43:38,940 - BacktestSectorFetcher - INFO - Saved 649 tickers to health_care_sectors.csv
+2025-11-22 00:43:38,941 - BacktestSectorFetcher - INFO - Saved 21 tickers to real_estate_sectors.csv
+2025-11-22 00:43:38,942 - BacktestSectorFetcher - INFO - Saved 46 tickers to energy_sectors.csv
+2025-11-22 00:43:38,943 - BacktestSectorFetcher - INFO - Saved 99 tickers to industrials_sectors.csv
+2025-11-22 00:43:38,944 - BacktestSectorFetcher - INFO - Saved 40 tickers to utilities_sectors.csv
+2025-11-22 00:43:38,945 - BacktestSectorFetcher - INFO - Saved 130 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:38,946 - BacktestSectorFetcher - INFO - Saved 63 tickers to communication_services_sectors.csv
+2025-11-22 00:43:38,947 - BacktestSectorFetcher - INFO - Saved 22 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:38,960 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2317 tickers
+2025-11-22 00:43:39,972 - BacktestSectorFetcher - INFO - Processing batch 57/60 (50 tickers)
+2025-11-22 00:43:45,701 - BacktestSectorFetcher - INFO - Sector data retrieval: 42 successful, 8 failed
+2025-11-22 00:43:45,712 - BacktestSectorFetcher - INFO - Saved 501 tickers to other_sectors.csv
+2025-11-22 00:43:45,713 - BacktestSectorFetcher - INFO - Saved 359 tickers to financials_sectors.csv
+2025-11-22 00:43:45,715 - BacktestSectorFetcher - INFO - Saved 338 tickers to technology_sectors.csv
+2025-11-22 00:43:45,716 - BacktestSectorFetcher - INFO - Saved 65 tickers to materials_sectors.csv
+2025-11-22 00:43:45,718 - BacktestSectorFetcher - INFO - Saved 666 tickers to health_care_sectors.csv
+2025-11-22 00:43:45,719 - BacktestSectorFetcher - INFO - Saved 21 tickers to real_estate_sectors.csv
+2025-11-22 00:43:45,720 - BacktestSectorFetcher - INFO - Saved 48 tickers to energy_sectors.csv
+2025-11-22 00:43:45,721 - BacktestSectorFetcher - INFO - Saved 101 tickers to industrials_sectors.csv
+2025-11-22 00:43:45,722 - BacktestSectorFetcher - INFO - Saved 40 tickers to utilities_sectors.csv
+2025-11-22 00:43:45,723 - BacktestSectorFetcher - INFO - Saved 133 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:45,724 - BacktestSectorFetcher - INFO - Saved 65 tickers to communication_services_sectors.csv
+2025-11-22 00:43:45,725 - BacktestSectorFetcher - INFO - Saved 22 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:45,738 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2359 tickers
+2025-11-22 00:43:46,747 - BacktestSectorFetcher - INFO - Processing batch 58/60 (50 tickers)
+2025-11-22 00:43:52,451 - BacktestSectorFetcher - INFO - Sector data retrieval: 38 successful, 12 failed
+2025-11-22 00:43:52,461 - BacktestSectorFetcher - INFO - Saved 512 tickers to other_sectors.csv
+2025-11-22 00:43:52,463 - BacktestSectorFetcher - INFO - Saved 367 tickers to financials_sectors.csv
+2025-11-22 00:43:52,464 - BacktestSectorFetcher - INFO - Saved 344 tickers to technology_sectors.csv
+2025-11-22 00:43:52,465 - BacktestSectorFetcher - INFO - Saved 66 tickers to materials_sectors.csv
+2025-11-22 00:43:52,467 - BacktestSectorFetcher - INFO - Saved 668 tickers to health_care_sectors.csv
+2025-11-22 00:43:52,470 - BacktestSectorFetcher - INFO - Saved 21 tickers to real_estate_sectors.csv
+2025-11-22 00:43:52,471 - BacktestSectorFetcher - INFO - Saved 48 tickers to energy_sectors.csv
+2025-11-22 00:43:52,472 - BacktestSectorFetcher - INFO - Saved 104 tickers to industrials_sectors.csv
+2025-11-22 00:43:52,474 - BacktestSectorFetcher - INFO - Saved 40 tickers to utilities_sectors.csv
+2025-11-22 00:43:52,475 - BacktestSectorFetcher - INFO - Saved 137 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:52,477 - BacktestSectorFetcher - INFO - Saved 67 tickers to communication_services_sectors.csv
+2025-11-22 00:43:52,477 - BacktestSectorFetcher - INFO - Saved 23 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:52,496 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2397 tickers
+2025-11-22 00:43:53,509 - BacktestSectorFetcher - INFO - Processing batch 59/60 (50 tickers)
+2025-11-22 00:43:59,210 - BacktestSectorFetcher - INFO - Sector data retrieval: 39 successful, 11 failed
+2025-11-22 00:43:59,221 - BacktestSectorFetcher - INFO - Saved 524 tickers to other_sectors.csv
+2025-11-22 00:43:59,222 - BacktestSectorFetcher - INFO - Saved 368 tickers to financials_sectors.csv
+2025-11-22 00:43:59,224 - BacktestSectorFetcher - INFO - Saved 347 tickers to technology_sectors.csv
+2025-11-22 00:43:59,225 - BacktestSectorFetcher - INFO - Saved 67 tickers to materials_sectors.csv
+2025-11-22 00:43:59,227 - BacktestSectorFetcher - INFO - Saved 682 tickers to health_care_sectors.csv
+2025-11-22 00:43:59,228 - BacktestSectorFetcher - INFO - Saved 21 tickers to real_estate_sectors.csv
+2025-11-22 00:43:59,229 - BacktestSectorFetcher - INFO - Saved 48 tickers to energy_sectors.csv
+2025-11-22 00:43:59,230 - BacktestSectorFetcher - INFO - Saved 107 tickers to industrials_sectors.csv
+2025-11-22 00:43:59,231 - BacktestSectorFetcher - INFO - Saved 42 tickers to utilities_sectors.csv
+2025-11-22 00:43:59,232 - BacktestSectorFetcher - INFO - Saved 138 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:43:59,233 - BacktestSectorFetcher - INFO - Saved 67 tickers to communication_services_sectors.csv
+2025-11-22 00:43:59,234 - BacktestSectorFetcher - INFO - Saved 25 tickers to consumer_staples_sectors.csv
+2025-11-22 00:43:59,247 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2436 tickers
+2025-11-22 00:44:00,255 - BacktestSectorFetcher - INFO - Processing batch 60/60 (24 tickers)
+2025-11-22 00:44:03,082 - BacktestSectorFetcher - INFO - Sector data retrieval: 14 successful, 10 failed
+2025-11-22 00:44:03,100 - BacktestSectorFetcher - INFO - Saved 525 tickers to other_sectors.csv
+2025-11-22 00:44:03,102 - BacktestSectorFetcher - INFO - Saved 369 tickers to financials_sectors.csv
+2025-11-22 00:44:03,103 - BacktestSectorFetcher - INFO - Saved 350 tickers to technology_sectors.csv
+2025-11-22 00:44:03,105 - BacktestSectorFetcher - INFO - Saved 68 tickers to materials_sectors.csv
+2025-11-22 00:44:03,107 - BacktestSectorFetcher - INFO - Saved 687 tickers to health_care_sectors.csv
+2025-11-22 00:44:03,108 - BacktestSectorFetcher - INFO - Saved 21 tickers to real_estate_sectors.csv
+2025-11-22 00:44:03,109 - BacktestSectorFetcher - INFO - Saved 48 tickers to energy_sectors.csv
+2025-11-22 00:44:03,110 - BacktestSectorFetcher - INFO - Saved 108 tickers to industrials_sectors.csv
+2025-11-22 00:44:03,111 - BacktestSectorFetcher - INFO - Saved 42 tickers to utilities_sectors.csv
+2025-11-22 00:44:03,113 - BacktestSectorFetcher - INFO - Saved 139 tickers to consumer_discretionary_sectors.csv
+2025-11-22 00:44:03,114 - BacktestSectorFetcher - INFO - Saved 68 tickers to communication_services_sectors.csv
+2025-11-22 00:44:03,115 - BacktestSectorFetcher - INFO - Saved 25 tickers to consumer_staples_sectors.csv
+2025-11-22 00:44:03,130 - BacktestSectorFetcher - INFO - Saved 12 sector files and master mapping with 2450 tickers
+2025-11-22 00:44:03,130 - BacktestSectorFetcher - INFO - Completed sector fetch: 2450 tickers with sector data
+2025-11-22 00:44:03,139 - BacktestSectorFetcher - INFO - Sector Data Summary:
+2025-11-22 00:44:03,139 - BacktestSectorFetcher - INFO -    Health Care: 687 tickers
+2025-11-22 00:44:03,139 - BacktestSectorFetcher - INFO -    Other: 525 tickers
+2025-11-22 00:44:03,139 - BacktestSectorFetcher - INFO -    Financials: 369 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Technology: 350 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Consumer Discretionary: 139 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Industrials: 108 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Materials: 68 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Communication Services: 68 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Energy: 48 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Utilities: 42 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Consumer Staples: 25 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO -    Real Estate: 21 tickers
+2025-11-22 00:44:03,140 - BacktestSectorFetcher - INFO - Sector data fetch completed! Total: 2450 tickers
+2025-11-22 20:38:28,496 - BacktestSectorFetcher - INFO - Starting Backtest Sector Data Fetcher
+2025-11-22 20:38:28,496 - BacktestSectorFetcher - INFO - Checking directory structure...
+2025-11-22 20:38:28,497 - BacktestSectorFetcher - INFO -   Historical Tickers: C:\Users\kyung\StockScanner\historical_data\tickers [EXISTS]
+2025-11-22 20:38:28,497 - BacktestSectorFetcher - INFO -     Found 0 CSV files
+2025-11-22 20:38:28,497 - BacktestSectorFetcher - INFO -   Backtest Sectors: C:\Users\kyung\StockScanner\backtest_sectors [EXISTS]
+2025-11-22 20:38:28,497 - BacktestSectorFetcher - INFO -   Sector Mapping: C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json [EXISTS]
+2025-11-22 20:38:28,504 - BacktestSectorFetcher - INFO - Loaded sector mapping from C:\Users\kyung\StockScanner\json_files\backtest_sector_mapping.json
+2025-11-22 20:38:28,504 - BacktestSectorFetcher - INFO -    - 0 detailed sector mappings
+2025-11-22 20:38:28,504 - BacktestSectorFetcher - INFO -    - 12 major sectors
+2025-11-22 20:38:28,582 - BacktestSectorFetcher - INFO - Loaded existing sector data for 2450 tickers
+2025-11-22 20:38:28,583 - BacktestSectorFetcher - INFO - Using existing sector data for 2450 tickers
+2025-11-22 20:38:28,583 - BacktestSectorFetcher - WARNING - No CSV files found in C:\Users\kyung\StockScanner\historical_data\tickers
+2025-11-22 20:38:28,583 - BacktestSectorFetcher - INFO - Please ensure your historical ticker CSV files are in this directory.
+2025-11-22 20:38:28,583 - BacktestSectorFetcher - INFO - All tickers already have sector data
+2025-11-22 20:38:28,592 - BacktestSectorFetcher - INFO - Sector Data Summary:
+2025-11-22 20:38:28,592 - BacktestSectorFetcher - INFO -    Health Care: 687 tickers
+2025-11-22 20:38:28,592 - BacktestSectorFetcher - INFO -    Other: 525 tickers
+2025-11-22 20:38:28,592 - BacktestSectorFetcher - INFO -    Financials: 369 tickers
+2025-11-22 20:38:28,592 - BacktestSectorFetcher - INFO -    Technology: 350 tickers
+2025-11-22 20:38:28,592 - BacktestSectorFetcher - INFO -    Consumer Discretionary: 139 tickers
+2025-11-22 20:38:28,592 - BacktestSectorFetcher - INFO -    Industrials: 108 tickers
+2025-11-22 20:38:28,593 - BacktestSectorFetcher - INFO -    Materials: 68 tickers
+2025-11-22 20:38:28,593 - BacktestSectorFetcher - INFO -    Communication Services: 68 tickers
+2025-11-22 20:38:28,593 - BacktestSectorFetcher - INFO -    Energy: 48 tickers
+2025-11-22 20:38:28,593 - BacktestSectorFetcher - INFO -    Utilities: 42 tickers
+2025-11-22 20:38:28,593 - BacktestSectorFetcher - INFO -    Consumer Staples: 25 tickers
+2025-11-22 20:38:28,593 - BacktestSectorFetcher - INFO -    Real Estate: 21 tickers
+2025-11-22 20:38:28,593 - BacktestSectorFetcher - INFO - Sector data fetch completed! Total: 2450 tickers
