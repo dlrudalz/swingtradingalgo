@@ -1,3 +1,17 @@
+"""
+Advanced Trading System with Real-Time Market Scanner
+Author: Senior Quantitative Developer
+Version: 3.5.0
+Date: 2024
+
+This system integrates multiple components for automated trading:
+1. Real-time ticker scanning and ranking using multiple data sources
+2. Capital and position management with Alpaca API
+3. Dynamic risk management with sector-based allocation
+4. Smart stop-loss and exit strategy system
+5. Performance-optimized database operations
+"""
+
 import alpaca_trade_api as tradeapi
 import numpy as np
 import pandas as pd
@@ -21,6 +35,8 @@ import pandas_market_calendars as mcal
 from functools import wraps
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, as_completed
 import multiprocessing as mp
+
+# Polygon API client import with fallback for different versions
 try:
     from polygon import RESTClient
 except ImportError:
@@ -36,37 +52,46 @@ from enum import Enum
 from tqdm import tqdm
 import certifi
 
-# ======================== GET MAIN DIRECTORY ======================== #
+# ======================== CONFIGURATION MANAGEMENT ======================== #
+# Main directory resolution for proper file path handling
 MAIN_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# ======================== EXCEPTIONS ======================== #
+# ======================== CUSTOM EXCEPTION HIERARCHY ======================== #
 class TickerScannerError(Exception):
-    """Base exception for Ticker Scanner"""
+    """Base exception class for all scanner-related errors"""
     pass
 
 class DatabaseError(TickerScannerError):
+    """Raised when database operations fail"""
     pass
 
 class APIError(TickerScannerError):
+    """Raised when external API calls fail"""
     pass
 
 class ConfigurationError(TickerScannerError):
+    """Raised when configuration is invalid or missing"""
     pass
 
-# ======================== CONFIGURATION ======================== #
+# ======================== SYSTEM CONFIGURATION ======================== #
 class Config:
+    """
+    Centralized configuration management for the entire trading system.
+    All system parameters, API keys, and thresholds are defined here.
+    """
+    
     # API Configuration
     POLYGON_API_KEY = "ld1Poa63U6t4Y2MwOCA2JeKQyHVrmyg8"
     
-    # Scanner Configuration
-    COMPOSITE_INDICES = ["^IXAC"]
-    MAX_CONCURRENT_REQUESTS = 200
-    RATE_LIMIT_DELAY = 0.05
-    SCAN_TIME = "08:00" 
+    # Scanner Performance Parameters
+    COMPOSITE_INDICES = ["^IXAC"]  # Primary market indices to monitor
+    MAX_CONCURRENT_REQUESTS = 200  # Rate limiting for API calls
+    RATE_LIMIT_DELAY = 0.05  # Seconds between requests
+    SCAN_TIME = "08:00"  # Daily scan initiation time
     
     # Error Handling Configuration
-    MAX_RETRIES = 3
-    RETRY_DELAY = 5
+    MAX_RETRIES = 3  # Maximum retry attempts for failed operations
+    RETRY_DELAY = 5  # Base delay between retries (in seconds)
     
     # Database Configuration
     POSTGRES_HOST = "localhost"
@@ -75,122 +100,146 @@ class Config:
     POSTGRES_USER = "hodumaru"
     POSTGRES_PASSWORD = "Leetkd214"
     
-    # Market Calendar Configuration
-    MARKET_CALENDAR = "NASDAQ"
+    # Market Calendar Settings
+    MARKET_CALENDAR = "NASDAQ"  # Exchange calendar for trading hours
     
     # Logging Configuration
-    LOG_LEVEL = "INFO"
+    LOG_LEVEL = "INFO"  # Default logging verbosity
     LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     
-    # Ranking Configuration
+    # Ranking Results Directory
     RANKING_RESULTS_DIR = os.path.join(MAIN_DIR, "ranking_results")
     
-    # Performance Configuration
-    PARALLEL_WORKERS = min(mp.cpu_count(), 16)
-    VECTORIZED_CALCULATIONS = True
-    OPTIMIZED_BATCH_SIZE = 100
-    MEMORY_EFFICIENT = True
+    # Performance Optimization Settings
+    PARALLEL_WORKERS = min(mp.cpu_count(), 16)  # Optimal worker count
+    VECTORIZED_CALCULATIONS = True  # Use NumPy vectorization for speed
+    OPTIMIZED_BATCH_SIZE = 100  # Batch size for database operations
+    MEMORY_EFFICIENT = True  # Enable memory optimization
     
-    # Memory optimization
+    # Memory Management
     AGGRESSIVE_MEMORY_OPTIMIZATION = True
-
-    # Trading Configuration
+    
+    # Alpaca Trading API Configuration
     ALPACA_API_KEY = "PKA5JB3MHULE3GSCLP25PDLG7A"
     ALPACA_SECRET_KEY = "CJeBcRe1ZRrcegDxCvKxJ3CnPKxGvQatwhvsC8ZUKm5"
-    ALPACA_BASE_URL = "https://paper-api.alpaca.markets"
+    ALPACA_BASE_URL = "https://paper-api.alpaca.markets"  # Paper trading endpoint
     
-    # Trade Schedule
-    TRADE_EXECUTION_TIME = "09:00"
+    # Trading Schedule
+    TRADE_EXECUTION_TIME = "09:00"  # Default trade execution time
     
-    # ADD THIS: Maximum positions configuration
-    MAX_POSITIONS_THRESHOLD = 10  # Maximum number of active positions allowed
-    MAX_POSITION_SIZE = 0.1  # Maximum 10% per position
-    MAX_PORTFOLIO_RISK = 0.02  # Maximum 2% portfolio risk per trade
+    # Position Management Limits
+    MAX_POSITIONS_THRESHOLD = 10  # Maximum concurrent positions
+    MAX_POSITION_SIZE = 0.1  # Maximum 10% allocation per position
+    MAX_PORTFOLIO_RISK = 0.02  # Maximum 2% risk per trade
     
-    # ADD THIS: Restart execution configuration
-    EXECUTE_ON_RESTART = True  # Whether to execute trades on restart if below threshold
-    MIN_RESTART_CONFIDENCE = 0.6  # Minimum confidence required for restart execution
-
-    def __init__(self):
-        self.MAX_TICKERS_TO_RANK = None
-        # Create the JSON files directory if it doesn't exist
-        os.makedirs(self.JSON_FILES_DIR, exist_ok=True)
+    # System Restart Behavior
+    EXECUTE_ON_RESTART = True  # Execute pending trades on system restart
+    MIN_RESTART_CONFIDENCE = 0.6  # Minimum confidence for restart trades
     
-    # File paths - UPDATED TO USE SPECIFIED DIRECTORY
+    # File System Configuration
     JSON_FILES_DIR = r"C:\Users\kyung\StockScanner\json_files"
     
+    # Derived file paths for caching and state management
     SECTOR_CACHE_FILE = os.path.join(JSON_FILES_DIR, "sector_cache.json")
     SECTOR_BATCH_SIZE = 100
     SECTOR_REQUEST_DELAY = 1.0
     SECTOR_MAPPING_FILE = os.path.join(JSON_FILES_DIR, "sector_mapping.json")
     RUN_STATUS_FILE = os.path.join(JSON_FILES_DIR, "run_status.json")
+    
+    # Risk Management Parameters
+    MAX_SECTOR_ALLOCATION = 0.25  # Maximum 25% allocation to any sector
+    MAX_POSITION_SIZE = 0.1  # Maximum 10% per position
+    
+    def __init__(self):
+        """
+        Initialize configuration and ensure necessary directories exist.
+        """
+        self.MAX_TICKERS_TO_RANK = None
+        # Create directory structure if it doesn't exist
+        os.makedirs(self.JSON_FILES_DIR, exist_ok=True)
 
-    # Trading Configuration
-
-    MAX_SECTOR_ALLOCATION = 0.25
-    MAX_POSITION_SIZE = 0.1
-
-# Initialize config instance
+# Global configuration instance
 config = Config()
 
-# ======================== LOGGING ======================== #
+# ======================== LOGGING SYSTEM ======================== #
 def setup_logging():
-    """Configure unified logging with file and console handlers - SINGLE FILE VERSION"""
+    """
+    Configure unified logging system with multiple handlers.
+    
+    Features:
+    - Single main log file with rotation
+    - Separate error log for easier debugging
+    - Console output for real-time monitoring
+    - Prevents duplicate log entries
+    """
     logs_dir = os.path.join(MAIN_DIR, "_logs")
     os.makedirs(logs_dir, exist_ok=True)
     
+    # Main logger instance
     logger = logging.getLogger("TickerScanner")
     
-    # Check if logger already has handlers to prevent duplication
+    # Prevent handler duplication on multiple imports
     if logger.handlers:
         return logger
     
+    # Set log level from configuration
     logger.setLevel(getattr(logging, config.LOG_LEVEL.upper()))
     
+    # Standardized log format
     formatter = logging.Formatter(config.LOG_FORMAT)
     
-    # SINGLE main log file (without timestamp in filename)
+    # Main log file handler (persistent across sessions)
     main_log_path = os.path.join(logs_dir, "ticker_scanner.log")
     main_handler = logging.FileHandler(main_log_path, encoding='utf-8')
     main_handler.setFormatter(formatter)
     
-    # Console handler
+    # Console handler for real-time monitoring
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
     
-    # Error handler (separate file for errors only)
+    # Error-specific handler (separate file for critical issues)
     error_handler = logging.FileHandler(os.path.join(logs_dir, "errors.log"), encoding='utf-8')
     error_handler.setLevel(logging.ERROR)
     error_handler.setFormatter(formatter)
     
-    # Add handlers to logger
+    # Attach all handlers
     logger.addHandler(main_handler)
     logger.addHandler(console_handler)
     logger.addHandler(error_handler)
     
-    # Prevent propagation to root logger to avoid duplicate logs
+    # Prevent propagation to avoid duplicate logs
     logger.propagate = False
     
     return logger
 
-# Initialize logger once
+# Global logger instance
 logger = setup_logging()
 
-# ======================== TRADING ENUMS AND DATA CLASSES ======================== #
+# ======================== TRADING DATA TYPES AND ENUMS ======================== #
 class TradeScore(Enum):
+    """
+    Enumeration for trade signal strength classification.
+    Used to prioritize execution and determine position sizing.
+    """
     STRONG = "STRONG"
     MODERATE = "MODERATE"
     WEAK = "WEAK"
     TEMPORARY_WEAK = "TEMPORARY_WEAK"
 
 class VolatilityState(Enum):
+    """
+    Market volatility states that affect scanning frequency and position sizing.
+    """
     HIGH = "HIGH"
     LOW = "LOW"
     NORMAL = "NORMAL"
 
 @dataclass
 class PendingExecution:
-    """Pending trade execution that displays before market open"""
+    """
+    Data class representing a trade pending execution.
+    Contains all necessary information for trade execution with metadata.
+    """
     ticker: str
     sector: str
     signal_type: 'TradeSignalType'
@@ -200,15 +249,19 @@ class PendingExecution:
     ranking_score: float
     reason: str
     timestamp: str = None
-    priority: int = 0
+    priority: int = 0  # Higher priority = earlier execution
     
     def __post_init__(self):
+        """Auto-populate timestamp if not provided."""
         if self.timestamp is None:  
             self.timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 @dataclass
 class SmartStopLoss:
-    """Smart dynamic stop loss configuration"""
+    """
+    Dynamic stop-loss configuration with multiple stop types.
+    Supports trailing stops, volatility-based stops, and support-based stops.
+    """
     ticker: str
     initial_stop_price: float
     current_stop_price: float
@@ -216,15 +269,19 @@ class SmartStopLoss:
     atr_multiplier: float = 2.0
     trailing_percent: float = 0.02
     last_updated: str = None
-    activation_price: float = None  # Price where stop becomes active
+    activation_price: float = None  # Price at which stop becomes active
     
     def __post_init__(self):
+        """Auto-populate last_updated timestamp."""
         if self.last_updated is None:
             self.last_updated = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 @dataclass
 class ExitDecision:
-    """Result of exit strategy evaluation"""
+    """
+    Comprehensive exit decision result with metadata.
+    Contains all information needed to execute an exit from a position.
+    """
     should_exit: bool
     reason: str
     exit_type: str  # "STOP_LOSS", "WEAK_SIGNAL", "TRAILING_STOP", "TIME_BASED"
@@ -233,44 +290,66 @@ class ExitDecision:
     timestamp: str = None
     
     def __post_init__(self):
+        """Auto-populate timestamp if not provided."""
         if self.timestamp is None:
             self.timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 # ======================== CAPITAL AND POSITION DETECTOR ======================== #
 class CapitalPositionDetector:
+    """
+    Real-time capital and position detection system.
+    
+    Responsibilities:
+    1. Detect available trading capital
+    2. Identify existing positions
+    3. Calculate portfolio allocation
+    4. Display comprehensive account status
+    
+    This runs BEFORE any trading decisions are made.
+    """
     
     def __init__(self, trading_manager):
+        """
+        Initialize detector with trading manager reference.
+        
+        Args:
+            trading_manager: AlpacaTradingManager instance for API access
+        """
         self.trading_manager = trading_manager
         self.capital_info = None
         self.positions_info = None
         self.portfolio_summary = None
         self.detection_complete = False
-        self.first_detection = True  # Add this flag
+        self.first_detection = True  # Flag for initial detection logging
     
     async def detect_capital_and_positions(self):
-        """Scan for capital and positions - this runs FIRST before any other processing"""
-        # Only log on first detection or when explicitly needed
+        """
+        Main detection method - scans for capital and positions.
+        
+        Returns:
+            bool: True if detection successful, False otherwise
+        """
+        # Log only on first detection to avoid noise
         if self.first_detection:
             logger.info("🔍 SCANNING CAPITAL AND EXISTING POSITIONS FIRST...")
             self.first_detection = False
         else:
-            logger.debug("Detecting capital and positions...")  # Use debug for subsequent calls
+            logger.debug("Detecting capital and positions...")
         
         try:
-            # Step 1: Get capital information
+            # Step 1: Retrieve account information including buying power
             self.capital_info = await self.trading_manager.get_account_info()
             if not self.capital_info:
                 logger.error("❌ Failed to retrieve capital information")
                 return False
             
-            # Step 2: Get existing positions
+            # Step 2: Get all current positions
             self.positions_info = await self.trading_manager.get_positions()
             
-            # Step 3: Get portfolio summary
+            # Step 3: Generate portfolio summary for risk management
             self.portfolio_summary = await self.trading_manager.get_portfolio_summary()
             
             self.detection_complete = True
-
             return True
             
         except Exception as e:
@@ -278,7 +357,10 @@ class CapitalPositionDetector:
             return False
     
     async def _display_detection_results(self):
-        """Display the capital and position detection results"""
+        """
+        Display formatted detection results to console.
+        Shows portfolio value, positions, and allocation percentages.
+        """
         if not self.detection_complete:
             return
         
@@ -286,7 +368,7 @@ class CapitalPositionDetector:
         print("🏦 CAPITAL & POSITION DETECTION RESULTS")
         print("="*60)
         
-        # Capital Information
+        # Capital Information Display
         if self.capital_info:
             print(f"💰 PORTFOLIO VALUE: ${self.capital_info.get('portfolio_value', 0):.2f}")
             print(f"💵 AVAILABLE CASH: ${self.capital_info.get('cash', 0):.2f}")
@@ -297,7 +379,7 @@ class CapitalPositionDetector:
         else:
             print("❌ No capital information available")
         
-        # Positions Information
+        # Positions Display with P&L
         print(f"\n📊 EXISTING POSITIONS: {len(self.positions_info) if self.positions_info else 0}")
         if self.positions_info:
             print(f"{'Symbol':<10} {'Qty':<8} {'Avg Entry':<12} {'Current':<10} {'P/L':<10} {'P/L %':<8}")
@@ -310,7 +392,7 @@ class CapitalPositionDetector:
         else:
             print("   No existing positions found")
         
-        # Portfolio Summary
+        # Portfolio Allocation Summary
         if self.portfolio_summary:
             print(f"\n📋 PORTFOLIO ALLOCATION:")
             print(f"   💰 Cash: {self.portfolio_summary.get('cash_allocation_pct', 0):.1f}%")
@@ -322,23 +404,49 @@ class CapitalPositionDetector:
         print("="*60)
     
     def get_available_capital(self) -> float:
-        """Get available capital for trading"""
+        """
+        Get available capital for new positions.
+        
+        Returns:
+            float: Available buying power
+        """
         if self.capital_info:
             return self.capital_info.get('buying_power', 0.0)
         return 0.0
     
     def get_existing_positions(self) -> List[Dict]:
-        """Get list of existing positions"""
+        """
+        Retrieve list of existing positions.
+        
+        Returns:
+            List[Dict]: List of position dictionaries
+        """
         return self.positions_info or []
     
     def has_position(self, ticker: str) -> bool:
-        """Check if we have an existing position for a ticker"""
+        """
+        Check if ticker already has an open position.
+        
+        Args:
+            ticker: Stock symbol to check
+            
+        Returns:
+            bool: True if position exists
+        """
         if not self.positions_info:
             return False
         return any(pos['symbol'] == ticker for pos in self.positions_info)
     
     def get_position_quantity(self, ticker: str) -> float:
-        """Get quantity of existing position for a ticker"""
+        """
+        Get quantity of existing position for a ticker.
+        
+        Args:
+            ticker: Stock symbol
+            
+        Returns:
+            float: Position quantity, 0 if no position exists
+        """
         if not self.positions_info:
             return 0.0
         for position in self.positions_info:
@@ -348,9 +456,19 @@ class CapitalPositionDetector:
 
 # ======================== ALPACA TRADING MANAGER ======================== #
 class AlpacaTradingManager:
-    """Manages Alpaca trading operations including capital and position detection"""
+    """
+    Comprehensive Alpaca API wrapper for trading operations.
+    
+    Responsibilities:
+    1. API connection management with SSL configuration
+    2. Account information retrieval
+    3. Position management
+    4. Order execution
+    5. Portfolio analytics
+    """
     
     def __init__(self):
+        """Initialize with configuration from global config."""
         self.api_key = config.ALPACA_API_KEY
         self.secret_key = config.ALPACA_SECRET_KEY
         self.base_url = config.ALPACA_BASE_URL
@@ -360,19 +478,25 @@ class AlpacaTradingManager:
         self.positions = []
         
     async def initialize(self):
-        """Initialize Alpaca API connection"""
+        """
+        Initialize Alpaca API connection with SSL configuration.
+        
+        Returns:
+            bool: True if initialization successful
+        """
         try:
             if not self.api_key or not self.secret_key:
                 logger.error("Alpaca API credentials not configured")
                 return False
                 
-            # Fix SSL certificate issue
+            # Configure SSL certificates for secure connections
             os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
             os.environ['SSL_CERT_FILE'] = certifi.where()
             
+            # Initialize REST API client
             self.api = tradeapi.REST(self.api_key, self.secret_key, self.base_url, api_version='v2')
             
-            # Test connection
+            # Test connection with account validation
             account = self.api.get_account()
             self.initialized = True
             return True
@@ -383,7 +507,18 @@ class AlpacaTradingManager:
             return False
     
     def safe_get_account_attr(self, account, attr_name, default="N/A", is_currency=False):
-        """Safely get account attribute with error handling"""
+        """
+        Safely retrieve account attribute with error handling.
+        
+        Args:
+            account: Alpaca account object
+            attr_name: Attribute name to retrieve
+            default: Default value if attribute missing
+            is_currency: If True, convert to float
+            
+        Returns:
+            Attribute value or default
+        """
         try:
             value = getattr(account, attr_name)
             if value is None:
@@ -397,7 +532,12 @@ class AlpacaTradingManager:
             return default
     
     async def get_account_info(self):
-        """Get account information including capital"""
+        """
+        Retrieve comprehensive account information.
+        
+        Returns:
+            Dict: Account information including capital, equity, and status
+        """
         if not self.initialized:
             await self.initialize()
             if not self.initialized:
@@ -406,6 +546,7 @@ class AlpacaTradingManager:
         try:
             account = self.api.get_account()
             
+            # Build comprehensive account info dictionary
             self.account_info = {
                 'account_number': self.safe_get_account_attr(account, 'account_number'),
                 'portfolio_value': self.safe_get_account_attr(account, 'portfolio_value', is_currency=True),
@@ -427,7 +568,12 @@ class AlpacaTradingManager:
             return None
 
     async def get_positions(self):
-        """Get all current positions"""
+        """
+        Retrieve all current positions with detailed metrics.
+        
+        Returns:
+            List[Dict]: List of position dictionaries
+        """
         if not self.initialized:
             await self.initialize()
             if not self.initialized:
@@ -437,6 +583,7 @@ class AlpacaTradingManager:
             positions = self.api.list_positions()
             self.positions = []
             
+            # Process each position with error handling
             for position in positions:
                 try:
                     position_data = {
@@ -461,14 +608,30 @@ class AlpacaTradingManager:
             return []
     
     async def has_existing_position(self, ticker: str) -> bool:
-        """Check if we have an existing position for a ticker"""
+        """
+        Check if ticker has an existing position.
+        
+        Args:
+            ticker: Stock symbol
+            
+        Returns:
+            bool: True if position exists
+        """
         if not self.positions:
             await self.get_positions()
         
         return any(pos['symbol'] == ticker for pos in self.positions)
     
     async def get_position_quantity(self, ticker: str) -> float:
-        """Get quantity of existing position for a ticker"""
+        """
+        Get quantity of existing position.
+        
+        Args:
+            ticker: Stock symbol
+            
+        Returns:
+            float: Position quantity, 0 if none
+        """
         if not self.positions:
             await self.get_positions()
         
@@ -478,20 +641,31 @@ class AlpacaTradingManager:
         return 0.0
     
     async def get_available_capital(self) -> float:
-        """Get available buying power for trading"""
+        """
+        Get available buying power for new trades.
+        
+        Returns:
+            float: Available capital
+        """
         account_info = await self.get_account_info()
         if account_info:
             return account_info.get('buying_power', 0.0)
         return 0.0
     
     async def get_portfolio_summary(self):
-        """Get portfolio summary"""
+        """
+        Generate comprehensive portfolio summary.
+        
+        Returns:
+            Dict: Portfolio allocation and metrics
+        """
         account_info = await self.get_account_info()
         positions = await self.get_positions()
         
         if not account_info:
             return None
         
+        # Calculate portfolio metrics
         summary = {
             'total_portfolio_value': account_info.get('portfolio_value', 0),
             'total_positions_value': sum(pos.get('market_value', 0) for pos in positions),
@@ -502,7 +676,7 @@ class AlpacaTradingManager:
             'trading_blocked': account_info.get('trading_blocked', False)
         }
         
-        # Calculate allocations
+        # Calculate allocation percentages
         if summary['total_portfolio_value'] > 0:
             summary['cash_allocation_pct'] = (summary['available_cash'] / summary['total_portfolio_value']) * 100
             summary['positions_allocation_pct'] = (summary['total_positions_value'] / summary['total_portfolio_value']) * 100
@@ -510,7 +684,10 @@ class AlpacaTradingManager:
         return summary
     
     async def display_account_status(self):
-        """Display account status in a formatted way"""
+        """
+        Display formatted account status to console.
+        Useful for manual inspection and debugging.
+        """
         account_info = await self.get_account_info()
         positions = await self.get_positions()
         portfolio_summary = await self.get_portfolio_summary()
@@ -523,6 +700,7 @@ class AlpacaTradingManager:
         print("ALPACA ACCOUNT STATUS")
         print("="*50)
         
+        # Account Details
         print(f"Account Number: {account_info.get('account_number', 'N/A')}")
         print(f"Portfolio Value: ${account_info.get('portfolio_value', 0):.2f}")
         print(f"Buying Power: ${account_info.get('buying_power', 0):.2f}")
@@ -531,6 +709,7 @@ class AlpacaTradingManager:
         print(f"Status: {account_info.get('status', 'N/A')}")
         print(f"Trading Blocked: {account_info.get('trading_blocked', 'N/A')}")
         
+        # Positions Display
         print(f"\nPOSITIONS: {len(positions)}")
         if positions:
             print(f"{'Symbol':<10} {'Qty':<8} {'Avg Entry':<12} {'Current':<10} {'P/L':<10} {'P/L %':<8}")
@@ -542,6 +721,7 @@ class AlpacaTradingManager:
         else:
             print("No positions found")
         
+        # Allocation Summary
         if portfolio_summary:
             print(f"\nPORTFOLIO ALLOCATION:")
             print(f"Cash: {portfolio_summary.get('cash_allocation_pct', 0):.1f}%")
@@ -549,27 +729,50 @@ class AlpacaTradingManager:
         
         print("="*50)
 
-# ======================== TRADING EXECUTION SYSTEM ======================== #
+# ======================== RISK MANAGEMENT COMPONENTS ======================== #
 class SectorRiskManager:
-    """Manages sector-based risk and position allocation"""
+    """
+    Sector-based risk management system.
+    
+    Prevents over-concentration in any single sector by:
+    1. Tracking sector allocations
+    2. Enforcing maximum sector limits
+    3. Limiting positions per sector
+    """
     
     def __init__(self, max_sector_allocation: float = 0.25, max_sector_positions: int = 3):
+        """
+        Initialize with risk parameters.
+        
+        Args:
+            max_sector_allocation: Maximum percentage of portfolio in any sector
+            max_sector_positions: Maximum positions allowed per sector
+        """
         self.max_sector_allocation = max_sector_allocation
         self.max_sector_positions = max_sector_positions
         self.sector_exposures = defaultdict(float)
         self.sector_positions = defaultdict(list)
         
     async def calculate_sector_allocation(self, positions: List[Dict]) -> Dict[str, float]:
-        """Calculate current sector allocations from positions"""
+        """
+        Calculate current sector allocations from positions.
+        
+        Args:
+            positions: List of position dictionaries
+            
+        Returns:
+            Dict[str, float]: Sector to allocation percentage mapping
+        """
         sector_exposures = defaultdict(float)
         total_portfolio_value = 0
         
+        # Aggregate positions by sector
         for position in positions:
             ticker = position['symbol']
             market_value = position.get('market_value', 0)
             total_portfolio_value += market_value
             
-            # Get sector for ticker
+            # Get sector classification (requires sector mapping)
             sector = await self._get_ticker_sector(ticker)
             if sector:
                 sector_exposures[sector] += market_value
@@ -584,7 +787,17 @@ class SectorRiskManager:
     
     async def can_add_position(self, ticker: str, position_size: float, 
                              total_portfolio_value: float) -> bool:
-        """Check if we can add a position considering sector limits"""
+        """
+        Determine if new position can be added without violating sector limits.
+        
+        Args:
+            ticker: Stock symbol
+            position_size: Dollar value of proposed position
+            total_portfolio_value: Total portfolio value
+            
+        Returns:
+            bool: True if position can be added
+        """
         if total_portfolio_value <= 0:
             return False
             
@@ -592,6 +805,7 @@ class SectorRiskManager:
         if not sector:
             return True
         
+        # Calculate proposed allocation percentage
         proposed_allocation = position_size / total_portfolio_value
         current_allocation = self.sector_exposures.get(sector, 0)
         
@@ -607,14 +821,38 @@ class SectorRiskManager:
         return True
     
     async def _get_ticker_sector(self, ticker: str) -> Optional[str]:
-        """Get sector for a ticker - implement based on your data source"""
-        # Placeholder - integrate with your existing sector mapping
+        """
+        Get sector classification for a ticker.
+        
+        Note: This is a placeholder - integrate with actual sector data source.
+        
+        Args:
+            ticker: Stock symbol
+            
+        Returns:
+            Optional[str]: Sector name or None
+        """
+        # TODO: Integrate with sector mapping database
         return "Technology"
 
 class DynamicStopLossManager:
-    """Manages smart, dynamic stop losses using real-time data"""
+    """
+    Intelligent stop-loss system with dynamic adjustment.
+    
+    Features:
+    1. Volatility-based stop calculation using ATR
+    2. Multiple stop types (trailing, support, time-based)
+    3. Automatic adjustment based on market conditions
+    """
     
     def __init__(self, data_provider: 'DataProvider', volatility_lookback: int = 20):
+        """
+        Initialize with data provider and volatility settings.
+        
+        Args:
+            data_provider: Data provider instance for price history
+            volatility_lookback: Days to calculate volatility from
+        """
         self.data_provider = data_provider
         self.volatility_lookback = volatility_lookback
         self.active_stops: Dict[str, SmartStopLoss] = {}
@@ -622,8 +860,18 @@ class DynamicStopLossManager:
     
     async def calculate_initial_stop_loss(self, ticker: str, entry_price: float, 
                                         signal_type: 'TradeSignalType') -> SmartStopLoss:
-        """Calculate initial smart stop loss"""
-        # Get recent data for volatility calculation
+        """
+        Calculate initial stop loss based on volatility and signal type.
+        
+        Args:
+            ticker: Stock symbol
+            entry_price: Entry price for position
+            signal_type: Type of trade signal (BUY/SELL)
+            
+        Returns:
+            SmartStopLoss: Configured stop loss object
+        """
+        # Retrieve historical data for volatility calculation
         end_date = datetime.now().strftime("%Y-%m-%d")
         start_date = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
         
@@ -631,17 +879,17 @@ class DynamicStopLossManager:
             ticker, "1day", start_date, end_date
         )
         
+        # Fallback to percentage-based stop if insufficient data
         if df.empty or len(df) < 10:
-            # Fallback to percentage-based stop
             stop_percent = 0.08 if signal_type == TradeSignalType.BUY else 0.06
             stop_price = entry_price * (1 - stop_percent) if signal_type == TradeSignalType.BUY else entry_price * (1 + stop_percent)
             return SmartStopLoss(ticker, stop_price, stop_price, "PERCENTAGE_BASED")
         
-        # Calculate ATR for volatility-based stop
+        # Calculate volatility metrics
         atr = await self._calculate_atr(df)
         current_volatility = await self._calculate_volatility(df)
         
-        # Determine stop type and multiplier based on volatility
+        # Determine stop parameters based on volatility regime
         if current_volatility > 0.04:  # High volatility
             multiplier = 2.5
             stop_type = "VOLATILITY_HIGH"
@@ -670,12 +918,22 @@ class DynamicStopLossManager:
         )
     
     async def _calculate_atr(self, df: pd.DataFrame, period: int = 14) -> float:
-        """Calculate Average True Range"""
+        """
+        Calculate Average True Range (ATR) for volatility measurement.
+        
+        Args:
+            df: DataFrame with OHLC data
+            period: Lookback period for ATR calculation
+            
+        Returns:
+            float: ATR value
+        """
         try:
             high = df['high'].values
             low = df['low'].values
             close = df['close'].values
             
+            # True Range calculation
             tr = np.zeros(len(high))
             for i in range(1, len(high)):
                 tr1 = high[i] - low[i]
@@ -689,7 +947,15 @@ class DynamicStopLossManager:
             return 0.02  # Default 2% ATR
     
     async def _calculate_volatility(self, df: pd.DataFrame) -> float:
-        """Calculate price volatility"""
+        """
+        Calculate annualized price volatility.
+        
+        Args:
+            df: DataFrame with price data
+            
+        Returns:
+            float: Annualized volatility
+        """
         try:
             returns = df['close'].pct_change().dropna()
             volatility = returns.std() * np.sqrt(252)  # Annualized
@@ -699,13 +965,28 @@ class DynamicStopLossManager:
 
 # ======================== UNIFIED EXIT STRATEGY ======================== #
 class ExitStrategyManager:
-    """Unified exit strategy that consolidates all exit logic in one place"""
+    """
+    Unified exit strategy that consolidates all exit logic.
+    
+    Decision hierarchy:
+    1. Stop-loss triggers (highest priority)
+    2. Trade score deterioration
+    3. Time-based exits
+    4. Volatility-based emergency exits
+    """
     
     def __init__(self, confidence_threshold: float = 0.4, temporary_weak_threshold: float = 0.3):
+        """
+        Initialize exit strategy with confidence thresholds.
+        
+        Args:
+            confidence_threshold: Minimum confidence to maintain position
+            temporary_weak_threshold: Threshold for temporary weakness detection
+        """
         self.confidence_threshold = confidence_threshold
         self.temporary_weak_threshold = temporary_weak_threshold
         self.temporary_weak_signals: Dict[str, List[float]] = defaultdict(list)
-        self.max_weak_periods = 3  # Number of periods to consider for temporary weakness
+        self.max_weak_periods = 3  # Periods to consider for temporary weakness
     
     async def exit_strategy(self, 
                           ticker: str,
@@ -715,7 +996,18 @@ class ExitStrategyManager:
                           stop_loss_manager: Optional[DynamicStopLossManager] = None,
                           signal_type: 'TradeSignalType' = None) -> ExitDecision:
         """
-        Unified exit strategy that consolidates ALL exit logic
+        Unified exit decision-making method.
+        
+        Args:
+            ticker: Stock symbol
+            current_price: Current market price
+            position_data: Position information dictionary
+            current_ranking: Current ranking data
+            stop_loss_manager: Stop loss manager instance
+            signal_type: Trade signal type
+            
+        Returns:
+            ExitDecision: Comprehensive exit decision
         """
         exit_reasons = []
         should_exit = False
@@ -726,7 +1018,7 @@ class ExitStrategyManager:
         if stop_loss_manager and signal_type and ticker in stop_loss_manager.active_stops:
             stop_loss = stop_loss_manager.active_stops[ticker]
             
-            # Check if stop loss is triggered
+            # Check stop loss trigger based on signal type
             if signal_type == TradeSignalType.BUY:
                 stop_triggered = current_price <= stop_loss.current_stop_price
             else:  # SHORT
@@ -738,11 +1030,11 @@ class ExitStrategyManager:
                 exit_reasons.append(f"Stop loss triggered at ${stop_loss.current_stop_price:.2f}")
                 confidence = 0.95
         
-        # 2. TRADE SCORE EVALUATION (if ranking data available)
+        # 2. TRADE SCORE EVALUATION
         if not should_exit and current_ranking:
             trade_score = await self._evaluate_trade_score(ticker, current_ranking, position_data)
             
-            # Calculate P&L percentage
+            # Calculate current P&L percentage
             entry_price = float(position_data['avg_entry_price'])
             if signal_type == TradeSignalType.BUY:
                 pnl_pct = (current_price - entry_price) / entry_price
@@ -778,7 +1070,7 @@ class ExitStrategyManager:
                 exit_reasons.append(vol_reason)
                 confidence = 0.9
         
-        # Combine all reasons
+        # Combine all exit reasons
         final_reason = " | ".join(exit_reasons) if exit_reasons else "No exit conditions met"
         
         return ExitDecision(
@@ -791,11 +1083,21 @@ class ExitStrategyManager:
     
     async def _evaluate_trade_score(self, ticker: str, current_ranking: 'TickerRanking', 
                                   position_data: Dict) -> TradeScore:
-        """Evaluate if a trade should be exited based on current score"""
+        """
+        Evaluate trade signal strength based on current ranking.
+        
+        Args:
+            ticker: Stock symbol
+            current_ranking: Current ranking data
+            position_data: Position information
+            
+        Returns:
+            TradeScore: Strength classification
+        """
         confidence = current_ranking.confidence
         total_score = current_ranking.total_score
         
-        # Strong signal - keep position
+        # Strong signal - maintain position
         if confidence > 0.7 and total_score > 0.6:
             return TradeScore.STRONG
         
@@ -807,26 +1109,36 @@ class ExitStrategyManager:
         if await self._is_temporary_weakness(ticker, confidence, total_score):
             return TradeScore.TEMPORARY_WEAK
         
-        # Genuinely weak signal - exit
+        # Weak signal - consider exit
         return TradeScore.WEAK
     
     async def _is_temporary_weakness(self, ticker: str, confidence: float, 
                                    total_score: float) -> bool:
-        """Determine if current weakness is temporary"""
-        # Store current values
+        """
+        Determine if current weakness is temporary vs. permanent.
+        
+        Args:
+            ticker: Stock symbol
+            confidence: Current confidence score
+            total_score: Current total score
+            
+        Returns:
+            bool: True if weakness appears temporary
+        """
+        # Store current values for trend analysis
         self.temporary_weak_signals[ticker].append((confidence, total_score))
         
-        # Keep only recent history
+        # Maintain sliding window of recent signals
         if len(self.temporary_weak_signals[ticker]) > self.max_weak_periods:
             self.temporary_weak_signals[ticker].pop(0)
         
         history = self.temporary_weak_signals[ticker]
         
-        # Need sufficient history to determine
+        # Need sufficient history for trend analysis
         if len(history) < 2:
-            return True  # Assume temporary until we have more data
+            return True  # Assume temporary until more data
         
-        # Check if this is a sudden drop from previously strong signals
+        # Check for sudden drop from previously strong signals
         strong_periods = sum(1 for conf, score in history[:-1] 
                            if conf > 0.6 and score > 0.5)
         
@@ -836,7 +1148,7 @@ class ExitStrategyManager:
         if strong_periods >= 1 and current_weak:
             return True
         
-        # Check trend - if confidence is improving even from low levels
+        # Check for improving trend from low levels
         if len(history) >= 3:
             recent_confidences = [conf for conf, score in history[-3:]]
             if (recent_confidences[-1] > recent_confidences[-2] > recent_confidences[-3] and
@@ -847,50 +1159,96 @@ class ExitStrategyManager:
     
     async def _should_exit_based_on_score(self, ticker: str, trade_score: TradeScore, 
                                         position_pnl: float) -> tuple:
-        """Determine if trade should be exited based on score and P&L"""
+        """
+        Determine exit decision based on trade score and P&L.
+        
+        Args:
+            ticker: Stock symbol
+            trade_score: Current trade score classification
+            position_pnl: Current P&L percentage
+            
+        Returns:
+            tuple: (should_exit, reason)
+        """
         if trade_score == TradeScore.STRONG:
             return False, "Strong signal - maintain position"
         
         elif trade_score == TradeScore.MODERATE:
             # For moderate signals, consider P&L
-            if position_pnl < -0.05:  # 5% loss
+            if position_pnl < -0.05:  # 5% loss threshold
                 return True, f"Moderate signal with {position_pnl:.1%} loss - exit"
             return False, "Moderate signal - monitor"
         
         elif trade_score == TradeScore.TEMPORARY_WEAK:
-            # For temporary weakness, be more patient with losses
-            if position_pnl < -0.08:  # 8% loss
+            # More patient with temporary weakness
+            if position_pnl < -0.08:  # 8% loss threshold
                 return True, f"Temporary weak signal with {position_pnl:.1%} loss - exit"
             return False, "Temporary weakness - hold position"
         
         elif trade_score == TradeScore.WEAK:
-            # Exit weak signals unless they're profitable
-            if position_pnl <= 0.02:  # Exit if not making good profit
+            # Exit weak signals unless profitable
+            if position_pnl <= 0.02:  # Minimal profit threshold
                 return True, f"Weak signal with {position_pnl:.1%} P&L - exit"
             return False, "Weak signal but profitable - monitor closely"
         
         return False, "Unknown signal state"
     
     async def _check_time_based_exit(self, position_data: Dict) -> tuple:
-        """Check for time-based exit conditions"""
+        """
+        Check for time-based exit conditions.
+        
+        Args:
+            position_data: Position information
+            
+        Returns:
+            tuple: (should_exit, reason)
+        """
+        # Placeholder for time-based exit logic
+        # Could include maximum holding period, end-of-day exits, etc.
         return False, ""
     
     async def _check_volatility_exit(self, ticker: str, current_price: float, 
                                    position_data: Dict) -> tuple:
-        """Check for volatility-based emergency exits"""
-        # Example: Exit if price moves too rapidly against us
+        """
+        Check for emergency volatility-based exits.
+        
+        Args:
+            ticker: Stock symbol
+            current_price: Current market price
+            position_data: Position information
+            
+        Returns:
+            tuple: (should_exit, reason)
+        """
+        # Example: Exit on extreme adverse price movement
         entry_price = float(position_data['avg_entry_price'])
         price_change_pct = abs(current_price - entry_price) / entry_price
         
-        if price_change_pct > 0.15:  # 15% move against position
+        if price_change_pct > 0.15:  # 15% adverse move
             return True, f"Emergency exit: {price_change_pct:.1%} price move"
         
         return False, ""
 
+# ======================== REAL-TIME DATA MANAGEMENT ======================== #
 class RealTimeDataManager:
-    """Manages real-time data streaming for stop loss and monitoring"""
+    """
+    Real-time data streaming manager for price updates and monitoring.
+    
+    Features:
+    1. WebSocket connection management
+    2. Real-time price caching
+    3. Volatility monitoring
+    4. Connection resilience
+    """
     
     def __init__(self, alpaca_manager: AlpacaTradingManager, data_provider: 'DataProvider'):
+        """
+        Initialize with trading manager and data provider.
+        
+        Args:
+            alpaca_manager: Alpaca trading manager for streaming
+            data_provider: Data provider for fallback data
+        """
         self.alpaca_manager = alpaca_manager
         self.data_provider = data_provider
         self.connected = False
@@ -899,11 +1257,11 @@ class RealTimeDataManager:
         self.volatility_monitor = VolatilityMonitor()
     
     async def connect(self):
-        """Connect to real-time data stream"""
+        """Initialize real-time data streaming connection."""
         try:
-            # Initialize Alpaca streaming if available
+            # Initialize streaming connection based on available APIs
             if hasattr(self.alpaca_manager, 'api'):
-                # Alpaca WebSocket connection would go here
+                # Alpaca WebSocket connection setup
                 logger.info("Real-time data manager initialized (Alpaca)")
             else:
                 logger.info("Real-time data manager initialized (Polygon)")
@@ -914,14 +1272,22 @@ class RealTimeDataManager:
             self.connected = False
     
     async def get_current_price(self, ticker: str) -> Optional[float]:
-        """Get current price for a ticker"""
+        """
+        Get current price with caching and fallback.
+        
+        Args:
+            ticker: Stock symbol
+            
+        Returns:
+            Optional[float]: Current price or None
+        """
         try:
-            # Try to get from last prices first
+            # Check cache first for performance
             async with self.price_lock:
                 if ticker in self.last_prices:
                     return self.last_prices[ticker]
             
-            # Fallback to API call
+            # Fallback to API if not in cache
             end_date = datetime.now().strftime("%Y-%m-%d")
             start_date = (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d")
             
@@ -941,12 +1307,23 @@ class RealTimeDataManager:
             return None
     
     async def update_price(self, ticker: str, price: float):
-        """Update price for a ticker (called by streaming)"""
+        """
+        Update cached price (called by streaming handlers).
+        
+        Args:
+            ticker: Stock symbol
+            price: New price value
+        """
         async with self.price_lock:
             self.last_prices[ticker] = price
     
     async def monitor_volatility(self) -> VolatilityState:
-        """Monitor market volatility state"""
+        """
+        Monitor current market volatility state.
+        
+        Returns:
+            VolatilityState: Current volatility classification
+        """
         return await self.volatility_monitor.get_volatility_state()
 
 class VolatilityMonitor:
@@ -1050,21 +1427,50 @@ class PendingExecutionManager:
         print(f"Total Pending Executions: {len(pending)}")
         print("="*80)
 
+# ======================== POSITION SIZING AND EXECUTION ======================== #
 class DynamicPositionSizer:
-    """Calculates dynamic position sizes based on capital and risk"""
+    """
+    Dynamic position sizing based on risk and portfolio constraints.
+    
+    Calculates optimal position size considering:
+    1. Maximum position size limits
+    2. Portfolio risk limits
+    3. Confidence-based adjustments
+    4. Stop loss distance
+    """
     
     def __init__(self, max_position_size: float = 0.1, max_portfolio_risk: float = 0.02):
-        self.max_position_size = max_position_size  # Max 10% per position
-        self.max_portfolio_risk = max_portfolio_risk  # Max 2% portfolio risk per trade
+        """
+        Initialize with risk parameters.
+        
+        Args:
+            max_position_size: Maximum 10% per position
+            max_portfolio_risk: Maximum 2% portfolio risk per trade
+        """
+        self.max_position_size = max_position_size
+        self.max_portfolio_risk = max_portfolio_risk
     
     async def calculate_position_size(self, ticker: str, entry_price: float, 
                                     stop_price: float, available_capital: float,
                                     confidence: float, signal_type: 'TradeSignalType') -> int:
-        """Calculate position size based on risk and capital"""
+        """
+        Calculate optimal position size.
+        
+        Args:
+            ticker: Stock symbol
+            entry_price: Proposed entry price
+            stop_price: Stop loss price
+            available_capital: Available buying power
+            confidence: Trade confidence score
+            signal_type: Trade signal type
+            
+        Returns:
+            int: Number of shares to trade
+        """
         if available_capital <= 0:
             return 0
         
-        # Calculate risk per share
+        # Calculate risk per share based on stop distance
         if signal_type == TradeSignalType.BUY:
             risk_per_share = entry_price - stop_price
         else:  # SHORT
@@ -1073,8 +1479,8 @@ class DynamicPositionSizer:
         if risk_per_share <= 0:
             return 0
         
-        # Adjust max risk based on confidence
-        confidence_multiplier = min(1.0, confidence * 1.5)  # Up to 1.5x for high confidence
+        # Adjust max risk based on confidence (higher confidence = larger position)
+        confidence_multiplier = min(1.0, confidence * 1.5)
         adjusted_max_risk = self.max_portfolio_risk * confidence_multiplier
         
         # Calculate position size based on risk
@@ -1083,31 +1489,45 @@ class DynamicPositionSizer:
         # Calculate position size based on maximum allocation
         allocation_based_size = (available_capital * self.max_position_size) / entry_price
         
-        # Use the smaller of the two
+        # Use the smaller of the two calculations
         position_size = min(risk_based_size, allocation_based_size)
         
         # Round down to whole shares
         position_size = int(position_size)
         
-        # Ensure minimum of 1 share if we're taking the position
+        # Minimum 1 share for high-confidence trades
         if position_size == 0 and confidence > 0.6:
             position_size = 1
         
         return position_size
 
-# ======================== TRADING EXECUTION SYSTEM ======================== #
+# ======================== MAIN TRADE EXECUTION SYSTEM ======================== #
 class TradeExecutor:
-    """Main trade execution system that coordinates all components"""
+    """
+    Main trade execution system coordinating all components.
+    
+    Responsibilities:
+    1. Trade signal evaluation and execution
+    2. Position monitoring and exit management
+    3. Risk management enforcement
+    4. System state management
+    """
     
     def __init__(self, scanner: 'PolygonTickerScanner'):
+        """
+        Initialize with scanner reference and all sub-components.
+        
+        Args:
+            scanner: Main scanner instance
+        """
         self.scanner = scanner
         self.alpaca_manager = scanner.alpaca_manager
         self.data_provider = DataProvider(config.POLYGON_API_KEY)
         
-        # Initialize all managers
+        # Initialize all sub-components
         self.sector_risk_manager = SectorRiskManager()
         self.stop_loss_manager = DynamicStopLossManager(self.data_provider)
-        self.exit_strategy_manager = ExitStrategyManager()  # NEW: Unified exit strategy
+        self.exit_strategy_manager = ExitStrategyManager()
         self.real_time_manager = RealTimeDataManager(self.alpaca_manager, self.data_provider)
         self.pending_execution_manager = PendingExecutionManager()
         self.position_sizer = DynamicPositionSizer()
@@ -1121,48 +1541,56 @@ class TradeExecutor:
         logger.info("Trade Executor initialized")
     
     async def start(self):
-        """Start the trade execution system"""
-        # Initialize the combined ranking engine before starting
+        """Start the trade execution system."""
+        # Initialize ranking engine if needed
         if self.scanner.combined_ranking_engine is None:
             await self.scanner.initialize_combined_ranking_engine()
             logger.info("Combined ranking engine initialized for trade executor")
         
+        # Start real-time data connection
         await self.real_time_manager.connect()
         self.is_running = True
 
+        # Start position monitoring
         await self._start_position_monitoring()
 
+        # Check for restart execution if configured
         if config.EXECUTE_ON_RESTART:
             await self.check_and_execute_on_restart()
         
         logger.info("Trade Executor started")
 
     async def check_and_execute_on_restart(self):
-        """Check if we should execute trades on restart (before market close)"""
+        """
+        Check and execute trades on system restart during market hours.
+        
+        This allows the system to recover positions if restarted
+        during the trading day.
+        """
         try:
-            # Get current time and market status
+            # Check if we're in market hours
             now = datetime.now()
             market_open_time = datetime.strptime("09:30", "%H:%M").time()
             market_close_time = datetime.strptime("16:00", "%H:%M").time()
             current_time = now.time()
             
-            # Only execute if we're during market hours
+            # Only execute during market hours
             if not (market_open_time <= current_time <= market_close_time):
                 logger.info("Not during market hours, skipping restart execution check")
                 return
             
-            # Get current positions from the already detected info
+            # Get current positions
             positions = self.scanner.capital_detector.get_existing_positions()
             current_position_count = len(positions)
             
-            # Check if we're below the threshold
+            # Check if below position threshold
             if current_position_count >= config.MAX_POSITIONS_THRESHOLD:
                 logger.info(f"Already have {current_position_count} positions (threshold: {config.MAX_POSITIONS_THRESHOLD}), skipping restart execution")
                 return
             
             logger.info(f"Restart detected during market hours. Positions: {current_position_count}/{config.MAX_POSITIONS_THRESHOLD}. Checking for trade opportunities...")
             
-            # Get account information from already detected info
+            # Check available capital
             available_capital = self.scanner.capital_detector.get_available_capital()
             
             if available_capital <= 0:
@@ -1172,7 +1600,7 @@ class TradeExecutor:
             # Get fresh rankings with higher confidence threshold
             rankings = await self.scanner.combined_ranking_engine.rank_all_tickers_optimized(50)
             
-            # Filter for high confidence opportunities
+            # Filter for high-confidence opportunities
             high_confidence_rankings = [
                 r for r in rankings 
                 if (r.confidence >= config.MIN_RESTART_CONFIDENCE and 
@@ -1184,7 +1612,7 @@ class TradeExecutor:
                 logger.info("No high-confidence opportunities found for restart execution")
                 return
             
-            # Calculate how many positions we can add
+            # Calculate positions to add
             positions_to_add = config.MAX_POSITIONS_THRESHOLD - current_position_count
             max_trades = min(positions_to_add, 5)  # Limit to 5 at once
             
@@ -1201,7 +1629,7 @@ class TradeExecutor:
             logger.error(f"Error during restart execution check: {e}")
     
     async def stop(self):
-        """Stop the trade execution system"""
+        """Gracefully stop the trade execution system."""
         self.is_running = False
         
         # Cancel all monitoring tasks
@@ -1214,7 +1642,14 @@ class TradeExecutor:
     async def execute_trades_based_on_rankings(self, rankings: List['TickerRanking'], 
                                              max_trades: int = 5,
                                              is_restart_execution: bool = False):
-        """Execute trades based on ranking analysis"""
+        """
+        Execute trades based on ranking analysis.
+        
+        Args:
+            rankings: List of ticker rankings
+            max_trades: Maximum trades to execute
+            is_restart_execution: Flag for restart execution mode
+        """
         if not self.is_running:
             logger.warning("Trade executor not running")
             return
@@ -1230,28 +1665,28 @@ class TradeExecutor:
         
         total_portfolio_value = portfolio_summary.get('total_portfolio_value', 0)
         
-        # Update sector risk manager with current positions
+        # Update sector risk manager
         await self.sector_risk_manager.calculate_sector_allocation(existing_positions)
         
         executed_trades = 0
         pending_executions = []
         
-        # MODIFIED: For restart execution, use higher confidence threshold
+        # Set thresholds based on execution mode
         min_confidence = config.MIN_RESTART_CONFIDENCE if is_restart_execution else 0.5
         min_score = 0.6 if is_restart_execution else 0.4
         
+        # Evaluate each ranking for execution
         for ranking in rankings:
             if executed_trades >= max_trades:
                 break
             
-            # MODIFIED: Use different thresholds for restart execution
             if not await self._should_execute_trade(ranking, existing_positions, 
                                                    min_confidence=min_confidence,
                                                    min_score=min_score,
                                                    is_restart_execution=is_restart_execution):
                 continue
             
-            # Calculate position size
+            # Calculate position size with stop loss
             current_price = ranking.current_price
             stop_loss = await self.stop_loss_manager.calculate_initial_stop_loss(
                 ranking.ticker, current_price, 
@@ -1300,7 +1735,7 @@ class TradeExecutor:
         # Display pending executions
         await self.pending_execution_manager.display_pending_executions()
         
-        # MODIFIED: Execute immediately if it's a restart execution
+        # Execute immediately for restart mode
         if is_restart_execution and pending_executions:
             logger.info(f"Executing {len(pending_executions)} trades immediately (restart execution)")
             await self.execute_pending_trades()
@@ -1312,40 +1747,42 @@ class TradeExecutor:
                                   min_confidence: float = 0.5,
                                   min_score: float = 0.4,
                                   is_restart_execution: bool = False) -> bool:
-        """Determine if a trade should be executed"""
-        # Check if we already have a position
+        """
+        Determine if a trade should be executed based on criteria.
+        
+        Args:
+            ranking: Ticker ranking data
+            existing_positions: Current positions
+            min_confidence: Minimum confidence threshold
+            min_score: Minimum score threshold
+            is_restart_execution: Restart mode flag
+            
+        Returns:
+            bool: True if trade should be executed
+        """
+        # Check for existing position
         existing_position = any(pos['symbol'] == ranking.ticker for pos in existing_positions)
         if existing_position:
             return False
         
-        # Check signal strength with configurable thresholds
+        # Check signal strength thresholds
         if ranking.total_score < min_score or ranking.confidence < min_confidence:
             return False
         
-        # For SHORT signals, require higher confidence
+        # Higher confidence required for short positions
         if ranking.signal_type == "SHORT" and ranking.confidence < 0.6:
             return False
         
-        # MODIFIED: Additional check for restart execution
+        # Additional checks for restart execution
         if is_restart_execution:
-            # During restart, be more selective with entry prices
-            # Check if price hasn't moved too far from recent analysis
-            try:
-                current_price = ranking.current_price
-                
-                # Get the price from a few hours ago for comparison
-                # (This assumes the ranking was recently calculated)
-                # For now, we'll just accept if confidence is high enough
-                pass
-            except Exception:
-                # If we can't check price movement, rely on confidence
-                if ranking.confidence < 0.7:
-                    return False
+            # During restart, be more selective
+            if ranking.confidence < 0.7:
+                return False
         
         return True
     
     async def _start_position_monitoring(self):
-        """Start monitoring all existing positions"""
+        """Start monitoring all existing positions."""
         positions = await self.alpaca_manager.get_positions()
         
         for position in positions:
@@ -1356,7 +1793,12 @@ class TradeExecutor:
                 )
     
     async def _monitor_single_position(self, ticker: str):
-        """Monitor a single position using unified exit strategy"""
+        """
+        Monitor a single position for exit conditions.
+        
+        Args:
+            ticker: Stock symbol to monitor
+        """
         while self.is_running:
             try:
                 # Get current position data
@@ -1370,22 +1812,21 @@ class TradeExecutor:
                 # Get current price
                 current_price = await self.real_time_manager.get_current_price(ticker)
                 if not current_price:
-                    await asyncio.sleep(60)  # Wait 1 minute if no price
+                    await asyncio.sleep(60)
                     continue
                 
-                # Determine signal type
+                # Determine signal type from position
                 quantity = position['quantity']
                 signal_type = TradeSignalType.BUY if float(quantity) > 0 else TradeSignalType.SELL
                 
-                # Get current ranking for comprehensive exit evaluation
-                # Ensure combined ranking engine is initialized
+                # Get current ranking data
                 if self.scanner.combined_ranking_engine is None:
                     await self.scanner.initialize_combined_ranking_engine()
                 
                 rankings = await self.scanner.combined_ranking_engine.rank_all_tickers_optimized(100)
                 current_ranking = next((r for r in rankings if r.ticker == ticker), None)
                 
-                # USE UNIFIED EXIT STRATEGY
+                # Evaluate exit conditions using unified strategy
                 exit_decision = await self.exit_strategy_manager.exit_strategy(
                     ticker=ticker,
                     current_price=current_price,
@@ -1400,11 +1841,11 @@ class TradeExecutor:
                     await self._exit_position(ticker, exit_decision.reason)
                     break
                 
-                # Wait based on volatility
+                # Wait based on current volatility
                 volatility_state = await self.real_time_manager.monitor_volatility()
                 scan_interval = self.volatility_monitor.get_scan_interval()
                 
-                await asyncio.sleep(scan_interval * 60)  # Convert to seconds
+                await asyncio.sleep(scan_interval * 60)
                 
             except asyncio.CancelledError:
                 break
@@ -1413,7 +1854,13 @@ class TradeExecutor:
                 await asyncio.sleep(60)
     
     async def _exit_position(self, ticker: str, reason: str):
-        """Exit a position"""
+        """
+        Execute position exit.
+        
+        Args:
+            ticker: Stock symbol to exit
+            reason: Exit reason for logging
+        """
         try:
             positions = await self.alpaca_manager.get_positions()
             position = next((p for p in positions if p['symbol'] == ticker), None)
@@ -1423,13 +1870,13 @@ class TradeExecutor:
             
             quantity = abs(float(position['quantity']))
             
-            # Determine order side based on position
-            if float(position['quantity']) > 0:  # LONG position, need to sell
+            # Determine order side based on position type
+            if float(position['quantity']) > 0:  # LONG position
                 order_side = 'sell'
-            else:  # SHORT position, need to buy to cover
+            else:  # SHORT position
                 order_side = 'buy'
             
-            # Place market order to exit
+            # Execute market order
             api = self.alpaca_manager.api
             if api:
                 api.submit_order(
@@ -1442,7 +1889,7 @@ class TradeExecutor:
                 
                 logger.info(f"Exited position for {ticker}: {quantity} shares ({reason})")
                 
-                # Remove from monitoring
+                # Clean up monitoring
                 if ticker in self.active_monitoring:
                     self.active_monitoring[ticker].cancel()
                     del self.active_monitoring[ticker]
@@ -1455,7 +1902,7 @@ class TradeExecutor:
             logger.error(f"Error exiting position for {ticker}: {e}")
     
     async def execute_pending_trades(self):
-        """Execute all pending trades"""
+        """Execute all pending trades with price validation."""
         pending_executions = await self.pending_execution_manager.get_pending_executions()
         
         if not pending_executions:
@@ -1466,26 +1913,23 @@ class TradeExecutor:
         
         for execution in pending_executions:
             try:
-                # Get current price
+                # Get current price with validation
                 current_price = await self.real_time_manager.get_current_price(execution.ticker)
                 if not current_price:
                     logger.warning(f"Could not get current price for {execution.ticker}")
                     continue
                 
-                # Check if price has moved significantly
+                # Check for significant price movement
                 price_change = abs(current_price - execution.estimated_price) / execution.estimated_price
-                if price_change > 0.05:  # 5% price change
+                if price_change > 0.05:  # 5% threshold
                     logger.warning(f"Price changed significantly for {execution.ticker}: "
                                  f"estimated ${execution.estimated_price:.2f}, current ${current_price:.2f}")
                     continue
                 
-                # Place order
+                # Place limit order
                 api = self.alpaca_manager.api
                 if api:
-                    if execution.signal_type == TradeSignalType.BUY:
-                        order_side = 'buy'
-                    else:  # SELL
-                        order_side = 'sell'
+                    order_side = 'buy' if execution.signal_type == TradeSignalType.BUY else 'sell'
                     
                     api.submit_order(
                         symbol=execution.ticker,
@@ -1499,13 +1943,13 @@ class TradeExecutor:
                     logger.info(f"Executed {order_side} order for {execution.ticker}: "
                               f"{execution.quantity} shares at ${current_price:.2f}")
                     
-                    # Set stop loss
+                    # Set initial stop loss
                     stop_loss = await self.stop_loss_manager.calculate_initial_stop_loss(
                         execution.ticker, current_price, execution.signal_type
                     )
                     self.stop_loss_manager.active_stops[execution.ticker] = stop_loss
                     
-                    # Start monitoring
+                    # Start position monitoring
                     if execution.ticker not in self.active_monitoring:
                         self.active_monitoring[execution.ticker] = asyncio.create_task(
                             self._monitor_single_position(execution.ticker)
@@ -1515,7 +1959,7 @@ class TradeExecutor:
                     await self.pending_execution_manager.clear_executed(execution.ticker)
                     executed_count += 1
                 
-                # Small delay between orders
+                # Rate limiting between orders
                 await asyncio.sleep(1)
                 
             except Exception as e:
@@ -1524,23 +1968,23 @@ class TradeExecutor:
         logger.info(f"Executed {executed_count} pending trades")
     
     async def run_scheduled_scan(self):
-        """Run scheduled position scan based on volatility"""
+        """Execute scheduled position scan based on volatility."""
         volatility_state = await self.real_time_manager.monitor_volatility()
         scan_interval = self.volatility_monitor.get_scan_interval()
         
         logger.info(f"Volatility: {volatility_state.value}, Scan interval: {scan_interval} minutes")
         
-        # Scan existing positions for reevaluation
+        # Scan existing positions
         await self._scan_existing_positions()
         
-        # Update last scan time
+        # Update scan timestamp
         self.last_scan_time = datetime.now()
     
     async def _scan_existing_positions(self):
-        """Scan existing positions for potential exits using unified exit strategy"""
+        """Scan all existing positions for exit conditions."""
         positions = await self.alpaca_manager.get_positions()
         
-        # Ensure combined ranking engine is initialized
+        # Ensure ranking engine is available
         if self.scanner.combined_ranking_engine is None:
             await self.scanner.initialize_combined_ranking_engine()
         
@@ -1556,11 +2000,11 @@ class TradeExecutor:
                 quantity = position['quantity']
                 signal_type = TradeSignalType.BUY if float(quantity) > 0 else TradeSignalType.SELL
                 
-                # Get current ranking for comprehensive exit evaluation
+                # Get current ranking
                 rankings = await self.scanner.combined_ranking_engine.rank_all_tickers_optimized(100)
                 current_ranking = next((r for r in rankings if r.ticker == ticker), None)
                 
-                # USE UNIFIED EXIT STRATEGY
+                # Evaluate exit conditions
                 exit_decision = await self.exit_strategy_manager.exit_strategy(
                     ticker=ticker,
                     current_price=current_price,
@@ -1577,44 +2021,74 @@ class TradeExecutor:
             except Exception as e:
                 logger.error(f"Error scanning position {ticker}: {e}")
 
-# ======================== UNIFIED DISPLAY MANAGER ======================== #
+# ======================== UNIFIED DISPLAY SYSTEM ======================== #
 class UnifiedDisplayManager:
-    """Unified display manager to combine all output into one organized group"""
+    """
+    Unified display system for organized console output.
+    
+    Features:
+    1. Configurable display groups
+    2. Consistent formatting
+    3. Section-based organization
+    4. Async-aware display methods
+    """
     
     def __init__(self):
+        """Initialize with default display settings."""
         self.section_width = 80
         self.section_char = "="
         self.subsection_char = "-"
         self.display_groups = {
-            'capital_detection': True,  # NEW: Capital detection status
+            'capital_detection': True,
             'system_status': True,
             'task_scheduler': True,
             'sector_files': True,
-            'ranking_results': False,  # Disabled by default for cleaner output
-            'performance': False,      # Disabled by default
-            'trading_signals': False,   # Disabled by default
-            'trading_status': True     # Trading status enabled
+            'ranking_results': False,
+            'performance': False,
+            'trading_signals': False,
+            'trading_status': True
         }
     
     def set_display_group(self, group_name: str, enabled: bool):
-        """Enable/disable specific display groups"""
+        """
+        Enable/disable specific display groups.
+        
+        Args:
+            group_name: Name of display group
+            enabled: True to enable, False to disable
+        """
         if group_name in self.display_groups:
             self.display_groups[group_name] = enabled
     
     def display_section_header(self, title: str):
-        """Display a section header"""
+        """
+        Display formatted section header.
+        
+        Args:
+            title: Section title
+        """
         print(f"\n{self.section_char * self.section_width}")
         print(f"{title.center(self.section_width)}")
         print(f"{self.section_char * self.section_width}")
     
     def display_subsection(self, title: str):
-        """Display a subsection header"""
+        """
+        Display formatted subsection header.
+        
+        Args:
+            title: Subsection title
+        """
         print(f"\n{self.subsection_char * self.section_width}")
         print(f"{title}")
         print(f"{self.subsection_char * self.section_width}")
     
     def display_capital_detection_status(self, capital_detector):
-        """Display capital and position detection status"""
+        """
+        Display capital detection results.
+        
+        Args:
+            capital_detector: CapitalPositionDetector instance
+        """
         if not self.display_groups['capital_detection']:
             return
             
@@ -1624,7 +2098,7 @@ class UnifiedDisplayManager:
             print("⏳ Capital and position detection in progress...")
             return
         
-        # Capital information
+        # Display capital information
         capital_info = capital_detector.capital_info
         if capital_info:
             print(f"💰 Portfolio Value: ${capital_info.get('portfolio_value', 0):.2f}")
@@ -1635,11 +2109,11 @@ class UnifiedDisplayManager:
         else:
             print("❌ No capital information available")
         
-        # Positions information
+        # Display positions
         positions = capital_detector.positions_info
         print(f"\n📊 Existing Positions: {len(positions) if positions else 0}")
         if positions:
-            for pos in positions[:5]:  # Show top 5 positions
+            for pos in positions[:5]:
                 pl_percent = pos.get('unrealized_plpc', 0) * 100
                 pl_emoji = "🟢" if pos.get('unrealized_pl', 0) >= 0 else "🔴"
                 print(f"   {pos['symbol']}: {pos['quantity']:.0f} shares | P/L: {pl_emoji} ${pos['unrealized_pl']:.2f} ({pl_percent:.2f}%)")
@@ -1648,7 +2122,7 @@ class UnifiedDisplayManager:
         else:
             print("   No active positions")
         
-        # Portfolio allocation
+        # Display allocation
         portfolio_summary = capital_detector.portfolio_summary
         if portfolio_summary:
             print(f"\n📋 Allocation:")
@@ -1656,7 +2130,12 @@ class UnifiedDisplayManager:
             print(f"   📈 Positions: {portfolio_summary.get('positions_allocation_pct', 0):.1f}%")
     
     def display_task_scheduler_status(self, task_scheduler):
-        """Display task scheduler status"""
+        """
+        Display task scheduler status.
+        
+        Args:
+            task_scheduler: TaskSchedulerStatus instance
+        """
         if not self.display_groups['task_scheduler']:
             return
             
@@ -1673,7 +2152,7 @@ class UnifiedDisplayManager:
                 wait_time = "N/A"
                 next_run_str = "N/A"
             
-            # Status emoji - UPDATED TO MATCH REQUESTED FORMAT
+            # Status emoji mapping
             if status == 'completed':
                 status_emoji = "✅"
             elif status == 'running':
@@ -1688,7 +2167,12 @@ class UnifiedDisplayManager:
             print(f"{task_name:20s} | {status_emoji} {status:10s} | Next: {next_run_str} | Wait: {wait_time}")
     
     def display_sector_files_status(self, csv_manager):
-        """Display sector CSV files status"""
+        """
+        Display sector CSV files status.
+        
+        Args:
+            csv_manager: CSV manager instance
+        """
         if not self.display_groups['sector_files']:
             return
             
@@ -1711,7 +2195,7 @@ class UnifiedDisplayManager:
             else:
                 print(f"❌ {sector:25s} | File not found")
         
-        # Check summary file
+        # Summary file check
         summary_file = os.path.join(csv_manager.base_dir, "sector_summary.csv")
         if os.path.exists(summary_file):
             summary_df = pd.read_csv(summary_file)
@@ -1719,29 +2203,33 @@ class UnifiedDisplayManager:
             print(f"\n📈 Sector Summary: {len(summary_df)} records | Latest: {latest_date}")
     
     def display_ranking_results(self, rankings, max_display=20):
-        """Display ranking results in a formatted table"""
+        """
+        Display ranking results in formatted table.
+        
+        Args:
+            rankings: List of ranking objects
+            max_display: Maximum rows to display
+        """
         if not self.display_groups['ranking_results'] or not rankings:
             return
             
         self.display_section_header(f"TOP {min(max_display, len(rankings))} RANKED TICKERS")
         
-        # Header
+        # Table header
         print(f"{'Rank':<4} {'Ticker':<8} {'Sector':<20} {'Score':<6} {'Conf':<5} {'Signal':<8} {'Price':<8}")
         print(f"{'-'*4} {'-'*8} {'-'*20} {'-'*6} {'-'*5} {'-'*8} {'-'*8}")
         
-        # Display top rankings
+        # Display rankings
         for i, ranking in enumerate(rankings[:max_display]):
-            # Signal emoji
             signal_emoji = "🟢" if ranking.signal_type == "LONG" else "🔴" if ranking.signal_type == "SHORT" else "⚪"
             
-            # Truncate sector name if too long
             sector_display = ranking.sector or "Unknown"
             if len(sector_display) > 18:
                 sector_display = sector_display[:15] + "..."
             
             print(f"{ranking.rank:<4} {ranking.ticker:<8} {sector_display:<20} {ranking.total_score:.3f} {ranking.confidence:.2f} {signal_emoji} {ranking.signal_type:<6} ${ranking.current_price:.2f}")
         
-        # Signal summary
+        # Summary statistics
         if len(rankings) > max_display:
             print(f"\n... and {len(rankings) - max_display} more tickers")
         
@@ -1753,7 +2241,12 @@ class UnifiedDisplayManager:
         print(f"\n📊 Signal Summary: LONG: {signal_counts.get('LONG', 0)} | SHORT: {signal_counts.get('SHORT', 0)} | NEUTRAL: {signal_counts.get('NEUTRAL', 0)}")
     
     def display_performance_metrics(self, performance_metrics):
-        """Display performance metrics"""
+        """
+        Display performance metrics table.
+        
+        Args:
+            performance_metrics: Dictionary of performance data
+        """
         if not self.display_groups['performance'] or not performance_metrics:
             return
             
@@ -1771,19 +2264,23 @@ class UnifiedDisplayManager:
                 print(f"{func_name:<30} {count:<8} {avg_time:.3f}s     {total_duration:.2f}s")
     
     def display_trading_status(self, trading_manager):
-        """Display trading account status"""
+        """
+        Display trading account status.
+        
+        Args:
+            trading_manager: AlpacaTradingManager instance
+        """
         if not self.display_groups['trading_status']:
             return
             
         self.display_section_header("TRADING ACCOUNT STATUS")
         
         try:
-            # Run in event loop if we're in async context
+            # Handle async context
             import asyncio
             try:
                 loop = asyncio.get_event_loop()
                 if loop.is_running():
-                    # We're in async context, create task
                     asyncio.create_task(self._async_display_trading_status(trading_manager))
                     return
             except:
@@ -1795,7 +2292,12 @@ class UnifiedDisplayManager:
             print(f"Error displaying trading status: {e}")
     
     async def _async_display_trading_status(self, trading_manager):
-        """Async helper to display trading status"""
+        """
+        Async helper for displaying trading status.
+        
+        Args:
+            trading_manager: AlpacaTradingManager instance
+        """
         try:
             account_info = await trading_manager.get_account_info()
             positions = await trading_manager.get_positions()
@@ -1805,7 +2307,7 @@ class UnifiedDisplayManager:
                 print("❌ Unable to fetch account information")
                 return
             
-            # Account basics
+            # Account details
             print(f"💰 Portfolio Value: ${account_info.get('portfolio_value', 0):.2f}")
             print(f"💵 Available Cash: ${account_info.get('cash', 0):.2f}")
             print(f"💳 Buying Power: ${account_info.get('buying_power', 0):.2f}")
@@ -1815,7 +2317,7 @@ class UnifiedDisplayManager:
             # Positions
             print(f"\n📊 Positions: {len(positions)}")
             if positions:
-                for pos in positions[:5]:  # Show top 5 positions
+                for pos in positions[:5]:
                     pl_percent = pos.get('unrealized_plpc', 0) * 100
                     pl_emoji = "🟢" if pos.get('unrealized_pl', 0) >= 0 else "🔴"
                     print(f"   {pos['symbol']}: {pos['quantity']:.0f} shares | P/L: {pl_emoji} ${pos['unrealized_pl']:.2f} ({pl_percent:.2f}%)")
@@ -1824,7 +2326,7 @@ class UnifiedDisplayManager:
             else:
                 print("   No active positions")
             
-            # Portfolio allocation
+            # Allocation
             if portfolio_summary:
                 print(f"\n📋 Allocation:")
                 print(f"   💰 Cash: {portfolio_summary.get('cash_allocation_pct', 0):.1f}%")
@@ -1834,14 +2336,19 @@ class UnifiedDisplayManager:
             print(f"Error in trading status display: {e}")
     
     def display_trade_execution_status(self, trade_executor):
-        """Display trade execution system status"""
+        """
+        Display trade execution system status.
+        
+        Args:
+            trade_executor: TradeExecutor instance
+        """
         if not self.display_groups['trading_status']:
             return
             
         self.display_section_header("TRADE EXECUTION STATUS")
         
         try:
-            # Display pending executions
+            # Pending executions
             pending = asyncio.run(trade_executor.pending_execution_manager.get_pending_executions())
             print(f"📋 Pending Executions: {len(pending)}")
             
@@ -1855,7 +2362,7 @@ class UnifiedDisplayManager:
             else:
                 print("   No pending executions")
             
-            # Display active stops
+            # Active stop losses
             active_stops = trade_executor.stop_loss_manager.active_stops
             print(f"🛡️  Active Stop Losses: {len(active_stops)}")
             
@@ -1867,11 +2374,11 @@ class UnifiedDisplayManager:
             else:
                 print("   No active stop losses")
             
-            # Display monitoring status
+            # Monitoring status
             monitoring = trade_executor.active_monitoring
             print(f"🔍 Active Monitoring: {len(monitoring)} positions")
             
-            # Display volatility state
+            # Volatility state
             volatility_state = trade_executor.volatility_monitor.current_state
             scan_interval = trade_executor.volatility_monitor.get_scan_interval()
             print(f"📊 Volatility: {volatility_state.value} (Scan every {scan_interval}min)")
@@ -1881,37 +2388,61 @@ class UnifiedDisplayManager:
     
     def display_comprehensive_status(self, scanner, db_manager, task_scheduler, csv_manager, 
                                    rankings=None, performance_metrics=None, trade_signals=None):
-        """Display comprehensive status report combining all components"""
-        # Display current time at the top
+        """
+        Display comprehensive system status report.
+        
+        Args:
+            scanner: Main scanner instance
+            db_manager: Database manager
+            task_scheduler: Task scheduler
+            csv_manager: CSV manager
+            rankings: Current rankings
+            performance_metrics: Performance data
+            trade_signals: Trade signals
+        """
+        # Current time header
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print(f"🕒 Current Time: {current_time}")
         
-        # Display all enabled sections - CAPITAL DETECTION FIRST
+        # Display all enabled sections (capital detection first)
         if hasattr(scanner, 'capital_detector'):
             self.display_capital_detection_status(scanner.capital_detector)
         
         self.display_task_scheduler_status(task_scheduler)
         self.display_sector_files_status(csv_manager)
         
-        # Display trade execution status if available
+        # Trade execution status
         if hasattr(scanner, 'trade_executor'):
             self.display_trade_execution_status(scanner.trade_executor)
         else:
             self.display_trading_status(scanner.alpaca_manager)
 
-# Initialize global display manager
+# Global display manager instance
 display_manager = UnifiedDisplayManager()
 
-# ======================== RUN STATUS MANAGER ======================== #
+# ======================== SYSTEM STATUS MANAGEMENT ======================== #
 class RunStatusManager:
-    """Manage run status to track sector detection completion and avoid redundant scans"""
+    """
+    System status management to prevent redundant scans and operations.
+    
+    Tracks:
+    1. Last completion dates
+    2. Cache validity
+    3. Run timestamps
+    """
     
     def __init__(self, status_file: str = None):
+        """
+        Initialize with status file.
+        
+        Args:
+            status_file: Path to status JSON file
+        """
         self.status_file = status_file or config.RUN_STATUS_FILE
         self.status_data = self._load_status()
     
     def _load_status(self) -> Dict[str, Any]:
-        """Load run status from JSON file"""
+        """Load status from JSON file."""
         default_status = {
             "last_sector_completion_date": None,
             "last_full_cycle_completed": None,
@@ -1930,7 +2461,7 @@ class RunStatusManager:
             return default_status
     
     def save_status(self):
-        """Save current status to file"""
+        """Save current status to file."""
         try:
             self.status_data["last_run_timestamp"] = datetime.now().isoformat()
             with open(self.status_file, 'w') as f:
@@ -1939,7 +2470,12 @@ class RunStatusManager:
             logger.warning(f"Failed to save run status: {e}")
     
     def should_run_sector_detection(self) -> bool:
-        """Check if sector detection should run based on completion status"""
+        """
+        Determine if sector detection should run.
+        
+        Returns:
+            bool: True if detection should run
+        """
         if not self.status_data.get("sector_cache_valid", False):
             return True
         
@@ -1948,11 +2484,10 @@ class RunStatusManager:
             return True
         
         try:
-            # Parse the last completion date
+            # Check if detection completed today
             last_date = datetime.fromisoformat(last_completion_date).date()
             today = datetime.now().date()
             
-            # If we completed today and it's before 23:59, don't run again
             if last_date == today:
                 current_time = datetime.now().time()
                 cutoff_time = datetime.strptime("23:59", "%H:%M").time()
@@ -1968,7 +2503,7 @@ class RunStatusManager:
             return True
     
     def mark_sector_detection_completed(self):
-        """Mark sector detection as completed for today"""
+        """Mark sector detection as completed for today."""
         self.status_data["last_sector_completion_date"] = datetime.now().isoformat()
         self.status_data["sector_cache_valid"] = True
         self.status_data["last_full_cycle_completed"] = datetime.now().isoformat()
@@ -1976,22 +2511,32 @@ class RunStatusManager:
         logger.info("Sector detection marked as completed for today")
     
     def mark_sector_cache_invalid(self):
-        """Mark sector cache as invalid (force refresh next run)"""
+        """Invalidate sector cache to force refresh."""
         self.status_data["sector_cache_valid"] = False
         self.save_status()
 
-# ======================== SECTOR FALLBACK ======================== #
+# ======================== FALLBACK DATA SOURCES ======================== #
+# yfinance import for fallback sector data
 try:
     import yfinance as yf
 except ImportError:
     yf = None
     logger.warning("yfinance not available for fallback sector data")
 
-# ======================== TASK SCHEDULER STATUS ======================== #
+# ======================== TASK SCHEDULER ======================== #
 class TaskSchedulerStatus:
-    """Display scheduled task status with next run times"""
+    """
+    Task scheduler with status tracking and next-run calculations.
+    
+    Tracks all scheduled tasks with:
+    1. Current status
+    2. Next run time
+    3. Last run time
+    4. Schedule configuration
+    """
     
     def __init__(self):
+        """Initialize with default task definitions."""
         self.tasks = {
             'CAPITAL_DETECTION': {
                 'status': 'pending',
@@ -2017,7 +2562,7 @@ class TaskSchedulerStatus:
                 'schedule_time': self._calculate_ranking_time(),
                 'last_run': None
             },
-            'SECTOR_CSV_UPDATE': {  # Make sure this exists
+            'SECTOR_CSV_UPDATE': {
                 'status': 'pending',
                 'next_run': None,
                 'schedule_time': self._calculate_csv_time(),
@@ -2035,31 +2580,38 @@ class TaskSchedulerStatus:
             self._calculate_next_run(task_name)
         
     def _calculate_capital_detection_time(self):
-        """Calculate capital detection time (5 minutes before ticker refresh)"""
+        """Calculate capital detection time (5 minutes before ticker refresh)."""
         scan_time = datetime.strptime(config.SCAN_TIME, "%H:%M")
         capital_time = (scan_time - timedelta(minutes=5)).strftime("%H:%M")
         return capital_time
     
     def _calculate_sector_time(self):
-        """Calculate sector data time (5 minutes after ticker refresh)"""
+        """Calculate sector data time (5 minutes after ticker refresh)."""
         scan_time = datetime.strptime(config.SCAN_TIME, "%H:%M")
         sector_time = (scan_time + timedelta(minutes=5)).strftime("%H:%M")
         return sector_time
     
     def _calculate_ranking_time(self):
-        """Calculate ranking analysis time (15 minutes after ticker refresh)"""
+        """Calculate ranking analysis time (15 minutes after ticker refresh)."""
         scan_time = datetime.strptime(config.SCAN_TIME, "%H:%M")
         ranking_time = (scan_time + timedelta(minutes=15)).strftime("%H:%M")
         return ranking_time
     
     def _calculate_csv_time(self):
-        """Calculate CSV update time (20 minutes after ticker refresh)"""
+        """Calculate CSV update time (20 minutes after ticker refresh)."""
         scan_time = datetime.strptime(config.SCAN_TIME, "%H:%M")
         csv_time = (scan_time + timedelta(minutes=20)).strftime("%H:%M")
         return csv_time
     
     def update_task_status(self, task_name: str, status: str, last_run: datetime = None):
-        """Update task status and calculate next run time"""
+        """
+        Update task status and recalculate next run.
+        
+        Args:
+            task_name: Name of task
+            status: New status
+            last_run: Last run timestamp
+        """
         if task_name in self.tasks:
             self.tasks[task_name]['status'] = status
             if last_run:
@@ -2067,24 +2619,37 @@ class TaskSchedulerStatus:
             self._calculate_next_run(task_name)
     
     def _calculate_next_run(self, task_name: str):
-        """Calculate next run time for a task"""
+        """
+        Calculate next run time for task.
+        
+        Args:
+            task_name: Name of task
+        """
         task = self.tasks[task_name]
         now = datetime.now()
         
         # Parse scheduled time
         scheduled_time = datetime.strptime(task['schedule_time'], "%H:%M").time()
         
-        # Create datetime for today with scheduled time
+        # Create datetime for scheduled time today
         next_run = datetime.combine(now.date(), scheduled_time)
         
-        # If scheduled time has passed today, schedule for tomorrow
+        # If passed today, schedule for tomorrow
         if next_run <= now:
             next_run += timedelta(days=1)
         
         task['next_run'] = next_run
     
     def format_wait_time(self, next_run: datetime) -> str:
-        """Format wait time in hours and minutes"""
+        """
+        Format wait time in hours and minutes.
+        
+        Args:
+            next_run: Next run datetime
+            
+        Returns:
+            str: Formatted wait time
+        """
         now = datetime.now()
         wait_seconds = (next_run - now).total_seconds()
         
@@ -2097,21 +2662,32 @@ class TaskSchedulerStatus:
         return f"{hours:2d}h {minutes:2d}m"
     
     def display_status(self):
-        """Display current task status in the requested format"""
+        """Display current task status."""
         display_manager.display_task_scheduler_status(self)
     
     def mark_all_completed(self):
-        """Mark all tasks as completed and calculate next runs"""
+        """Mark all tasks as completed."""
         now = datetime.now()
         for task_name in self.tasks:
             self.update_task_status(task_name, 'completed', now)
 
-# Initialize global task scheduler status
+# Global task scheduler instance
 task_scheduler = TaskSchedulerStatus()
 
-# ======================== DECORATORS ======================== #
+# ======================== DECORATORS FOR ERROR HANDLING AND PERFORMANCE ======================== #
 def handle_errors(max_retries=3, retry_delay=1):
-    """Unified error handling decorator for both sync and async methods"""
+    """
+    Unified error handling decorator for sync and async methods.
+    
+    Features:
+    1. Automatic retry on specific exceptions
+    2. Exponential backoff
+    3. Comprehensive logging
+    
+    Args:
+        max_retries: Maximum retry attempts
+        retry_delay: Base delay between retries
+    """
     def decorator(func):
         @wraps(func)
         async def async_wrapper(*args, **kwargs):
@@ -2125,7 +2701,7 @@ def handle_errors(max_retries=3, retry_delay=1):
     return decorator
 
 async def _error_handler_impl_async(func, max_retries, retry_delay, *args, **kwargs):
-    """Unified async error handling implementation"""
+    """Async error handling implementation."""
     retries = 0
     while retries <= max_retries:
         try:
@@ -2143,7 +2719,7 @@ async def _error_handler_impl_async(func, max_retries, retry_delay, *args, **kwa
     return None
 
 def _error_handler_impl_sync(func, max_retries, retry_delay, *args, **kwargs):
-    """Unified sync error handling implementation"""
+    """Sync error handling implementation."""
     retries = 0
     while retries <= max_retries:
         try:
@@ -2161,14 +2737,18 @@ def _error_handler_impl_sync(func, max_retries, retry_delay, *args, **kwargs):
     return None
 
 def _error_handler_impl(func, max_retries, retry_delay, *args, **kwargs):
-    """Router for error handling implementation"""
+    """Router for error handling implementation."""
     if asyncio.iscoroutinefunction(func):
         return _error_handler_impl_async(func, max_retries, retry_delay, *args, **kwargs)
     else:
         return _error_handler_impl_sync(func, max_retries, retry_delay, *args, **kwargs)
 
 def monitor_performance(func):
-    """Unified performance monitoring decorator - SILENT VERSION"""
+    """
+    Performance monitoring decorator (silent version).
+    
+    Only logs operations taking >1 second to avoid noise.
+    """
     @wraps(func)
     async def async_wrapper(self, *args, **kwargs):
         start_time = time.time()
@@ -2178,8 +2758,8 @@ def monitor_performance(func):
         finally:
             duration = time.time() - start_time
             # Only log if operation takes significant time
-            if duration > 1.0:  # Only log operations over 1 second
-                logger.debug(f"{func.__name__} executed in {duration:.2f}s")  # Changed to debug
+            if duration > 1.0:
+                logger.debug(f"{func.__name__} executed in {duration:.2f}s")
 
     @wraps(func)
     def sync_wrapper(self, *args, **kwargs):
@@ -2190,12 +2770,19 @@ def monitor_performance(func):
         finally:
             duration = time.time() - start_time
             if duration > 1.0:
-                logger.debug(f"{func.__name__} executed in {duration:.2f}s")  # Changed to debug
+                logger.debug(f"{func.__name__} executed in {duration:.2f}s")
     
     return async_wrapper if asyncio.iscoroutinefunction(func) else sync_wrapper
 
 def _track_performance_metrics(self, func_name: str, duration: float):
-    """Track performance metrics in a unified way"""
+    """
+    Track performance metrics for analysis.
+    
+    Args:
+        self: Object instance
+        func_name: Function name
+        duration: Execution duration
+    """
     if hasattr(self, 'performance_metrics'):
         if func_name not in self.performance_metrics:
             self.performance_metrics[func_name] = {
